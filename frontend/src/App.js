@@ -1,14 +1,55 @@
-import logo from './logo.svg';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import About from './pages/About';
+import Blog from './pages/Blog';
+import Login from './pages/auth/Login';
+import Signup from './pages/auth/Signup';
+
+import Chat from './pages/features/Chat';
+import Chatbot from './pages/features/Chatbot';
+import Weather from './pages/features/Weather';
+
+import Profile from './pages/profile/Profile';
+import ProfileEdit from './pages/profile/ProfileEdit';
+
+import Gig from './pages/gig/Gig';
+import GigCreate from './pages/gig/GigCreate';
+import GigEdit from './pages/gig/GigEdit';
+
+import Shop from './pages/shop/Shop';
+import ShopCreate from './pages/shop/ShopCreate';
+import ShopEdit from './pages/shop/ShopEdit';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>PADDY PLATFORM</h1>
-        <p>-------------------------------------------------</p>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/blog" element={<Blog />} />
+        
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+
+        <Route path="/features/chat" element={<Chat />} />
+        <Route path="/features/chatbot" element={<Chatbot />} />
+        <Route path="/features/weather" element={<Weather />} />
+
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile/edit" element={<ProfileEdit />} />
+
+        <Route path="/gig" element={<Gig />} />
+        <Route path="/gig/create" element={<GigCreate />} />
+        <Route path="/gig/edit" element={<GigEdit />} />
+
+        <Route path="/shop" element={<Shop />} />
+        <Route path="/shop/create" element={<ShopCreate />} />
+        <Route path="/shop/edit" element={<ShopEdit />} />
+
+
+      </Routes>
+    </Router>
   );
 }
 
