@@ -15,7 +15,7 @@ const ProfileEdit = () => {
             alt="Avatar"
             className="avatar-image"
           />
-          <span className="status-text" >Change</span>
+          <span className="status-text" >Active</span>
         </div>
 
         <form className="profile-form">
