@@ -1,6 +1,8 @@
 // src/pages/profile/Profile.jsx
 import React from 'react';
 
+
+
 function Profile() {
   return (
     <div>
