@@ -1,0 +1,93 @@
+.signup-container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .signup-container-blur-layer {
+    background-image: url('../../resources/images/auth/loginBackgroud.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: brightness(40%) blur(10px);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+  
+  .signup-card {
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(5px);
+    padding: 30px;
+    border-radius: 10px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 2;
+    position: relative;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .signup-card h2 {
+    margin: 0;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+    font-family:Arial, Helvetica, sans-serif; 
+  }
+  
+  .signup-card input {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+  }
+
+  .signup-card select {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    background-color: white;
+    font-size: 14px;
+    color: #555;
+  }
+  .signup-card select:invalid {
+    color: #aaa;
+  }
+  
+  .signup-card button {
+    padding: 10px;
+    background-color: orange;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .signup-card button:hover {
+    background-color: darkorange;
+  }
+  
+  .signup-card hr {
+    width: 100%;
+  }
+
+  .signup-card p {
+    color: #fff;
+    margin: 0;
+    font-size: 14px;
+  }
+
+  .signup-card p a{
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+  }
