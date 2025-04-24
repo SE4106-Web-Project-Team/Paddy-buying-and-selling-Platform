@@ -21,7 +21,7 @@ const Signup = () => {
         <button>Sign Up</button>
 
         <hr />
-        <p>Already a user? <a href="/signup">Login</a></p>
+        <p>Already a user? <a href="/login">Login</a></p>
       </div>
     </div>
   );
