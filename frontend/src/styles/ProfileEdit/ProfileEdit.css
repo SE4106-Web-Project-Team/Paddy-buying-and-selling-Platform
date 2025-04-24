@@ -1,4 +1,4 @@
-.page-container {
+  .page-container {
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -30,13 +30,30 @@
     margin-bottom: 1rem;
   }
   
-  .avatar-image {
-    width: 96px;
-    height: 96px;
+  .profile-upload {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+  
+  .profile-img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
     border-radius: 20%;
     border: 2px solid green;
   }
   
+  .edit-icon {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background-color: #22c55e;
+    color: white;
+    padding: 4px;
+    border-radius: 50%;
+    font-size: 14px;
+  }
   
   .profile-form {
     display: flex;
@@ -64,9 +81,4 @@
   .save-button:hover {
     background-color: #16a34a;
   }
-  .status-text {
-    font-weight: bold;
-    color: rgb(212, 238, 212);         
-    font-size: 15px;
-    margin-top: 0.25rem;
-  }
+  
