@@ -20,7 +20,7 @@
     font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 1rem;
-    color: white;
+    color: rgb(29, 28, 28);
   }
   
   .avatar-section {
@@ -61,11 +61,14 @@
     gap: 0.75rem;
   }
   
-  .form-input {
-    padding: 0.5rem;
-    border-radius: 0.5rem;
-    border: none;
-    background: rgba(255, 255, 255, 0.8);
+  .form input,
+  form textarea {
+    width: 100%;
+    padding: 8px 10px;
+    margin-bottom: 10px;
+    border: 1px solid #1d1a1a;
+    border-radius: 5px;
+  
   }
   
   .save-button {

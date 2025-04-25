@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import '../../styles/ProfileEdit/ProfileEdit.css';
 import profile from "../../resources/images/ProfileEdit/profile.jpg";
 
+//handle image changes for profile image
 const ProfileEdit = () => {
   const [profileImage, setProfileImage] = useState(null);
 
@@ -14,11 +15,12 @@ const ProfileEdit = () => {
   };
 
   return (
-    <div className="page-container">
+    //page
+    <div className="page-container"> 
+      {/*form*/} 
       <div className="form-container">
-        <h2 className="form-title">Profile</h2>
-
-        <div className="avatar-section">
+        <h2 className="form-title">Profile</h2>{/*Title*/} 
+        <div className="avatar-section">{/*profile image, if user did not uploade any images use default one*/} 
           <label htmlFor="profileUpload" className="profile-upload">
             {profileImage ? (
               <img src={profileImage} alt="Uploaded Profile" className="profile-img" />
@@ -35,15 +37,15 @@ const ProfileEdit = () => {
             <span className="edit-icon">📷</span>
           </label>
         </div>
-
-        <form className="profile-form">
-          <input className="form-input" type="text" placeholder="Name" />
-          <input className="form-input" type="text" placeholder="Profile Type" />
-          <textarea className="form-input" placeholder="Description" />
-          <input className="form-input" type="text" placeholder="Province" />
-          <input className="form-input" type="email" placeholder="Email" />
-          <input className="form-input" type="tel" placeholder="Phone" />
-
+        {/*form section*/} 
+        <form>
+          <input  type="text" placeholder="Name" />
+          <input  type="text" placeholder="Profile Type" />
+          <textarea placeholder="Description" rows="3"/> {/*textarea--multi-line text input, It’s like an input field, but it lets users type more than one line*/}
+          <input  type="text" placeholder="Province" />
+          <input type="email" placeholder="Email" />
+          <input  type="tel" placeholder="Phone" />
+        {/*save button*/} 
           <button type="submit" className="save-button">Save</button>
         </form>
       </div>
