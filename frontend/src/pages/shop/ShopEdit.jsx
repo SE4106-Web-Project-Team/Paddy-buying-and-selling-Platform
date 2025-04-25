@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import '../../styles/ShopEdit/ShopEdit.css';
 import bag from "../../resources/images/ProfileEdit/bag.png"
 
-
+//handle image changes for shop profile image
 const ShopEdit = () => {
   const [shopImage, setShopImage] = useState(null);
 
@@ -15,11 +15,13 @@ const ShopEdit = () => {
   };
 
   return (
+     //page
     <div className="shop-page">
+       {/*form*/} 
       <div className="shop-form">
-        <h2 className="shop-title">Create and Edit Shop Profile</h2>
+        <h2 className="shop-title">Create and Edit Shop Profile</h2>{/*Title*/}
 
-        <div className="shop-image-section">
+        <div className="shop-image-section">{/*shop profile image, if user did not uploade any images use default one*/}
           <label htmlFor="shopUpload" className="shop-upload">
             {shopImage ? (
               <img src={shopImage} alt="Uploaded Shop" className="shop-img" />
@@ -36,13 +38,13 @@ const ShopEdit = () => {
             <span className="edit-icon">📷</span>
           </label>
         </div>
-
+           {/*form section*/} 
         <form>
           <input type="text" placeholder="Shop Name" />
           <input type="text" placeholder="Location" />
           <textarea placeholder="Description" rows="3"></textarea>
           <input type="text" placeholder="Opening Hours" />
-          <button type="submit">Save</button>
+          <button type="submit">Save</button>{/*save button*/} 
         </form>
       </div>
     </div>
