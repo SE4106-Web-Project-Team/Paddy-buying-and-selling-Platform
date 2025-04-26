@@ -1,20 +1,21 @@
 .gig-page {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  background-image: url('../../resources/images/ProfileEdit/background2.jpg');
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
   }
   
   .gig-form {
-    background: url('../../resources/images/ProfileEdit/backround\ 1.jpeg');
-    width: 300px;
-    text-align: center;
-    color: white;
-    background-size: cover;
-    background-position: center;
+    background: rgba(255, 255, 255, 0.8);
     padding: 2rem;
     border-radius: 1rem;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    width: 350px;
+    text-align: center;
   }
   
   .gig-title {
