@@ -1,9 +1,14 @@
-import React from 'react'
+// src/pages//Blog.jsx
+import React from 'react';
 
-const Blog = () => {
+function Blog() {
   return (
-    <div>Blog</div>
-  )
+    <div>
+      <h2>Blog Page</h2>
+      <p>This is the Blog page for Paddy Platform.</p>
+    </div>
+  );
 }
 
-export default Blog
+export default Blog;
+
