@@ -25,8 +25,8 @@ function Login() {
       navigate('/profile');
 
     } catch (error) {
-      console.error('Login error:', error.response.data.message);
-      alert('Login Failed: ' + error.response.data.message);
+      console.error('Login error:', error.response?.data?.message || error.message);
+      alert('Login Failed: ' + (error.response?.data?.message || 'Please try again'));
     }
   };
 

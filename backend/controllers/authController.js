@@ -5,33 +5,44 @@ const jwt = require('jsonwebtoken');
 
 // Register User
 const registerUser = (req, res) => {
-  const { name, email, password, profile_type } = req.body;
+  const { name, email, password, profileType } = req.body;
 
-  if (!name || !email || !password || !profile_type) {
+  if (!name || !email || !password || !profileType) {
     return res.status(400).json({ message: 'Please fill all fields' });
   }
 
   // Check if user exists
   db.query('SELECT * FROM users WHERE email = ?', [email], async (err, results) => {
-    if (err) throw err;
+    if (err) {
+      console.error('Database error:', err);
+      return res.status(500).json({ message: 'Server error' });
+    }
 
     if (results.length > 0) {
       return res.status(400).json({ message: 'Email already exists' });
     }
 
-    // Hash password
-    const hashedPassword = await bcrypt.hash(password, 10);
+    try {
+      // Hash password
+      const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Insert user
-    db.query(
-      'INSERT INTO users (name, email, password, profile_type) VALUES (?, ?, ?, ?)',
-      [name, email, hashedPassword, profile_type],
-      (err, result) => {
-        if (err) throw err;
+      // Insert user
+      db.query(
+        'INSERT INTO users (name, email, password, profile_type) VALUES (?, ?, ?, ?)',
+        [name, email, hashedPassword, profileType],
+        (err, result) => {
+          if (err) {
+            console.error('Database error:', err);
+            return res.status(500).json({ message: 'Server error' });
+          }
 
-        res.status(201).json({ message: 'User registered successfully' });
-      }
-    );
+          res.status(201).json({ message: 'User registered successfully' });
+        }
+      );
+    } catch (error) {
+      console.error('Hashing error:', error);
+      return res.status(500).json({ message: 'Server error' });
+    }
   });
 };
 
@@ -44,7 +55,10 @@ const loginUser = (req, res) => {
   }
 
   db.query('SELECT * FROM users WHERE email = ?', [email], async (err, results) => {
-    if (err) throw err;
+    if (err) {
+      console.error('Database error:', err);
+      return res.status(500).json({ message: 'Server error' });
+    }
 
     if (results.length === 0) {
       return res.status(400).json({ message: 'Invalid credentials' });
@@ -52,26 +66,31 @@ const loginUser = (req, res) => {
 
     const user = results[0];
 
-    const isMatch = await bcrypt.compare(password, user.password);
+    try {
+      const isMatch = await bcrypt.compare(password, user.password);
 
-    if (!isMatch) {
-      return res.status(400).json({ message: 'Invalid credentials' });
+      if (!isMatch) {
+        return res.status(400).json({ message: 'Invalid credentials' });
+      }
+
+      // Create token
+      const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
+        expiresIn: '1d',
+      });
+
+      res.json({
+        token,
+        user: {
+          id: user.id,
+          name: user.name,
+          email: user.email,
+          profile_type: user.profile_type,
+        },
+      });
+    } catch (error) {
+      console.error('Login error:', error);
+      return res.status(500).json({ message: 'Server error' });
     }
-
-    // Create token
-    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
-      expiresIn: '1d',
-    });
-
-    res.json({
-      token,
-      user: {
-        id: user.id,
-        name: user.name,
-        email: user.email,
-        profile_type: user.profile_type,
-      },
-    });
   });
 };
 
