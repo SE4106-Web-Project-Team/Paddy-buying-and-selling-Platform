@@ -8,7 +8,7 @@ const ProfileEdit = () => {
   const navigate = useNavigate();
 
   const [profilePicture, setProfilePicture] = useState(null);
-  const [phone, setPhone] = useState('');
+  const [phoneNo, setPhone] = useState('');
   const [province, setProvince] = useState('');
   const [description, setDescription] = useState('');
 
@@ -20,7 +20,7 @@ const ProfileEdit = () => {
   
       const formData = new FormData();
       formData.append('profilePicture', profilePicture);
-      formData.append('phone', phone);
+      formData.append('phoneNo', phoneNo);
       formData.append('province', province);
       formData.append('description', description);
   
@@ -54,7 +54,7 @@ const ProfileEdit = () => {
         <input
           type="text"
           placeholder="Phone Number"
-          value={phone}
+          value={phoneNo}
           onChange={(e) => setPhone(e.target.value)}
         />
         <select value={province} onChange={(e) => setProvince(e.target.value)}>
