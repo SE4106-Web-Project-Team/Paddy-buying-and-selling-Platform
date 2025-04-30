@@ -2,6 +2,8 @@
 const db = require('../config/db');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const dotenv = require('dotenv');
+dotenv.config();
 
 // Register User
 const registerUser = (req, res) => {
@@ -74,9 +76,11 @@ const loginUser = (req, res) => {
       }
 
       // Create token
-      const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
-        expiresIn: '1d',
-      });
+      const token = jwt.sign(
+        { id: user.id },
+        process.env.JWT_SECRET,
+        { expiresIn: '1d' }
+      );
 
       res.json({
         token,
