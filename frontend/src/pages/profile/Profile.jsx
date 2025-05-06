@@ -2,6 +2,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
+const handleLogout = () => {
+  localStorage.removeItem('token');
+  window.location.href = '/login'; // or use useNavigate if using hooks
+};
+
+
 const Profile = () => {
   const [user, setUser] = useState(null);
 
@@ -58,6 +64,8 @@ const Profile = () => {
         <strong>Description:</strong> {user.description || "N/A"}
       </p>
       <a href="/profile/edit">Edit Profile</a>
+
+      <button onClick={handleLogout}>Logout</button>
     </div>
   );
 };
