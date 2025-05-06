@@ -25,6 +25,10 @@ const path = require('path');
 // Serve profile images
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
+//gig
+const gigRoutes = require('./routes/gigs');
+app.use('/api/gigs', gigRoutes);
+
 
 // Start server
 const PORT = process.env.PORT || 5000;
