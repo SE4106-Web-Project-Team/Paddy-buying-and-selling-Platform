@@ -54,7 +54,7 @@ function App() {
           }
         />
 
-        <Route path="/gig" element={<Gig />} />
+        <Route path="/gigs" element={<Gig />} />
         <Route path="/gig/create" element={<GigCreate />} />
         <Route path="/gig/edit/:id" element={<GigEdit />} />
 

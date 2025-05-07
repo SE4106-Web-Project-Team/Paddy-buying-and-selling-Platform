@@ -89,31 +89,49 @@ router.get("/:id", verifyToken, (req, res) => {
     res.json(results[0]);
   });
 });
-  
 
 // Update a gig
 router.put("/:id", verifyToken, upload.single("image"), (req, res) => {
-    const gigId = req.params.id;
-    const userId = req.user.id;
-    const { paddyType, price, description, quantity } = req.body;
-    const image = req.file ? req.file.filename : null;
-  
-    const sql = image
-      ? `UPDATE gigs SET paddy_type = ?, price = ?, description = ?, quantity = ?, image = ? WHERE id = ? AND user_id = ?`
-      : `UPDATE gigs SET paddy_type = ?, price = ?, description = ?, quantity = ? WHERE id = ? AND user_id = ?`;
-  
-    const params = image
-      ? [paddyType, price, description, quantity, image, gigId, userId]
-      : [paddyType, price, description, quantity, gigId, userId];
-  
-    db.query(sql, params, (err, result) => {
-      if (err) {
-        console.error("Error updating gig:", err.message);
-        return res.status(500).json({ message: "Failed to update gig" });
-      }
-      res.status(200).json({ message: "Gig updated successfully" });
-    });
+  const gigId = req.params.id;
+  const userId = req.user.id;
+  const { paddyType, price, description, quantity } = req.body;
+  const image = req.file ? req.file.filename : null;
+
+  const sql = image
+    ? `UPDATE gigs SET paddy_type = ?, price = ?, description = ?, quantity = ?, image = ? WHERE id = ? AND user_id = ?`
+    : `UPDATE gigs SET paddy_type = ?, price = ?, description = ?, quantity = ? WHERE id = ? AND user_id = ?`;
+
+  const params = image
+    ? [paddyType, price, description, quantity, image, gigId, userId]
+    : [paddyType, price, description, quantity, gigId, userId];
+
+  db.query(sql, params, (err, result) => {
+    if (err) {
+      console.error("Error updating gig:", err.message);
+      return res.status(500).json({ message: "Failed to update gig" });
+    }
+    res.status(200).json({ message: "Gig updated successfully" });
   });
-  
+});
+
+// GET /api/gigs - fetch all gigs
+router.get("/", (req, res) => {
+  const sql = `
+    SELECT gigs.*, users.name AS seller_name, user_profiles.province, user_profiles.phoneNo 
+    FROM gigs 
+    JOIN users ON gigs.user_id = users.id 
+    LEFT JOIN user_profiles ON users.id = user_profiles.user_id
+    ORDER BY gigs.created_at DESC
+  `;
+
+  db.query(sql, (err, results) => {
+    if (err) {
+      console.error("Error fetching gigs:", err.message);
+      return res.status(500).json({ message: "Failed to fetch gigs" });
+    }
+
+    res.status(200).json(results);
+  });
+});
 
 module.exports = router;
