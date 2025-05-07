@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
+
 const handleLogout = () => {
   localStorage.removeItem("token");
   window.location.href = "/login"; // or use useNavigate if using hooks
@@ -39,6 +40,25 @@ const Profile = () => {
     fetchProfile();
     fetchGigs();
   }, []);
+
+  const handleDelete = async (id) => {
+    const confirmed = window.confirm("Are you sure you want to delete this gig?");
+    if (!confirmed) return;
+
+    const token = localStorage.getItem('token');
+    try {
+      await axios.delete(`http://localhost:5000/api/gigs/${id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      // Refresh the gig list
+      setGigs(prev => prev.filter(gig => gig.id !== id));
+      alert("Gig deleted successfully!");
+    } catch (err) {
+      console.error("Delete failed:", err.response?.data || err.message);
+      alert("Failed to delete gig.");
+    }
+  };
 
   if (!user) return <p>Loading...</p>;
 
@@ -85,7 +105,7 @@ const Profile = () => {
               <a href={`/gig/edit/${gig.id}`}>
                 <button>Edit</button>
               </a>
-              <button style={{ marginLeft: '10px' }}>Delete</button>
+              <button onClick={() => handleDelete(gig.id)} style={{ marginLeft: '10px' }}>Delete</button>
             </li>
           ))}
         </ul>
