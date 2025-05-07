@@ -56,7 +56,7 @@ function App() {
 
         <Route path="/gig" element={<Gig />} />
         <Route path="/gig/create" element={<GigCreate />} />
-        <Route path="/gig/edit" element={<GigEdit />} />
+        <Route path="/gig/edit/:id" element={<GigEdit />} />
 
         <Route path="/shop" element={<Shop />} />
         <Route path="/shop/create" element={<ShopCreate />} />

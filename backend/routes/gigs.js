@@ -38,17 +38,82 @@ router.post("/create", verifyToken, upload.single("image"), (req, res) => {
   );
 });
 
-// Get all gigs created by the logged-in user
+// GET /api/gigs/my-gigs
 router.get("/my-gigs", verifyToken, (req, res) => {
   const userId = req.user.id;
 
-  const sql = `
-      SELECT * FROM gigs WHERE user_id = ?
-    `;
+  const sql = `SELECT * FROM gigs WHERE user_id = ? ORDER BY created_at DESC`;
+
   db.query(sql, [userId], (err, results) => {
-    if (err) return res.status(500).json({ message: "Database error" });
-    res.json(results);
+    if (err) {
+      console.error("❌ Error fetching user gigs:", err.message);
+      return res.status(500).json({ message: "Failed to fetch gigs" });
+    }
+
+    res.status(200).json(results);
   });
 });
+
+// DELETE /api/gigs/:id
+router.delete("/:id", verifyToken, (req, res) => {
+  const userId = req.user.id;
+  const gigId = req.params.id;
+
+  const sql = `DELETE FROM gigs WHERE id = ? AND user_id = ?`;
+
+  db.query(sql, [gigId, userId], (err, result) => {
+    if (err) {
+      console.error("❌ Error deleting gig:", err.message);
+      return res.status(500).json({ message: "Failed to delete gig" });
+    }
+
+    res.status(200).json({ message: "Gig deleted successfully" });
+  });
+});
+
+// GET /api/gigs/:id
+router.get("/:id", verifyToken, (req, res) => {
+  const gigId = req.params.id;
+
+  const sql = "SELECT * FROM gigs WHERE id = ?";
+  db.query(sql, [gigId], (err, results) => {
+    if (err) {
+      console.error("Database error:", err);
+      return res.status(500).json({ message: "Database error" });
+    }
+
+    if (results.length === 0) {
+      return res.status(404).json({ message: "Gig not found" });
+    }
+
+    res.json(results[0]);
+  });
+});
+  
+
+// Update a gig
+router.put("/:id", verifyToken, upload.single("image"), (req, res) => {
+    const gigId = req.params.id;
+    const userId = req.user.id;
+    const { paddyType, price, description, quantity } = req.body;
+    const image = req.file ? req.file.filename : null;
+  
+    const sql = image
+      ? `UPDATE gigs SET paddy_type = ?, price = ?, description = ?, quantity = ?, image = ? WHERE id = ? AND user_id = ?`
+      : `UPDATE gigs SET paddy_type = ?, price = ?, description = ?, quantity = ? WHERE id = ? AND user_id = ?`;
+  
+    const params = image
+      ? [paddyType, price, description, quantity, image, gigId, userId]
+      : [paddyType, price, description, quantity, gigId, userId];
+  
+    db.query(sql, params, (err, result) => {
+      if (err) {
+        console.error("Error updating gig:", err.message);
+        return res.status(500).json({ message: "Failed to update gig" });
+      }
+      res.status(200).json({ message: "Gig updated successfully" });
+    });
+  });
+  
 
 module.exports = router;
