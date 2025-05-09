@@ -29,6 +29,10 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 const gigRoutes = require('./routes/gigs');
 app.use('/api/gigs', gigRoutes);
 
+//chat
+const chatRoutes = require('./routes/chat');
+app.use('/api/chat', chatRoutes);
+
 
 // Start server
 const PORT = process.env.PORT || 5000;
