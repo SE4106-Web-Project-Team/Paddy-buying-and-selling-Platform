@@ -73,5 +73,27 @@ router.delete("/delete-chat/:receiverId", verifyToken, (req, res) => {
 });
 
 // 5. Delete a specific message
+// 5. Delete a specific message
+router.delete("/messages/:messageId", verifyToken, (req, res) => {
+  const messageId = req.params.messageId;
+  const userId = req.user.id;
+
+  const checkQuery = "SELECT * FROM messages WHERE id = ? AND sender_id = ?";
+  db.query(checkQuery, [messageId, userId], (err, results) => {
+    if (err) return res.status(500).json({ message: "DB error", error: err });
+
+    if (results.length === 0) {
+      return res
+        .status(403)
+        .json({ message: "Not authorized to delete this message" });
+    }
+
+    const deleteQuery = "DELETE FROM messages WHERE id = ?";
+    db.query(deleteQuery, [messageId], (err) => {
+      if (err) return res.status(500).json({ message: "DB error", error: err });
+      res.status(200).json({ message: "Message deleted successfully" });
+    });
+  });
+});
 
 module.exports = router;

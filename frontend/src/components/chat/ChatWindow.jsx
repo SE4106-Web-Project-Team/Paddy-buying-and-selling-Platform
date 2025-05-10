@@ -67,7 +67,7 @@ const ChatWindow = ({ currentUser, selectedUser, setSelectedUser }) => {
       .catch((err) => console.error("Send error:", err));
   };
 
-  // ✅ Handle delete chat
+  // Handle delete chat
   const handleDeleteChat = async () => {
     if (!selectedUser) return;
 
@@ -87,6 +87,21 @@ const ChatWindow = ({ currentUser, selectedUser, setSelectedUser }) => {
     }
   };
 
+    // Handle delete message
+  const handleDeleteMessage = async (messageId) => {
+  if (!window.confirm("Delete this message?")) return;
+
+  try {
+    await axios.delete(`http://localhost:5000/api/chat/messages/${messageId}`, {
+      headers: { Authorization: `Bearer ${currentUser.token}` },
+    });
+    setMessages((prev) => prev.filter((msg) => msg.id !== messageId));
+  } catch (err) {
+    console.error("Error deleting message:", err);
+  }
+};
+
+
   return (
     <div className="chat-window">
       {selectedUser ? (
@@ -100,14 +115,25 @@ const ChatWindow = ({ currentUser, selectedUser, setSelectedUser }) => {
           <div className="chat-messages">
             {messages.map((msg, i) => (
               <div
-                key={i}
+                key={msg.id || i}
                 className={`chat-bubble ${
                   msg.sender_id === currentUser.id ? "sent" : "received"
                 }`}
               >
-                {msg.message}
+                <div className="message-text">{msg.message}</div>
+
+                {msg.sender_id === currentUser.id && (
+                  <button
+                    className="delete-msg-btn"
+                    onClick={() => handleDeleteMessage(msg.id)}
+                    title="Delete message"
+                  >
+                    ❌
+                  </button>
+                )}
               </div>
             ))}
+
             <div ref={messagesEndRef} />
           </div>
           <MessageInput onSend={handleSendMessage} />

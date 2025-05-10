@@ -84,3 +84,17 @@
   cursor: pointer;
 }
 
+.delete-msg-btn {
+  background: none;
+  border: none;
+  color: red;
+  font-size: 0.8rem;
+  margin-left: 10px;
+  cursor: pointer;
+}
+.chat-bubble {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
