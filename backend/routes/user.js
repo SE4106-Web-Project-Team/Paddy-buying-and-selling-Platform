@@ -108,7 +108,7 @@ router.get("/profile", verifyToken, (req, res) => {
 // GET /api/users/:id - Get single user by ID
 
 
-router.get('/:id', async (req, res) => {
+router.get('/get-by-id/:id', async (req, res) => {
   const userId = req.params.id;
   try {
     const [rows] = await dbPromise.query(

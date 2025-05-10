@@ -10,8 +10,10 @@ const Chat = () => {
   const [selectedUser, setSelectedUser] = useState(null);
 
   useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem("user"));
-    if (!storedUser) return;
+    const storedUserString = localStorage.getItem("user");
+    if (!storedUserString) return;
+
+    const storedUser = JSON.parse(storedUserString);
     setUser(storedUser);
 
     axios
@@ -26,8 +28,23 @@ const Chat = () => {
 
   return (
     <div className="chat-container">
-      <UserList users={chatUsers} onSelectUser={handleSelectUser} />
-      <ChatWindow currentUser={user} selectedUser={selectedUser} />
+      {user && (
+        <>
+          <UserList
+            users={chatUsers}
+            onSelectUser={handleSelectUser}
+            selectedUser={selectedUser}
+          />
+
+          {selectedUser ? (
+            <ChatWindow currentUser={user} selectedUser={selectedUser} />
+          ) : (
+            <div className="chat-window-placeholder">
+              Select a user to start chatting
+            </div>
+          )}
+        </>
+      )}
     </div>
   );
 };

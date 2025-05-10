@@ -7,7 +7,7 @@ router.get('/users/:userId', (req, res) => {
   const userId = req.params.userId;
 
   const query = `
-    SELECT DISTINCT u.id, u.name AS username
+    SELECT DISTINCT u.id, u.name
     FROM users u
     JOIN (
       SELECT receiver_id AS id FROM messages WHERE sender_id = ?

@@ -1,9 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
+import io from "socket.io-client";
 import MessageInput from "./MessageInput";
+
+const socket = io("http://localhost:5000", {
+  transports: ["websocket", "polling"],
+});
 
 const ChatWindow = ({ currentUser, selectedUser }) => {
   const [messages, setMessages] = useState([]);
+  const messagesEndRef = useRef(null);
+
+  useEffect(() => {
+    if (currentUser) {
+      socket.emit("join_room", currentUser.id);
+    }
+  }, [currentUser]);
 
   useEffect(() => {
     if (currentUser && selectedUser) {
@@ -12,11 +24,26 @@ const ChatWindow = ({ currentUser, selectedUser }) => {
           `http://localhost:5000/api/chat/messages/${currentUser.id}/${selectedUser.id}`
         )
         .then((res) => setMessages(res.data))
-        .catch((err) =>
-          console.error("Error fetching messages:", err)
-        );
+        .catch((err) => console.error("Fetch error:", err));
     }
-  }, [selectedUser]);
+  }, [selectedUser, currentUser]);
+
+  // ✅ Fixed: single socket listener with proper cleanup
+  useEffect(() => {
+    const handler = (data) => {
+      if (
+        data.sender_id === selectedUser?.id &&
+        data.receiver_id === currentUser?.id
+      ) {
+        setMessages((prev) => [...prev, data]);
+      }
+    };
+
+    socket.on("receive_message", handler);
+    return () => {
+      socket.off("receive_message", handler);
+    };
+  }, [selectedUser, currentUser]);
 
   const handleSendMessage = (message) => {
     const msg = {
@@ -24,13 +51,19 @@ const ChatWindow = ({ currentUser, selectedUser }) => {
       receiver_id: selectedUser.id,
       message,
     };
+
     axios
       .post("http://localhost:5000/api/chat/send", msg)
       .then(() => {
         setMessages((prev) => [...prev, msg]);
+        socket.emit("send_message", msg);
       })
-      .catch((err) => console.error("Send failed:", err));
+      .catch((err) => console.error("Send error:", err));
   };
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
 
   return (
     <div className="chat-window">
@@ -52,6 +85,7 @@ const ChatWindow = ({ currentUser, selectedUser }) => {
                 {msg.message}
               </div>
             ))}
+            <div ref={messagesEndRef} />
           </div>
           <MessageInput onSend={handleSendMessage} />
         </>
