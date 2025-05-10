@@ -1,10 +1,20 @@
-// src/pages/Gig.jsx
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Add this
 import axios from 'axios';
-import './../../styles/gig/gig.css'; // Optional CSS file
+import './../../styles/gig/gig.css';
 
 const Gig = () => {
   const [gigs, setGigs] = useState([]);
+  const navigate = useNavigate();
+
+  const handleContactSeller = (sellerId, sellerName) => {
+    navigate('/features/chat', {
+      state: {
+        sellerId,
+        sellerName,
+      },
+    });
+  };
 
   useEffect(() => {
     const fetchGigs = async () => {
@@ -40,7 +50,9 @@ const Gig = () => {
               <p><strong>Province:</strong> {gig.province || 'N/A'}</p>
               <p><strong>Phone:</strong> {gig.phoneNo || 'N/A'}</p>
               <p>{gig.description}</p>
-              <button onClick={() => alert('Chat feature coming soon!')}>
+              <button
+                onClick={() => handleContactSeller(gig.user_id, gig.seller_name)}
+              >
                 Contact Seller
               </button>
             </div>
