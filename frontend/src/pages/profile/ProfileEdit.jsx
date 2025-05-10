@@ -1,56 +1,86 @@
 // src/pages/profile/ProfileEdit.jsx
-import React, { useState } from "react";
-import '../../styles/ProfileEdit/ProfileEdit.css';
-import profile from "../../resources/images/ProfileEdit/profile.jpg";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import '../../styles/auth/signup.css'; // You can later create a separate editprofile.css
 
-//handle image changes for profile image
 const ProfileEdit = () => {
-  const [profileImage, setProfileImage] = useState(null);
+  const navigate = useNavigate();
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setProfileImage(URL.createObjectURL(file));
+  const [profilePicture, setProfilePicture] = useState(null);
+  const [phoneNo, setPhone] = useState('');
+  const [province, setProvince] = useState('');
+  const [description, setDescription] = useState('');
+
+  const handleProfileUpdate = async (e) => {
+    e.preventDefault();
+  
+    try {
+      const token = localStorage.getItem('token');
+  
+      const formData = new FormData();
+      formData.append('profilePicture', profilePicture);
+      formData.append('phoneNo', phoneNo);
+      formData.append('province', province);
+      formData.append('description', description);
+  
+      const response = await axios.put('http://localhost:5000/api/users/update-profile', formData, {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+  
+      alert('Profile updated successfully!');
+      console.log(response.data);
+  
+      navigate('/profile');
+      
+    } catch (error) {
+      console.error('Update error:', error.response?.data || error.message);
+      alert('Update Failed: ' + (error.response?.data.message || error.message));
     }
   };
+  
 
-  return (
-    //page
-    <div className="page-container"> 
-      {/*form*/} 
-      <div className="form-container">
-        <h2 className="form-title">Profile</h2>{/*Title*/} 
-        <div className="avatar-section">{/*profile image, if user did not uploade any images use default one*/} 
-          <label htmlFor="profileUpload" className="profile-upload">
-            {profileImage ? (
-              <img src={profileImage} alt="Uploaded Profile" className="profile-img" />
-            ) : (
-              <img src={profile} alt="Default Profile" className="profile-img" />
-            )}
-            <input
-              type="file"
-              id="profileUpload"
-              accept="image/*"
-              onChange={handleImageChange}
-              hidden
-            />
-            <span className="edit-icon">📷</span>
-          </label>
-        </div>
-        {/*form section*/} 
-        <form>
-          <input  type="text" placeholder="Name" />
-          <input  type="text" placeholder="Profile Type" />
-          <textarea placeholder="Description" rows="3"/> {/*textarea--multi-line text input, It’s like an input field, but it lets users type more than one line*/}
-          <input  type="text" placeholder="Province" />
-          <input type="email" placeholder="Email" />
-          <input  type="tel" placeholder="Phone" />
-        {/*save button*/} 
-          <button type="submit" className="save-button">Save</button>
-        </form>
+  return ( 
+    <div className="signup-container">
+      <div className="signup-container-blur-layer"></div>
+
+      <div className="signup-card">
+        <h2>Edit Profile</h2>
+
+        <input type="file" accept="image/*" onChange={(e) => setProfilePicture(e.target.files[0])} />
+        <input
+          type="text"
+          placeholder="Phone Number"
+          value={phoneNo}
+          onChange={(e) => setPhone(e.target.value)}
+        />
+        <select value={province} onChange={(e) => setProvince(e.target.value)}>
+          <option value="" disabled>Select Province</option>
+          <option value="Central">Central</option>
+          <option value="Northern">Northern</option>
+          <option value="Southern">Southern</option>
+          <option value="Eastern">Eastern</option>
+          <option value="Western">Western</option>
+        </select>
+        <textarea
+          placeholder="Description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          rows={3}
+          style={{ padding: '10px', borderRadius: '5px' }}
+        ></textarea>
+
+        <button onClick={handleProfileUpdate}>Save Changes</button>
+
+        <hr />
+        <p><a href="/profile">Go Back</a></p>
       </div>
     </div>
   );
 };
+
 
 export default ProfileEdit;

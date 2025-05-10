@@ -1,13 +1,78 @@
-// src/pages/features/chat.jsx
-import React from 'react';
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom"; // Add this
+import axios from "axios";
+import UserList from "../../components/chat/UserList";
+import ChatWindow from "../../components/chat/ChatWindow";
+import "../../styles/chat/chat.css";
 
-function Chat() {
+const Chat = () => {
+  const location = useLocation();
+  const [user, setUser] = useState(null);
+  const [chatUsers, setChatUsers] = useState([]);
+  const [selectedUser, setSelectedUser] = useState(null);
+
+  useEffect(() => {
+    const storedUserString = localStorage.getItem("user");
+    const token = localStorage.getItem("token"); // fetch token
+    if (!storedUserString || !token) return;
+
+    const storedUser = JSON.parse(storedUserString);
+    storedUser.token = token; // inject token into user object
+    setUser(storedUser);
+
+    axios
+      .get(`http://localhost:5000/api/chat/users/${storedUser.id}`)
+      .then((res) => {
+        setChatUsers(res.data);
+
+        // Auto-select seller if redirected from Gig page
+        if (location.state?.sellerId) {
+          const matched = res.data.find(
+            (u) => u.id === location.state.sellerId
+          );
+          if (matched) {
+            setSelectedUser(matched);
+          } else {
+            // Fallback if seller not in recent chat users
+            setSelectedUser({
+              id: location.state.sellerId,
+              name: location.state.sellerName || "Seller",
+            });
+          }
+        }
+      })
+      .catch((err) => console.error("Error fetching chat users:", err));
+  }, [location.state]);
+
+  const handleSelectUser = (user) => {
+    setSelectedUser(user);
+  };
+
   return (
-    <div>
-      <h2>Chat Page</h2>
-      <p>This is the Chat page for Paddy Platform.</p>
+    <div className="chat-container">
+      {user && (
+        <>
+          <UserList
+            users={chatUsers}
+            onSelectUser={handleSelectUser}
+            selectedUser={selectedUser}
+          />
+          {selectedUser ? (
+            <ChatWindow
+              currentUser={user}
+              selectedUser={selectedUser}
+              setSelectedUser={setSelectedUser}
+              setMessages={() => {}} // Optional: if you want to manage messages from Chat.jsx later
+            />
+          ) : (
+            <div className="chat-window-placeholder">
+              Select a user to start chatting
+            </div>
+          )}
+        </>
+      )}
     </div>
   );
-}
+};
 
 export default Chat;

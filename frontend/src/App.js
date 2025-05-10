@@ -11,6 +11,7 @@ import Weather from './pages/features/Weather';
 
 import Profile from './pages/profile/Profile';
 import ProfileEdit from './pages/profile/ProfileEdit';
+import ProtectedRoute from './components/ProtectedRoute';
 
 import Gig from './pages/gig/Gig';
 import GigCreate from './pages/gig/GigCreate';
@@ -36,12 +37,26 @@ function App() {
         <Route path="/features/chatbot" element={<Chatbot />} />
         <Route path="/features/weather" element={<Weather />} />
 
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/profile/edit" element={<ProfileEdit />} />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/profile/edit"
+          element={
+            <ProtectedRoute>
+              <ProfileEdit />
+            </ProtectedRoute>
+          }
+        />
 
-        <Route path="/gig" element={<Gig />} />
+        <Route path="/gigs" element={<Gig />} />
         <Route path="/gig/create" element={<GigCreate />} />
-        <Route path="/gig/edit" element={<GigEdit />} />
+        <Route path="/gig/edit/:id" element={<GigEdit />} />
 
         <Route path="/shop" element={<Shop />} />
         <Route path="/shop/create" element={<ShopCreate />} />
