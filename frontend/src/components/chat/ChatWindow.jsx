@@ -7,16 +7,18 @@ const socket = io("http://localhost:5000", {
   transports: ["websocket", "polling"],
 });
 
-const ChatWindow = ({ currentUser, selectedUser }) => {
+const ChatWindow = ({ currentUser, selectedUser, setSelectedUser }) => {
   const [messages, setMessages] = useState([]);
   const messagesEndRef = useRef(null);
 
+  // Join room
   useEffect(() => {
     if (currentUser) {
       socket.emit("join_room", currentUser.id);
     }
   }, [currentUser]);
 
+  // Fetch messages
   useEffect(() => {
     if (currentUser && selectedUser) {
       axios
@@ -28,7 +30,7 @@ const ChatWindow = ({ currentUser, selectedUser }) => {
     }
   }, [selectedUser, currentUser]);
 
-  // ✅ Fixed: single socket listener with proper cleanup
+  // Listen for new incoming messages
   useEffect(() => {
     const handler = (data) => {
       if (
@@ -40,11 +42,15 @@ const ChatWindow = ({ currentUser, selectedUser }) => {
     };
 
     socket.on("receive_message", handler);
-    return () => {
-      socket.off("receive_message", handler);
-    };
+    return () => socket.off("receive_message", handler);
   }, [selectedUser, currentUser]);
 
+  // Scroll to bottom
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
+  // Handle send
   const handleSendMessage = (message) => {
     const msg = {
       sender_id: currentUser.id,
@@ -61,26 +67,43 @@ const ChatWindow = ({ currentUser, selectedUser }) => {
       .catch((err) => console.error("Send error:", err));
   };
 
-  useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+  // ✅ Handle delete chat
+  const handleDeleteChat = async () => {
+    if (!selectedUser) return;
+
+    if (window.confirm("Are you sure you want to delete this chat?")) {
+      try {
+        await axios.delete(
+          `http://localhost:5000/api/chat/delete-chat/${selectedUser.id}`,
+          {
+            headers: { Authorization: `Bearer ${currentUser.token}` },
+          }
+        );
+        setMessages([]);
+        setSelectedUser(null);
+      } catch (err) {
+        console.error("Error deleting chat:", err);
+      }
+    }
+  };
 
   return (
     <div className="chat-window">
       {selectedUser ? (
         <>
           <div className="chat-header">
-            <h4>{selectedUser.name}</h4>
+            <h3>Chat with {selectedUser.name}</h3>
+            <button onClick={handleDeleteChat} className="delete-chat-btn">
+              🗑️ Delete Chat
+            </button>
           </div>
           <div className="chat-messages">
             {messages.map((msg, i) => (
               <div
                 key={i}
-                className={
-                  msg.sender_id === currentUser.id
-                    ? "chat-bubble sent"
-                    : "chat-bubble received"
-                }
+                className={`chat-bubble ${
+                  msg.sender_id === currentUser.id ? "sent" : "received"
+                }`}
               >
                 {msg.message}
               </div>

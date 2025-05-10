@@ -73,3 +73,14 @@
   margin-left: 10px;
   padding: 10px 20px;
 }
+
+.delete-chat-btn {
+  margin-left: auto;
+  background-color: crimson;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+

@@ -13,9 +13,11 @@ const Chat = () => {
 
   useEffect(() => {
     const storedUserString = localStorage.getItem("user");
-    if (!storedUserString) return;
+    const token = localStorage.getItem("token"); // fetch token
+    if (!storedUserString || !token) return;
 
     const storedUser = JSON.parse(storedUserString);
+    storedUser.token = token; // inject token into user object
     setUser(storedUser);
 
     axios
@@ -56,7 +58,12 @@ const Chat = () => {
             selectedUser={selectedUser}
           />
           {selectedUser ? (
-            <ChatWindow currentUser={user} selectedUser={selectedUser} />
+            <ChatWindow
+              currentUser={user}
+              selectedUser={selectedUser}
+              setSelectedUser={setSelectedUser}
+              setMessages={() => {}} // Optional: if you want to manage messages from Chat.jsx later
+            />
           ) : (
             <div className="chat-window-placeholder">
               Select a user to start chatting
