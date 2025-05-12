@@ -67,6 +67,10 @@ io.on("connection", (socket) => {
   });
 });
 
+//chatbot
+const chatbotRoute = require('./routes/chatbot');
+app.use('/api/chatbot', chatbotRoute);
+
 // Start server
 const PORT = process.env.PORT || 5000;
 
