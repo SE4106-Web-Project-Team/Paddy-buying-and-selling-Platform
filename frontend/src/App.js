@@ -20,6 +20,7 @@ import GigEdit from './pages/gig/GigEdit';
 import Shop from './pages/shop/Shop';
 import ShopCreate from './pages/shop/ShopCreate';
 import ShopEdit from './pages/shop/ShopEdit';
+
 import './App.css';
 
 function App() {
