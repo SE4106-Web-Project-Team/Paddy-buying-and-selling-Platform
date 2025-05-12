@@ -1,4 +1,7 @@
-.page-container {
+  .page-container {
+    background-image: url('../../resources/images/ProfileEdit/background2.jpg');
+    background-size: cover;
+    background-position: center;
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -6,13 +9,12 @@
   }
   
   .form-container {
-    background-image: url('../../resources/images/ProfileEdit/backround\ 1.jpeg');
-    background-size: cover;
-    background-position: center;
+    background: rgba(255, 255, 255, 0.8);
     padding: 2rem;
     border-radius: 1rem;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     width: 350px;
+    
   }
   
   .form-title {
@@ -20,7 +22,7 @@
     font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 1rem;
-    color: white;
+    color: rgb(29, 28, 28);
   }
   
   .avatar-section {
@@ -30,13 +32,30 @@
     margin-bottom: 1rem;
   }
   
-  .avatar-image {
-    width: 96px;
-    height: 96px;
+  .profile-upload {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+  
+  .profile-img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
     border-radius: 20%;
     border: 2px solid green;
   }
   
+  .edit-icon {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background-color: #22c55e;
+    color: white;
+    padding: 4px;
+    border-radius: 50%;
+    font-size: 14px;
+  }
   
   .profile-form {
     display: flex;
@@ -44,11 +63,14 @@
     gap: 0.75rem;
   }
   
-  .form-input {
-    padding: 0.5rem;
-    border-radius: 0.5rem;
-    border: none;
-    background: rgba(255, 255, 255, 0.8);
+  .form input,
+  form textarea {
+    width: 100%;
+    padding: 8px 10px;
+    margin-bottom: 10px;
+    border: 1px solid #1d1a1a;
+    border-radius: 5px;
+  
   }
   
   .save-button {
@@ -64,9 +86,4 @@
   .save-button:hover {
     background-color: #16a34a;
   }
-  .status-text {
-    font-weight: bold;
-    color: rgb(212, 238, 212);         
-    font-size: 15px;
-    margin-top: 0.25rem;
-  }
+  

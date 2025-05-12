@@ -1,0 +1,18 @@
+.gig-list-container {
+    padding: 20px;
+  }
+  
+  .gig-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .gig-card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    max-width: 300px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  

@@ -27,7 +27,7 @@ function Home() {
             <Link to="/profile/edit">Profile Edit</Link><br />
 
             <h2>Gig Pages</h2>
-            <Link to="/gig">Gig</Link><br />
+            <Link to="/gigs">Gig</Link><br />
             <Link to="/gig/create">Gig Create</Link><br />
             <Link to="/gig/edit">Gig Edit</Link><br />
 
