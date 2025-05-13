@@ -60,7 +60,7 @@ router.get("/", (req, res) => {
   });
 });
 
-// 3. Get all items by a specific user
+// 3.1 Get all items by a specific user
 router.get("/user/:userId", (req, res) => {
   const userId = req.params.userId;
   db.query(
@@ -72,6 +72,20 @@ router.get("/user/:userId", (req, res) => {
     }
   );
 });
+
+// 3.2 GET all shop items created by the logged-in user
+router.get("/my-items", verifyToken, (req, res) => {
+  const userId = req.user.id;
+  const sql = `SELECT * FROM shops WHERE user_id = ? ORDER BY created_at DESC`;
+  db.query(sql, [userId], (err, results) => {
+    if (err) {
+      console.error("❌ Error fetching user items:", err.message);
+      return res.status(500).json({ message: "Failed to fetch items" });
+    }
+    res.status(200).json(results);
+  });
+});
+
 
 // 4. Update a shop item
 router.put("/update/:id", verifyToken, upload.single("image"), (req, res) => {
@@ -98,7 +112,6 @@ router.put("/update/:id", verifyToken, upload.single("image"), (req, res) => {
   );
 });
 
-
 // 5. Delete a shop item
 router.delete("/delete/:id", verifyToken, (req, res) => {
   const shopId = req.params.id;
@@ -117,12 +130,12 @@ router.get("/item/:id", (req, res) => {
   const shopId = req.params.id;
   const sql = "SELECT * FROM shops WHERE id = ?";
   db.query(sql, [shopId], (err, results) => {
-    if (err) return res.status(500).json({ error: "Database error", details: err });
-    if (results.length === 0) return res.status(404).json({ error: "Shop item not found" });
+    if (err)
+      return res.status(500).json({ error: "Database error", details: err });
+    if (results.length === 0)
+      return res.status(404).json({ error: "Shop item not found" });
     res.json(results[0]);
   });
 });
-
-
 
 module.exports = router;

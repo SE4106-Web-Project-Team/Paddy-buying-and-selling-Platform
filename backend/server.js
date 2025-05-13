@@ -33,6 +33,7 @@ app.use("/api/gigs", gigRoutes);
 const shopRoutes = require("./routes/shop");
 app.use("/api/shop", shopRoutes);
 
+
 //chat
 const chatRoutes = require("./routes/chat");
 app.use("/api/chat", chatRoutes);

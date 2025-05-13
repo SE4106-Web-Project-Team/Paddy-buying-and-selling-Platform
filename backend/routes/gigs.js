@@ -41,7 +41,6 @@ router.post("/create", verifyToken, upload.single("image"), (req, res) => {
 // GET /api/gigs/my-gigs
 router.get("/my-gigs", verifyToken, (req, res) => {
   const userId = req.user.id;
-
   const sql = `SELECT * FROM gigs WHERE user_id = ? ORDER BY created_at DESC`;
 
   db.query(sql, [userId], (err, results) => {
