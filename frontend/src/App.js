@@ -20,6 +20,7 @@ import GigEdit from './pages/gig/GigEdit';
 import Shop from './pages/shop/Shop';
 import ShopCreate from './pages/shop/ShopCreate';
 import ShopEdit from './pages/shop/ShopEdit';
+
 import './App.css';
 
 function App() {
@@ -60,7 +61,7 @@ function App() {
 
         <Route path="/shop" element={<Shop />} />
         <Route path="/shop/create" element={<ShopCreate />} />
-        <Route path="/shop/edit" element={<ShopEdit />} />
+        <Route path="/shop/edit/:id" element={<ShopEdit />} />
 
 
       </Routes>
