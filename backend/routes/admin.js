@@ -3,6 +3,8 @@ const router = express.Router();
 const db = require('../config/db');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const multer = require('multer');
+const path = require('path');
 
 // POST /api/admin/login
 router.post('/login', (req, res) => {
@@ -22,6 +24,38 @@ router.post('/login', (req, res) => {
 
     res.json({ token });
   });
+});
+
+// Setup image upload
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'uploads/blogs/');
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + path.extname(file.originalname));
+  }
+});
+const upload = multer({ storage });
+
+// Create blog post
+router.post('/create-blog', upload.single('image'), async (req, res) => {
+  const { title, content } = req.body;
+  const image = req.file ? req.file.filename : null;
+
+  if (!title || !content || !image) {
+    return res.status(400).json({ message: 'All fields are required.' });
+  }
+
+  try {
+    db.query(
+          'INSERT INTO blogs (title, content, image) VALUES (?, ?, ?)',
+          [title, content, image]
+      );
+    res.status(201).json({ message: 'Blog post created successfully' });
+  } catch (err) {
+    console.error('Blog error:', err.message);
+    res.status(500).json({ message: 'Server error' });
+  }
 });
 
 module.exports = router;

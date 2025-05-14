@@ -78,6 +78,7 @@ app.use('/api/chatbot', chatbotRoute);
 //admin
 const adminRoutes = require('./routes/admin');
 app.use('/api/admin', adminRoutes);
+app.use('/uploads', express.static('uploads'));
 
 // Start server
 const PORT = process.env.PORT || 5000;

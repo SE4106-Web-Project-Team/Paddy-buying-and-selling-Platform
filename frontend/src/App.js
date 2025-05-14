@@ -24,6 +24,7 @@ import ShopEdit from "./pages/shop/ShopEdit";
 import AdminLogin from "./pages/admin/AdminLogin";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminPrivateRoute from "./components/admin/AdminPrivateRoute";
+import AdminCreateBlog from "./pages/admin/AdminCreateBlog";
 
 import "./App.css";
 
@@ -76,6 +77,15 @@ function App() {
             </AdminPrivateRoute>
           }
         />
+        <Route
+          path="/admin/create-blog"
+          element={
+            <AdminPrivateRoute>
+              <AdminCreateBlog />
+            </AdminPrivateRoute>
+          }
+        />
+        
       </Routes>
     </Router>
   );
