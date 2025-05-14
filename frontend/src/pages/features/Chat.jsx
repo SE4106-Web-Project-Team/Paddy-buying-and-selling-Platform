@@ -13,31 +13,31 @@ const Chat = () => {
 
   useEffect(() => {
     const storedUserString = localStorage.getItem("user");
-    const token = localStorage.getItem("token"); // fetch token
+    const token = localStorage.getItem("token");
     if (!storedUserString || !token) return;
 
     const storedUser = JSON.parse(storedUserString);
-    storedUser.token = token; // inject token into user object
+    storedUser.token = token;
     setUser(storedUser);
 
     axios
       .get(`http://localhost:5000/api/chat/users/${storedUser.id}`)
       .then((res) => {
-        setChatUsers(res.data);
+        const users = res.data;
+        setChatUsers(users);
 
-        // Auto-select seller if redirected from Gig page
         if (location.state?.sellerId) {
-          const matched = res.data.find(
-            (u) => u.id === location.state.sellerId
-          );
+          const matched = users.find((u) => u.id === location.state.sellerId);
           if (matched) {
             setSelectedUser(matched);
           } else {
-            // Fallback if seller not in recent chat users
-            setSelectedUser({
+            // Fallback if seller not in recent chats
+            const tempUser = {
               id: location.state.sellerId,
               name: location.state.sellerName || "Seller",
-            });
+            };
+            setSelectedUser(tempUser);
+            setChatUsers((prev) => [...prev, tempUser]); // Add to sidebar list
           }
         }
       })

@@ -1,55 +1,120 @@
-// src/pages/shop/ShopEdit.jsx
-import React, { useState } from "react";
-import '../../styles/ShopEdit/ShopEdit.css';
-import bag from "../../resources/images/ProfileEdit/bag.png"
+// src/pages/ShopEdit.jsx
+import React, { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import axios from "axios";
 
-//handle image changes for shop profile image
 const ShopEdit = () => {
-  const [shopImage, setShopImage] = useState(null);
+  const { id } = useParams(); // shop item ID from URL
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    title: "",
+    description: "",
+    price: "",
+    image: null,
+  });
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setShopImage(URL.createObjectURL(file));
+  const [preview, setPreview] = useState("");
+
+  useEffect(() => {
+    const fetchShopItem = async () => {
+      try {
+        const res = await axios.get(
+          `http://localhost:5000/api/shop/item/${id}`
+        );
+        const { title, description, price, image } = res.data;
+        setFormData({ title, description, price, image: null });
+        if (image) {
+          setPreview(`http://localhost:5000/uploads/${image}`);
+        }
+      } catch (err) {
+        console.error("Error fetching shop item", err);
+      }
+    };
+
+    fetchShopItem();
+  }, [id]);
+
+  const handleChange = (e) => {
+    const { name, value, files } = e.target;
+    if (name === "image") {
+      setFormData({ ...formData, image: files[0] });
+      setPreview(URL.createObjectURL(files[0]));
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const token = localStorage.getItem("token");
+      const form = new FormData();
+      form.append("title", formData.title);
+      form.append("description", formData.description);
+      form.append("price", formData.price);
+      if (formData.image) {
+        form.append("image", formData.image);
+      } else {
+        form.append("existingImage", preview.split("/").pop());
+      }
+
+      await axios.put(`http://localhost:5000/api/shop/update/${id}`, form, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      alert("Shop item updated successfully!");
+      navigate("/shop");
+    } catch (err) {
+      console.error("Failed to update shop item", err);
     }
   };
 
   return (
-     //page
-    <div className="shop-page">
-       {/*form*/} 
-      <div className="shop-form">
-        <h2 className="shop-title">Create and Edit Shop Profile</h2>{/*Title*/}
-
-        <div className="shop-image-section">{/*shop profile image, if user did not uploade any images use default one*/}
-          <label htmlFor="shopUpload" className="shop-upload">
-            {shopImage ? (
-              <img src={shopImage} alt="Uploaded Shop" className="shop-img" />
-            ) : (
-              <img src={bag} alt="Default Shop" className="shop-img" />
-            )}
-            <input
-              type="file"
-              id="shopUpload"
-              accept="image/*"
-              onChange={handleImageChange}
-              hidden
-            />
-            <span className="edit-icon">📷</span>
-          </label>
-        </div>
-           {/*form section*/} 
-        <form>
-          <input type="text" placeholder="Shop Name" />
-          <input type="text" placeholder="Location" />
-          <textarea placeholder="Description" rows="3"></textarea>
-          <input type="text" placeholder="Opening Hours" />
-          <button type="submit">Save</button>{/*save button*/} 
-        </form>
-      </div>
+    <div className="shop-edit-container">
+      <h2>Edit Shop Item</h2>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="title"
+          value={formData.title}
+          placeholder="Title"
+          onChange={handleChange}
+          required
+        />
+        <textarea
+          name="description"
+          value={formData.description}
+          placeholder="Description"
+          onChange={handleChange}
+        ></textarea>
+        <input
+          type="number"
+          name="price"
+          value={formData.price}
+          placeholder="Price"
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="file"
+          name="image"
+          accept="image/*"
+          onChange={handleChange}
+        />
+        {preview && (
+          <div>
+            <p>Image Preview:</p>
+            <img src={preview} alt="preview" width="200" />
+          </div>
+        )}
+        <button type="submit">Update</button>
+      </form>
     </div>
   );
 };
 
 export default ShopEdit;
-

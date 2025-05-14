@@ -87,27 +87,29 @@ const ChatWindow = ({ currentUser, selectedUser, setSelectedUser }) => {
     }
   };
 
-    // Handle delete message
+  // Handle delete message
   const handleDeleteMessage = async (messageId) => {
-  if (!window.confirm("Delete this message?")) return;
+    if (!window.confirm("Delete this message?")) return;
 
-  try {
-    await axios.delete(`http://localhost:5000/api/chat/messages/${messageId}`, {
-      headers: { Authorization: `Bearer ${currentUser.token}` },
-    });
-    setMessages((prev) => prev.filter((msg) => msg.id !== messageId));
-  } catch (err) {
-    console.error("Error deleting message:", err);
-  }
-};
-
+    try {
+      await axios.delete(
+        `http://localhost:5000/api/chat/messages/${messageId}`,
+        {
+          headers: { Authorization: `Bearer ${currentUser.token}` },
+        }
+      );
+      setMessages((prev) => prev.filter((msg) => msg.id !== messageId));
+    } catch (err) {
+      console.error("Error deleting message:", err);
+    }
+  };
 
   return (
     <div className="chat-window">
       {selectedUser ? (
         <>
           <div className="chat-header">
-            <h3>Chat with {selectedUser.name}</h3>
+            <h3>Chat with {selectedUser.name || "Seller"}</h3>
             <button onClick={handleDeleteChat} className="delete-chat-btn">
               🗑️ Delete Chat
             </button>

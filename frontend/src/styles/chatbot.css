@@ -1,0 +1,87 @@
+.chatbot-container {
+  max-width: 80vw;
+  margin: 2rem auto;
+  padding: 1rem;
+  font-family: sans-serif;
+}
+
+.chatbot-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.suggested-questions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.suggested-button {
+  background-color: #e6f4ea;
+  border: none;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  box-shadow: 1px 1px 4px rgba(6, 35, 0, 0.244);
+  color: #022700;
+}
+
+.suggested-button:hover {
+  background-color: #c4e4ce;
+}
+
+.chat-message {
+  margin-bottom: 0.5rem;
+}
+
+.chat-bubble {
+  display: inline-block;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.75rem;
+  max-width: 80%;
+}
+
+.user {
+  text-align: right;
+}
+
+.user .chat-bubble {
+  background-color: #d0e8ff;
+}
+
+.bot {
+  text-align: left;
+}
+
+.bot .chat-bubble {
+  background-color: #eee;
+}
+
+.chat-input {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.chat-input input {
+  flex-grow: 1;
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+  border: 1px solid #ccc;
+}
+
+.chat-input button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+}
+
+.chat-input button:hover {
+  background-color: #005fc1;
+}
