@@ -1,6 +1,8 @@
 // src/pages/Profile.jsx
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import '../../styles/Profile/Profile.css';
+
 
 const handleLogout = () => {
   localStorage.removeItem("token");
@@ -108,6 +110,7 @@ const Profile = () => {
   if (!user) return <p>Loading...</p>;
 
   return (
+    <div className="full-container">
     <div className="profile-container">
       <h2>My Profile</h2>
       {user.profilePicture && (
@@ -136,9 +139,12 @@ const Profile = () => {
 
       <a href="/profile/edit">Edit Profile</a>
       <br />
+      <br />
       <a href="/gig/create">Create Gig</a>
       <br />
+      <br />
       <a href="/shop/create">Create Shop Item</a>
+      <br />
       <br />
       <button onClick={handleLogout}>Logout</button>
 
@@ -216,6 +222,7 @@ const Profile = () => {
           ))}
         </ul>
       )}
+    </div>
     </div>
   );
 };
