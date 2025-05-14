@@ -25,7 +25,9 @@ import AdminLogin from "./pages/admin/AdminLogin";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminPrivateRoute from "./components/admin/AdminPrivateRoute";
 import AdminCreateBlog from "./pages/admin/AdminCreateBlog";
-
+import AdminBlogList from "./pages/admin/AdminBlogList";
+import AdminEditBlog from "./pages/admin/AdminEditBlog";
+import AdminUsers from "./pages/admin/AdminUsers";
 import "./App.css";
 
 function App() {
@@ -85,7 +87,31 @@ function App() {
             </AdminPrivateRoute>
           }
         />
-        
+        <Route
+          path="/admin/blogs"
+          element={
+            <AdminPrivateRoute>
+              <AdminBlogList />
+            </AdminPrivateRoute>
+          }
+        />
+
+        <Route
+          path="/admin/edit-blog/:id"
+          element={
+            <AdminPrivateRoute>
+              <AdminEditBlog />
+            </AdminPrivateRoute>
+          }
+        />
+        <Route
+          path="/admin/users"
+          element={
+            <AdminPrivateRoute>
+              <AdminUsers />
+            </AdminPrivateRoute>
+          }
+        />
       </Routes>
     </Router>
   );
