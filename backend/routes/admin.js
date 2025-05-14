@@ -58,4 +58,16 @@ router.post('/create-blog', upload.single('image'), async (req, res) => {
   }
 });
 
+// GET /api/blogs - public route
+router.get('/blogs', (req, res) => {
+  db.query('SELECT * FROM blogs ORDER BY id DESC', (err, results) => {
+    if (err) {
+      console.error('Fetch blog error:', err.message);
+      return res.status(500).json({ message: 'Server error' });
+    }
+    res.json(results);
+  });
+});
+
+
 module.exports = router;
