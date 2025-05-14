@@ -61,7 +61,7 @@ function App() {
 
         <Route path="/shop" element={<Shop />} />
         <Route path="/shop/create" element={<ShopCreate />} />
-        <Route path="/shop/edit" element={<ShopEdit />} />
+        <Route path="/shop/edit/:id" element={<ShopEdit />} />
 
 
       </Routes>

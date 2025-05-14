@@ -29,6 +29,11 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 const gigRoutes = require("./routes/gigs");
 app.use("/api/gigs", gigRoutes);
 
+//shop
+const shopRoutes = require("./routes/shop");
+app.use("/api/shop", shopRoutes);
+
+
 //chat
 const chatRoutes = require("./routes/chat");
 app.use("/api/chat", chatRoutes);
