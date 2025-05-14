@@ -1,27 +1,31 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import About from './pages/About';
-import Blog from './pages/Blog';
-import Login from './pages/auth/Login';
-import Signup from './pages/auth/Signup';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Blog from "./pages/Blog";
+import Login from "./pages/auth/Login";
+import Signup from "./pages/auth/Signup";
 
-import Chat from './pages/features/Chat';
-import Chatbot from './pages/features/Chatbot';
-import Weather from './pages/features/Weather';
+import Chat from "./pages/features/Chat";
+import Chatbot from "./pages/features/Chatbot";
+import Weather from "./pages/features/Weather";
 
-import Profile from './pages/profile/Profile';
-import ProfileEdit from './pages/profile/ProfileEdit';
-import ProtectedRoute from './components/ProtectedRoute';
+import Profile from "./pages/profile/Profile";
+import ProfileEdit from "./pages/profile/ProfileEdit";
+import ProtectedRoute from "./components/ProtectedRoute";
 
-import Gig from './pages/gig/Gig';
-import GigCreate from './pages/gig/GigCreate';
-import GigEdit from './pages/gig/GigEdit';
+import Gig from "./pages/gig/Gig";
+import GigCreate from "./pages/gig/GigCreate";
+import GigEdit from "./pages/gig/GigEdit";
 
-import Shop from './pages/shop/Shop';
-import ShopCreate from './pages/shop/ShopCreate';
-import ShopEdit from './pages/shop/ShopEdit';
+import Shop from "./pages/shop/Shop";
+import ShopCreate from "./pages/shop/ShopCreate";
+import ShopEdit from "./pages/shop/ShopEdit";
 
-import './App.css';
+import AdminLogin from "./pages/admin/AdminLogin";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import AdminPrivateRoute from "./components/admin/AdminPrivateRoute";
+
+import "./App.css";
 
 function App() {
   return (
@@ -30,7 +34,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/blog" element={<Blog />} />
-        
+
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
 
@@ -63,7 +67,15 @@ function App() {
         <Route path="/shop/create" element={<ShopCreate />} />
         <Route path="/shop/edit/:id" element={<ShopEdit />} />
 
-
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route
+          path="/admin/dashboard"
+          element={
+            <AdminPrivateRoute>
+              <AdminDashboard />
+            </AdminPrivateRoute>
+          }
+        />
       </Routes>
     </Router>
   );
