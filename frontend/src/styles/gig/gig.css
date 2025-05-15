@@ -1,20 +1,36 @@
 /* gig.css */
-.gig-list-container {
-  background-image: url();
-  padding: 2rem;
-  background: #f9f9f9;
-  min-height: 100vh;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-image: url('../../resources/images/ProfileEdit/background2.jpg');
-  background-size: cover;
-  background-position: center;
+.gig-page-wrapper {
+  position: relative;
+  overflow: hidden;
   min-height: 100vh;
 }
+
+.gig-background-blur {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('../../resources/images/Gig/profile-bg2.jpeg');
+  background-size: cover;
+  background-position: center;
+  filter: blur(8px);
+  z-index: 0;
+}
+
+.gig-list-container {
+  position: relative;
+  z-index: 1;
+  padding: 2rem;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 
 .gig-list-container h2 {
   text-align: center;
   margin-bottom: 2rem;
-  color: #333;
+  color: #333333fb;
   font-weight: bolder;
   font-size: 35px;
 }
