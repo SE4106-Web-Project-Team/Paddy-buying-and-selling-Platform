@@ -31,6 +31,9 @@
   padding: 10px;
   border-bottom: 1px solid #ddd;
   background-color: #f9f9f9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .chat-messages {
@@ -38,14 +41,33 @@
   padding: 10px;
   overflow-y: auto;
   background-color: #fafafa;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .chat-bubble {
-  margin: 5px 0;
-  padding: 10px;
   max-width: 60%;
+  padding: 10px;
   border-radius: 10px;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px; /* Space between text and button */
 }
+
+.message-text {
+  flex: 1;
+  font-size: 14px;
+  line-height: 1.4;
+  overflow-wrap: break-word;
+  display: inline-block;
+  word-break: break-word;
+}
+
+
 
 .chat-bubble.sent {
   background-color: #dcf8c6;
@@ -56,6 +78,36 @@
   background-color: #fff;
   border: 1px solid #eee;
   align-self: flex-start;
+}
+
+.message-text {
+  flex: 1;
+  font-size: 14px;
+  line-height: 1.4;
+  overflow-wrap: break-word;
+}
+
+.delete-msg-btn {
+  background: none;
+  border: none;
+  color: red;
+  font-size: 0.75rem;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+
+/* Hide delete button by default */
+.chat-bubble .delete-msg-btn {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+/* Show delete button on hover */
+.chat-bubble:hover .delete-msg-btn {
+  visibility: visible;
+  opacity: 1;
 }
 
 .chat-input {
@@ -75,7 +127,6 @@
 }
 
 .delete-chat-btn {
-  margin-left: auto;
   background-color: crimson;
   color: white;
   border: none;
@@ -83,18 +134,3 @@
   border-radius: 4px;
   cursor: pointer;
 }
-
-.delete-msg-btn {
-  background: none;
-  border: none;
-  color: red;
-  font-size: 0.8rem;
-  margin-left: 10px;
-  cursor: pointer;
-}
-.chat-bubble {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
