@@ -28,7 +28,7 @@ const AdminEditBlog = () => {
     if (image) formData.append('image', image);
 
     axios.put(`http://localhost:5000/api/admin/blogs/${id}`, formData);
-    navigate('/admin/dashboard');
+    navigate('/admin/blogs');
   };
 
   return (

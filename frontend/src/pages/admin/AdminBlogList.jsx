@@ -19,7 +19,7 @@ const AdminBlogList = () => {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure to delete this blog?')) {
       axios.delete(`http://localhost:5000/api/admin/blogs/${id}`);
-      navigate('/admin/dashboard');
+      navigate('/admin/blogs');
       fetchBlogs(); // refresh
     }
   };
