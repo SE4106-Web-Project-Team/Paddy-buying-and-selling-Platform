@@ -28,6 +28,8 @@ import AdminCreateBlog from "./pages/admin/AdminCreateBlog";
 import AdminBlogList from "./pages/admin/AdminBlogList";
 import AdminEditBlog from "./pages/admin/AdminEditBlog";
 import AdminUsers from "./pages/admin/AdminUsers";
+import AdminGigs from "./pages/admin/AdminGigs";
+import AdminShop from "./pages/admin/AdminShop";
 import "./App.css";
 
 function App() {
@@ -109,6 +111,22 @@ function App() {
           element={
             <AdminPrivateRoute>
               <AdminUsers />
+            </AdminPrivateRoute>
+          }
+        />
+        <Route
+          path="/admin/gigs"
+          element={
+            <AdminPrivateRoute>
+              <AdminGigs />
+            </AdminPrivateRoute>
+          }
+        />
+      <Route
+          path="/admin/shop"
+          element={
+            <AdminPrivateRoute>
+              <AdminShop />
             </AdminPrivateRoute>
           }
         />

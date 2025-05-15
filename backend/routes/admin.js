@@ -96,7 +96,7 @@ router.get("/blogs", async (req, res) => {
 router.delete("/blogs/:id", async (req, res) => {
   const blogId = req.params.id;
   try {
-    await db.query("DELETE FROM blogs WHERE id = ?", [blogId]);
+    await dbPromise.query("DELETE FROM blogs WHERE id = ?", [blogId]);
     res.json({ message: "Blog deleted successfully" });
   } catch (err) {
     res.status(500).json({ message: "Error deleting blog" });
@@ -147,5 +147,52 @@ router.delete("/users/:id", async (req, res) => {
     res.status(500).json({ message: "Error deleting user" });
   }
 });
+
+//admin gigs
+// Get all gigs
+router.get("/gigs", async (req, res) => {
+  const query = `
+    SELECT gigs.*, users.name AS seller_name 
+    FROM gigs 
+    JOIN users ON gigs.user_id = users.id
+  `;
+  db.query(query, (err, results) => {
+    if (err) return res.status(500).json({ error: 'Failed to fetch gigs' });
+    res.json(results);
+  });
+});
+
+// Delete a gig by ID
+router.delete('/gigs/:id',  async (req, res) => {
+  const gigId = req.params.id;
+  db.query('DELETE FROM gigs WHERE id = ?', [gigId], (err, result) => {
+    if (err) return res.status(500).json({ error: 'Failed to delete gig' });
+    res.json({ message: 'Gig deleted successfully' });
+  });
+});
+
+//admin shops
+// Get all shop items
+router.get('/shop', async (req, res) => {
+  const query = `
+    SELECT shops.*, users.name AS seller_name 
+    FROM shops
+    JOIN users ON shops.user_id = users.id
+  `;
+  db.query(query, (err, results) => {
+    if (err) return res.status(500).json({ error: 'Failed to fetch shop items' });
+    res.json(results);
+  });
+});
+
+// Delete a shop item by ID
+router.delete('/shop/:id',  async (req, res) => {
+  const itemId = req.params.id;
+  db.query('DELETE FROM shops WHERE id = ?', [itemId], (err, result) => {
+    if (err) return res.status(500).json({ error: 'Failed to delete shop item' });
+    res.json({ message: 'Shop item deleted successfully' });
+  });
+});
+
 
 module.exports = router;

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import "../../styles/admin/admin.css";
 
 const AdminBlogList = () => {
   const [blogs, setBlogs] = useState([]);
@@ -18,6 +19,7 @@ const AdminBlogList = () => {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure to delete this blog?')) {
       axios.delete(`http://localhost:5000/api/admin/blogs/${id}`);
+      navigate('/admin/dashboard');
       fetchBlogs(); // refresh
     }
   };

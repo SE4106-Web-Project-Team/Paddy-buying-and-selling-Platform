@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import "../../styles/admin/admin.css";
 
 const AdminUsers = () => {
   const [users, setUsers] = useState([]);
@@ -8,7 +9,6 @@ const AdminUsers = () => {
   const fetchUsers = async () => {
     try {
       const res = await axios.get("http://localhost:5000/api/admin/users");
-      console.log("Fetched users:", res.data);
       setUsers(res.data);
     } catch (err) {
       console.error("Error fetching users:", err);

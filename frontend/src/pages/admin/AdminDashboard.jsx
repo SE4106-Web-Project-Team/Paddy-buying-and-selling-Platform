@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import "../../styles/admin/admin.css";
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ const AdminDashboard = () => {
       <button onClick={() => navigate('/admin/blogs')}>Manage Blog Post</button>
       <button onClick={() => navigate('/admin/users')}>Manage Users</button>
       <button onClick={() => navigate('/admin/gigs')}>Manage Gigs</button>
-      <button onClick={() => navigate('/admin/shops')}>Manage Shop Items</button>
+      <button onClick={() => navigate('/admin/shop')}>Manage Shop Items</button>
       <br /><br />
       <button onClick={handleLogout} style={{ background: 'red', color: 'white' }}>
         Logout
