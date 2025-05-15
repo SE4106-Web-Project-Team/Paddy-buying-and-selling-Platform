@@ -33,7 +33,9 @@ const Gig = () => {
   }, []);
 
   return (
-    <div className="gig-list-container">
+    <div className="gig-page-wrapper">
+       <div className="gig-background-blur"></div>
+      <div className="gig-list-container">
       <h2>All Available Gigs</h2>
       <div className="gig-list">
         {gigs.length === 0 ? (
@@ -75,6 +77,7 @@ const Gig = () => {
             </div>
           ))
         )}
+       </div>
       </div>
     </div>
   );

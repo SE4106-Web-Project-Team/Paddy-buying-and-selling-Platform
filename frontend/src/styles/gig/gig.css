@@ -1,18 +1,99 @@
+/* gig.css */
+.gig-page-wrapper {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+}
+
+.gig-background-blur {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('../../resources/images/Gig/profile-bg2.jpeg');
+  background-size: cover;
+  background-position: center;
+  filter: blur(8px);
+  z-index: 0;
+}
+
 .gig-list-container {
-    padding: 20px;
-  }
-  
-  .gig-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-  
-  .gig-card {
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 15px;
-    max-width: 300px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  }
-  
+  position: relative;
+  z-index: 1;
+  padding: 2rem;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+.gig-list-container h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #333333fb;
+  font-weight: bolder;
+  font-size: 35px;
+}
+
+.gig-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.gig-card {
+  background: #ffffff6c;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  width: 300px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gig-card:hover {
+  border: #28a745 3px solid;
+  background-color: rgba(255, 255, 255, 0.763);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+}
+
+
+
+.gig-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.gig-card h3 {
+  font-size: 20px;
+  margin-bottom: 0.5rem;
+  color: #2c3e50;
+}
+
+.gig-card p {
+  margin: 0.3rem 0;
+  font-size: 0.95rem;
+  color: #555;
+  font-size: 18px;
+}
+
+.gig-card button {
+  margin-top: 1rem;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.gig-card button:hover {
+  background-color: #218838;
+}
