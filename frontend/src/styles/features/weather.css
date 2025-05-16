@@ -8,7 +8,7 @@
   }
   
   .weather-card {
-    background: rgba(0, 0, 50, 0.5);
+    background: rgba(29, 29, 116, 0.43);
     padding: 30px;
     border-radius: 12px;
     color: white;
@@ -49,4 +49,36 @@
     color: white;
     font-size: 16px;
   }
+  .location-selector {
+  margin-bottom: 20px;
+  text-align: center;
   
+}
+
+.location-select {
+  background-color: rgb(11, 56, 146);
+  padding: 4px;
+  border-radius: 6px;
+  border: none;
+  font-size: 16px;
+  margin-left: 10px;
+  color: white;
+  
+}
+.weather-page a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  background-color: rgba(0, 0, 50, 0.5);
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.weather-page a:hover {
+  background-color: rgba(0, 0, 80, 0.7);
+  text-decoration: underline;
+}
