@@ -2,7 +2,7 @@ import React from "react";
 
 const UserList = ({ users, onSelectUser, selectedUser }) => {
   return (
-    <div className="chat-sidebar">
+    <div className="chat-sidebar1">
       <h3>Chats</h3>
       {users.map((u) => (
         <div

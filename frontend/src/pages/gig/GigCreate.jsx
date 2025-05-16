@@ -56,6 +56,9 @@ const GigCreate = () => {
         <input type="number" name="quantity" placeholder="Quantity (kg)" onChange={handleChange} required />
         <textarea name="description" placeholder="Description" onChange={handleChange} required />
         <button type="submit">Create Gig</button>
+        <p>
+          <a href="/profile">Cancel</a>
+        </p>
       </form>
     </div>
   );

@@ -1,32 +1,39 @@
 // src/pages/Login.jsx
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import '../../styles/auth/login.css';
-import axios from 'axios'; // install axios if you haven't
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "../../styles/auth/login.css";
+import axios from "axios"; // install axios if you haven't
 
 function Login() {
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/login', {
-        email,
-        password,
-      });
+      const response = await axios.post(
+        "http://localhost:5000/api/auth/login",
+        {
+          email,
+          password,
+        }
+      );
 
       // Save token to localStorage
-      localStorage.setItem('token', response.data.token);
-      localStorage.setItem('user', JSON.stringify(response.data.user));
+      localStorage.setItem("token", response.data.token);
+      localStorage.setItem("user", JSON.stringify(response.data.user));
 
       // Redirect to Profile page
-      navigate('/profile');
-
+      navigate("/profile");
     } catch (error) {
-      console.error('Login error:', error.response?.data?.message || error.message);
-      alert('Login Failed: ' + (error.response?.data?.message || 'Please try again'));
+      console.error(
+        "Login error:",
+        error.response?.data?.message || error.message
+      );
+      alert(
+        "Login Failed: " + (error.response?.data?.message || "Please try again")
+      );
     }
   };
 
@@ -49,8 +56,15 @@ function Login() {
         />
         <button onClick={handleLogin}>Login</button>
         <hr />
-        <p>Forgot? <a href="/signup">Password?</a></p>
-        <p>Don't have an account? <a href="/signup">Sign up</a></p>
+        <p>
+          Forgot? <a href="/signup">Password?</a>
+        </p>
+        <p>
+          Don't have an account? <a href="/signup">Sign up</a>
+        </p>
+        <p>
+          <a href="/">Back</a>
+        </p>
       </div>
     </div>
   );

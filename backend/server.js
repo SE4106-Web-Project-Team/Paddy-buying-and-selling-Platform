@@ -33,7 +33,6 @@ app.use("/api/gigs", gigRoutes);
 const shopRoutes = require("./routes/shop");
 app.use("/api/shop", shopRoutes);
 
-
 //chat
 const chatRoutes = require("./routes/chat");
 app.use("/api/chat", chatRoutes);
@@ -75,6 +74,12 @@ io.on("connection", (socket) => {
 //chatbot
 const chatbotRoute = require('./routes/chatbot');
 app.use('/api/chatbot', chatbotRoute);
+
+//admin
+const adminRoutes = require('./routes/admin');
+app.use('/api/admin', adminRoutes);
+app.use('/uploads/blogs', express.static(path.join(__dirname, 'uploads/blogs')));
+
 
 // Start server
 const PORT = process.env.PORT || 5000;
