@@ -26,6 +26,7 @@ const ShopEdit = () => {
         if (image) {
           setPreview(`http://localhost:5000/uploads/${image}`);
         }
+
       } catch (err) {
         console.error("Error fetching shop item", err);
       }
@@ -67,7 +68,7 @@ const ShopEdit = () => {
       });
 
       alert("Shop item updated successfully!");
-      navigate("/shop");
+      navigate("/profile");
     } catch (err) {
       console.error("Failed to update shop item", err);
     }
@@ -112,6 +113,9 @@ const ShopEdit = () => {
           </div>
         )}
         <button type="submit">Update</button>
+        <p>
+          <a href="/profile">Cancel</a>
+        </p>
       </form>
     </div>
   );

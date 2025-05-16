@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import "../../styles/admin/admin.css";
+import "../../styles/blog/adminbloglist.css";
 
 const AdminBlogList = () => {
   const [blogs, setBlogs] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const blogsPerPage = 10;
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -12,22 +14,48 @@ const AdminBlogList = () => {
   }, []);
 
   const fetchBlogs = async () => {
-    const res = await axios.get('http://localhost:5000/api/admin/blogs');
-    setBlogs(res.data);
+    try {
+      const res = await axios.get('http://localhost:5000/api/admin/blogs');
+      setBlogs(res.data);
+    } catch (error) {
+      console.error('Error fetching blogs:', error);
+    }
   };
 
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure to delete this blog?')) {
-      axios.delete(`http://localhost:5000/api/admin/blogs/${id}`);
-      navigate('/admin/dashboard');
-      fetchBlogs(); // refresh
+      try {
+        await axios.delete(`http://localhost:5000/api/admin/blogs/${id}`);
+        fetchBlogs(); // refresh
+      } catch (err) {
+        console.error('Error deleting blog:', err);
+        alert('Failed to delete blog.');
+      }
     }
+  };
+
+  // Pagination logic
+  const indexOfLastBlog = currentPage * blogsPerPage;
+  const indexOfFirstBlog = indexOfLastBlog - blogsPerPage;
+  const currentBlogs = blogs.slice(indexOfFirstBlog, indexOfLastBlog);
+  const totalPages = Math.ceil(blogs.length / blogsPerPage);
+
+  const handleNext = () => {
+    if (currentPage < totalPages) setCurrentPage(currentPage + 1);
+  };
+
+  const handlePrevious = () => {
+    if (currentPage > 1) setCurrentPage(currentPage - 1);
   };
 
   return (
     <div>
+      <p>
+        <a href="/admin/dashboard">Back</a>
+      </p>
+      <button onClick={() => navigate('/admin/create-blog')}>Create Blog Post</button>
       <h2>All Blog Posts</h2>
-      {blogs.map(blog => (
+      {currentBlogs.map(blog => (
         <div key={blog.id} style={{ border: '1px solid #ccc', marginBottom: '1rem', padding: '1rem' }}>
           <h3>{blog.title}</h3>
           <img
@@ -35,11 +63,24 @@ const AdminBlogList = () => {
             alt={blog.title}
             style={{ maxWidth: '200px', display: 'block' }}
           />
-          <p>{blog.content}</p>
+          <p>{blog.content.length > 300 ? blog.content.substring(0, 300) + '...' : blog.content}</p>
           <button onClick={() => navigate(`/admin/edit-blog/${blog.id}`)}>Edit</button>
           <button onClick={() => handleDelete(blog.id)} style={{ marginLeft: '10px' }}>Delete</button>
         </div>
       ))}
+
+      {/* Pagination Controls */}
+      <div style={{ textAlign: "center", marginTop: "20px" }}>
+        <button onClick={handlePrevious} disabled={currentPage === 1}>
+          Previous
+        </button>
+        <span style={{ margin: "0 10px" }}>
+          Page {currentPage} of {totalPages}
+        </span>
+        <button onClick={handleNext} disabled={currentPage === totalPages}>
+          Next
+        </button>
+      </div>
     </div>
   );
 };
