@@ -1,6 +1,7 @@
 // /src/pages/ShopCreate.jsx
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const ShopCreate = () => {
   const [title, setTitle] = useState("");
@@ -8,6 +9,8 @@ const ShopCreate = () => {
   const [price, setPrice] = useState("");
   const [image, setImage] = useState(null);
   const token = localStorage.getItem("token");
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,6 +37,7 @@ const ShopCreate = () => {
       setDescription("");
       setPrice("");
       setImage(null);
+      navigate("/profile");
     } catch (err) {
       console.error("Error creating shop item:", err.response?.data || err);
       alert("Failed to create shop item.");
@@ -70,6 +74,9 @@ const ShopCreate = () => {
           required
         />
         <button type="submit">Create</button>
+        <p>
+          <a href="/profile">Cancel</a>
+        </p>
       </form>
     </div>
   );

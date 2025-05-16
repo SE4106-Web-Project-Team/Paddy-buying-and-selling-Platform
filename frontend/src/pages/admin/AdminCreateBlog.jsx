@@ -55,6 +55,9 @@ const AdminCreateBlog = () => {
           required
         /><br /><br />
         <button type="submit">Submit</button>
+        <p>
+          <a href="/admin/blogs">Cancel</a>
+        </p>
       </form>
     </div>
   );

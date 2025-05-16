@@ -53,6 +53,9 @@ const AdminEditBlog = () => {
           onChange={(e) => setImage(e.target.files[0])}
         /><br /><br />
         <button type="submit">Update</button>
+        <p>
+          <a href="/admin/blogs">Cancel</a>
+        </p>
       </form>
     </div>
   );
