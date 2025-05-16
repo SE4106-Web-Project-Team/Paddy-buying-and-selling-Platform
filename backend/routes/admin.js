@@ -93,18 +93,18 @@ router.get("/blogs", async (req, res) => {
 });
 
 // Get a single blog post by ID
-router.get('/blogs/:id', (req, res) => {
+router.get("/blogs/:id", (req, res) => {
   const blogId = req.params.id;
-  const query = 'SELECT * FROM blogs WHERE id = ?';
+  const query = "SELECT * FROM blogs WHERE id = ?";
 
   db.query(query, [blogId], (err, results) => {
     if (err) {
       console.error("Error fetching blog:", err);
-      return res.status(500).json({ error: 'Database error' });
+      return res.status(500).json({ error: "Database error" });
     }
 
     if (results.length === 0) {
-      return res.status(404).json({ error: 'Blog not found' });
+      return res.status(404).json({ error: "Blog not found" });
     }
 
     res.json(results[0]);
@@ -144,17 +144,33 @@ router.put("/blogs/:id", upload.single("image"), async (req, res) => {
   }
 });
 
-//admin user
-// Get all users
+//admin users
 router.get("/users", async (req, res) => {
   try {
-    const [rows] = await dbPromise.query("SELECT * FROM users");
-    res.json(rows);
+    const page = parseInt(req.query.page) || 1;
+    const limit = 50;
+    const offset = (page - 1) * limit;
+
+    const [countResult] = await dbPromise.query(`SELECT COUNT(*) AS total FROM users`);
+    const total = countResult[0].total;
+    const totalPages = Math.ceil(total / limit);
+
+    const [users] = await dbPromise.query(
+      `SELECT * FROM users ORDER BY id DESC LIMIT ? OFFSET ?`,
+      [limit, offset]
+    );
+
+    res.json({
+      users,
+      totalPages,
+      currentPage: page,
+    });
   } catch (err) {
     console.error("Error fetching users:", err);
     res.status(500).json({ message: "Error fetching users" });
   }
 });
+
 
 // Delete user
 router.delete("/users/:id", async (req, res) => {
@@ -169,49 +185,93 @@ router.delete("/users/:id", async (req, res) => {
 
 //admin gigs
 // Get all gigs
-router.get("/gigs", async (req, res) => {
-  const query = `
+router.get("/gigs", (req, res) => {
+  const page = parseInt(req.query.page) || 1;
+  const limit = 50;
+  const offset = (page - 1) * limit;
+
+  const countQuery = `
+    SELECT COUNT(*) AS total FROM gigs
+  `;
+  const dataQuery = `
     SELECT gigs.*, users.name AS seller_name 
     FROM gigs 
     JOIN users ON gigs.user_id = users.id
+    ORDER BY gigs.id DESC
+    LIMIT ? OFFSET ?
   `;
-  db.query(query, (err, results) => {
-    if (err) return res.status(500).json({ error: 'Failed to fetch gigs' });
-    res.json(results);
+
+  db.query(countQuery, (err, countResult) => {
+    if (err) return res.status(500).json({ error: "Failed to count gigs" });
+
+    const total = countResult[0].total;
+    const totalPages = Math.ceil(total / limit);
+
+    db.query(dataQuery, [limit, offset], (err, results) => {
+      if (err) return res.status(500).json({ error: "Failed to fetch gigs" });
+
+      res.json({
+        gigs: results,
+        totalPages,
+        currentPage: page,
+      });
+    });
   });
 });
 
 // Delete a gig by ID
-router.delete('/gigs/:id',  async (req, res) => {
+router.delete("/gigs/:id", async (req, res) => {
   const gigId = req.params.id;
-  db.query('DELETE FROM gigs WHERE id = ?', [gigId], (err, result) => {
-    if (err) return res.status(500).json({ error: 'Failed to delete gig' });
-    res.json({ message: 'Gig deleted successfully' });
+  db.query("DELETE FROM gigs WHERE id = ?", [gigId], (err, result) => {
+    if (err) return res.status(500).json({ error: "Failed to delete gig" });
+    res.json({ message: "Gig deleted successfully" });
   });
 });
 
 //admin shops
 // Get all shop items
-router.get('/shop', async (req, res) => {
-  const query = `
+router.get("/shop", (req, res) => {
+  const page = parseInt(req.query.page) || 1;
+  const limit = 50;
+  const offset = (page - 1) * limit;
+
+  const countQuery = `SELECT COUNT(*) AS total FROM shops`;
+  const dataQuery = `
     SELECT shops.*, users.name AS seller_name 
-    FROM shops
+    FROM shops 
     JOIN users ON shops.user_id = users.id
+    ORDER BY shops.id DESC
+    LIMIT ? OFFSET ?
   `;
-  db.query(query, (err, results) => {
-    if (err) return res.status(500).json({ error: 'Failed to fetch shop items' });
-    res.json(results);
+
+  db.query(countQuery, (err, countResult) => {
+    if (err)
+      return res.status(500).json({ error: "Failed to count shop items" });
+
+    const total = countResult[0].total;
+    const totalPages = Math.ceil(total / limit);
+
+    db.query(dataQuery, [limit, offset], (err, results) => {
+      if (err)
+        return res.status(500).json({ error: "Failed to fetch shop items" });
+
+      res.json({
+        items: results,
+        totalPages,
+        currentPage: page,
+      });
+    });
   });
 });
 
 // Delete a shop item by ID
-router.delete('/shop/:id',  async (req, res) => {
+router.delete("/shop/:id", async (req, res) => {
   const itemId = req.params.id;
-  db.query('DELETE FROM shops WHERE id = ?', [itemId], (err, result) => {
-    if (err) return res.status(500).json({ error: 'Failed to delete shop item' });
-    res.json({ message: 'Shop item deleted successfully' });
+  db.query("DELETE FROM shops WHERE id = ?", [itemId], (err, result) => {
+    if (err)
+      return res.status(500).json({ error: "Failed to delete shop item" });
+    res.json({ message: "Shop item deleted successfully" });
   });
 });
-
 
 module.exports = router;

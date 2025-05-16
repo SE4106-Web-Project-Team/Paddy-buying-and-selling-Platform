@@ -15,10 +15,12 @@ import ProfileEdit from "./pages/profile/ProfileEdit";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 import Gig from "./pages/gig/Gig";
+import GigView from "./pages/gig/GigView";
 import GigCreate from "./pages/gig/GigCreate";
 import GigEdit from "./pages/gig/GigEdit";
 
 import Shop from "./pages/shop/Shop";
+import ShopView from "./pages/shop/ShopView";
 import ShopCreate from "./pages/shop/ShopCreate";
 import ShopEdit from "./pages/shop/ShopEdit";
 
@@ -68,10 +70,12 @@ function App() {
         />
 
         <Route path="/gigs" element={<Gig />} />
+        <Route path="/gig/:id" element={<GigView />} />
         <Route path="/gig/create" element={<GigCreate />} />
         <Route path="/gig/edit/:id" element={<GigEdit />} />
 
         <Route path="/shop" element={<Shop />} />
+        <Route path="/shop/:id" element={<ShopView />} />
         <Route path="/shop/create" element={<ShopCreate />} />
         <Route path="/shop/edit/:id" element={<ShopEdit />} />
 
