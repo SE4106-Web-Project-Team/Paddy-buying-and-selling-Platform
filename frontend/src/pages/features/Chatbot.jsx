@@ -1,5 +1,6 @@
 // src/pages/feature/chatbot.jsx
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../../styles/features/chatbot.css";
 
 const suggestedQuestions = [
@@ -14,15 +15,15 @@ const suggestedQuestions = [
 export default function Chatbot() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
+  const navigate = useNavigate();
 
-  const suggestedQuestions = [
-    "When should I plant paddy in Southern Province?",
-    "How to identify and treat rice blast disease?",
-    "What fertilizer is best for paddy cultivation?",
-    "How can I store harvested paddy properly?",
-    "What is the current market price of paddy?",
-    "Tips for organic paddy farming",
-  ];
+  // ✅ Redirect to login if not authenticated
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      navigate("/login");
+    }
+  }, [navigate]);
 
   const handleSend = async (msg) => {
     const userMessage = msg || input;
