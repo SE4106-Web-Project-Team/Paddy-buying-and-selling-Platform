@@ -1,42 +1,49 @@
 // src/pages/Home.jsx
-import React from 'react';
-import { Link } from 'react-router-dom';
-import '../App.css';
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import "../App.css";
 
 function Home() {
+  const navigate = useNavigate();
+  //For Dropdown
+  const [selected, setSelected] = useState("");
+  const handleChange = (e) => {
+    const url = e.target.value;
+    if (url) {
+      window.location.href = url; // Redirects to the selected link
+    }
+  };
+
   return (
     <div className="App">
       <header className="App-header">
-        <h1>PADDY PLATFORM</h1>
         <nav>
-            <h2>Main Pages</h2>
-            <Link to="/about">About</Link><br />
-            <Link to="/blog">Blog</Link><br />  
-
-            <h2>Auth Pages</h2>
-            <Link to="/login">Login</Link><br />
-            <Link to="/signup">Signup</Link><br />  
-
-            <h2>Feature Pages</h2>
-            <Link to="/features/chat">Chat</Link><br />
-            <Link to="/features/chatbot">Chatbot</Link><br />
-            <Link to="/features/weather">Weather</Link><br />
-
-            <h2>Profile Pages</h2>
-            <Link to="/profile">Profile</Link><br />
-            <Link to="/profile/edit">Profile Edit</Link><br />
-
-            <h2>Gig Pages</h2>
-            <Link to="/gigs">Gig</Link><br />
-            <Link to="/gig/create">Gig Create</Link><br />
-            <Link to="/gig/edit">Gig Edit</Link><br />
-
-            <h2>Shop Pages</h2>
-            <Link to="/shop">Shop</Link><br />
-            <Link to="/shop/create">Shop Create</Link><br />
-            <Link to="/shop/edit">Shop Edit</Link><br />
-
+          <h1>PADDY PLATFORM</h1>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+            <li>
+              <select value={selected} onChange={handleChange}>
+                <option value="">Features</option>
+                <option value="/features/weather">Weather</option>
+                <option value="/features/chat">Chat</option>
+                <option value="/features/chatbot">Chatbot</option>
+              </select>
+            </li>
+            <li><Link to="/gigs">Gigs</Link></li>
+            <li><Link to="/shop">Shop</Link></li>
+            <li><Link to="/blog">Blog</Link></li>
+            <li><Link to="/login">Login</Link></li>
+          </ul>
         </nav>
+
+        <div className="hero">
+          <Link to="/login">become a Seller/Buyer</Link>
+        </div>
       </header>
     </div>
   );
