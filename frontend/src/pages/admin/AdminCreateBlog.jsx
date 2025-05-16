@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import "../../styles/blog/admincreateblog.css";
+import "../../styles/admin/admincreateblog.css";
 
 const AdminCreateBlog = () => {
   const [title, setTitle] = useState('');
