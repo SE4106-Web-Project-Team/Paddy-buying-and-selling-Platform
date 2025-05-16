@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import NavigationBar from "../components/nav/NavigationBar";
+import "../styles/blog/blogview.css";
 
 const BlogView = () => {
   const { id } = useParams();

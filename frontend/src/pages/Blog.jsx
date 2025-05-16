@@ -3,9 +3,12 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import NavigationBar from "../components/nav/NavigationBar";
+import "../styles/blog/blog.css";
 
 const Blog = () => {
   const [blogs, setBlogs] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const blogsPerPage = 10;
 
   useEffect(() => {
     const fetchBlogs = async () => {
@@ -21,6 +24,20 @@ const Blog = () => {
     fetchBlogs();
   }, []);
 
+  // Pagination logic
+  const indexOfLastBlog = currentPage * blogsPerPage;
+  const indexOfFirstBlog = indexOfLastBlog - blogsPerPage;
+  const currentBlogs = blogs.slice(indexOfFirstBlog, indexOfLastBlog);
+  const totalPages = Math.ceil(blogs.length / blogsPerPage);
+
+  const handleNext = () => {
+    if (currentPage < totalPages) setCurrentPage(currentPage + 1);
+  };
+
+  const handlePrevious = () => {
+    if (currentPage > 1) setCurrentPage(currentPage - 1);
+  };
+
   return (
     <div>
       <NavigationBar />
@@ -28,7 +45,8 @@ const Blog = () => {
         <a href="/">Back</a>
       </p>
       <h2>Blog Posts</h2>
-      {blogs.map((blog) => (
+
+      {currentBlogs.map((blog) => (
         <div
           key={blog.id}
           style={{
@@ -48,7 +66,7 @@ const Blog = () => {
             />
             <div style={{ marginLeft: "20px" }}>
               <p style={{ textAlign: "justify" }}>
-                {blog.content.length > 150
+                {blog.content.length > 300
                   ? blog.content.substring(0, 300) + "..."
                   : blog.content}
               </p>
@@ -59,6 +77,19 @@ const Blog = () => {
           </div>
         </div>
       ))}
+
+      {/* Pagination Controls */}
+      <div style={{ textAlign: "center", marginTop: "20px" }}>
+        <button onClick={handlePrevious} disabled={currentPage === 1}>
+          Previous
+        </button>
+        <span style={{ margin: "0 10px" }}>
+          Page {currentPage} of {totalPages}
+        </span>
+        <button onClick={handleNext} disabled={currentPage === totalPages}>
+          Next
+        </button>
+      </div>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import "../../styles/admin/admin.css";
+import "../../styles/blog/admincreateblog.css";
 
 const AdminCreateBlog = () => {
   const [title, setTitle] = useState('');
@@ -23,7 +23,7 @@ const AdminCreateBlog = () => {
     try {
       const res = await axios.post('http://localhost:5000/api/admin/create-blog', formData);
       alert(res.data.message);
-      navigate('/admin/dashboard');
+      navigate('/admin/blogs');
     } catch (err) {
       console.error(err);
       alert('Failed to create blog');
