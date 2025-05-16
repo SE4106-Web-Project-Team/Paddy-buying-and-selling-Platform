@@ -92,6 +92,25 @@ router.get("/blogs", async (req, res) => {
   }
 });
 
+// Get a single blog post by ID
+router.get('/blogs/:id', (req, res) => {
+  const blogId = req.params.id;
+  const query = 'SELECT * FROM blogs WHERE id = ?';
+
+  db.query(query, [blogId], (err, results) => {
+    if (err) {
+      console.error("Error fetching blog:", err);
+      return res.status(500).json({ error: 'Database error' });
+    }
+
+    if (results.length === 0) {
+      return res.status(404).json({ error: 'Blog not found' });
+    }
+
+    res.json(results[0]);
+  });
+});
+
 //Delete blog
 router.delete("/blogs/:id", async (req, res) => {
   const blogId = req.params.id;
