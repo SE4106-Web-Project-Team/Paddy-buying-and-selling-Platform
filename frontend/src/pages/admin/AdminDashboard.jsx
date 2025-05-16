@@ -13,7 +13,6 @@ const AdminDashboard = () => {
   return (
     <div className="admin-dashboard">
       <h2>Admin Dashboard</h2>
-      <button onClick={() => navigate('/admin/create-blog')}>Create Blog Post</button>
       <button onClick={() => navigate('/admin/blogs')}>Manage Blog Post</button>
       <button onClick={() => navigate('/admin/users')}>Manage Users</button>
       <button onClick={() => navigate('/admin/gigs')}>Manage Gigs</button>

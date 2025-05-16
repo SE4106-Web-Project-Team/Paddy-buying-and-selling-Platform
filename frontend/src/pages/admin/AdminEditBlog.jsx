@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
-import "../../styles/admin/admin.css";
+import "../../styles/blog/admineditblog.css";
 
 const AdminEditBlog = () => {
   const { id } = useParams();
@@ -53,6 +53,9 @@ const AdminEditBlog = () => {
           onChange={(e) => setImage(e.target.files[0])}
         /><br /><br />
         <button type="submit">Update</button>
+        <p>
+          <a href="/admin/blogs">Cancel</a>
+        </p>
       </form>
     </div>
   );
