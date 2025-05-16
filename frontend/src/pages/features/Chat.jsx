@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom"; // Add this
 import axios from "axios";
 import UserList from "../../components/chat/UserList";
 import ChatWindow from "../../components/chat/ChatWindow";
-import "../../styles/chat/chat.css";
+import "../../styles/features/chat.css";
 
 const Chat = () => {
   const location = useLocation();
@@ -50,6 +50,9 @@ const Chat = () => {
 
   return (
     <div className="chat-container">
+      <p>
+        <a href="/">Back</a>
+      </p>
       {user && (
         <>
           <UserList

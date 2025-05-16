@@ -1,6 +1,6 @@
 // src/pages/feature/chatbot.jsx
 import React, { useState } from "react";
-import "../../styles/chatbot.css";
+import "../../styles/features/chatbot.css";
 
 const suggestedQuestions = [
   "When should I plant paddy in Southern Province?",
@@ -8,7 +8,7 @@ const suggestedQuestions = [
   "What fertilizer is best for paddy cultivation?",
   "How can I store harvested paddy properly?",
   "What is the current market price of paddy?",
-  "Tips for organic paddy farming"
+  "Tips for organic paddy farming",
 ];
 
 export default function Chatbot() {
@@ -21,30 +21,37 @@ export default function Chatbot() {
     "What fertilizer is best for paddy cultivation?",
     "How can I store harvested paddy properly?",
     "What is the current market price of paddy?",
-    "Tips for organic paddy farming"
+    "Tips for organic paddy farming",
   ];
 
   const handleSend = async (msg) => {
     const userMessage = msg || input;
-    setMessages(prev => [...prev, { sender: "user", text: userMessage }]);
+    setMessages((prev) => [...prev, { sender: "user", text: userMessage }]);
     setInput("");
 
     const res = await fetch("http://localhost:5000/api/chatbot", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message: userMessage })
+      body: JSON.stringify({ message: userMessage }),
     });
     const data = await res.json();
-    setMessages(prev => [...prev, { sender: "bot", text: data.reply }]);
+    setMessages((prev) => [...prev, { sender: "bot", text: data.reply }]);
   };
 
   return (
     <div className="chatbot-container">
+      <p>
+        <a href="/">Back</a>
+      </p>
       <h1 className="chatbot-title">Agri Chatbot</h1>
 
       <div className="suggested-questions">
         {suggestedQuestions.map((q, i) => (
-          <button key={i} className="suggested-button" onClick={() => handleSend(q)}>
+          <button
+            key={i}
+            className="suggested-button"
+            onClick={() => handleSend(q)}
+          >
             {q}
           </button>
         ))}
@@ -70,4 +77,3 @@ export default function Chatbot() {
     </div>
   );
 }
-
