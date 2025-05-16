@@ -10,6 +10,7 @@
         "gigcreate",
         "gigedit",
         "gigview",
+        "profileedit",
         "shopedit",
         "shopview"
     ]
