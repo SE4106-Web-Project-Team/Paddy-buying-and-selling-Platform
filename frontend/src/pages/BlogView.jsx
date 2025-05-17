@@ -33,13 +33,28 @@ const BlogView = () => {
       <p>
         <a href="/blog">Back</a>
       </p>
-      <h2 style={{width: "80%", margin: "auto", display: "block"}}>{blog.title}</h2>
+      <h2 style={{ width: "80%", margin: "auto", display: "block" }}>
+        {blog.title}
+      </h2>
       <img
         src={`http://localhost:5000/uploads/blogs/${blog.image}`}
         alt={blog.title}
-        style={{ maxWidth: "50%", height: "auto", margin: "auto", display: "block" }}
+        style={{
+          maxWidth: "50%",
+          height: "auto",
+          margin: "auto",
+          display: "block",
+        }}
       />
-      <p style={{ textAlign: "justify", marginTop: "20px", width: "80%", margin: "auto", display: "block" }}>{blog.content}</p>
+      <div style={{ width: "80%", margin: "20px auto", textAlign: "justify" }}>
+        {blog.content
+          .split(/\r?\n\r?\n/) // handles \n\n or \r\n\r\n
+          .map((para, i) => (
+            <p key={i} style={{ marginBottom: "1em" }}>
+              {para}
+            </p>
+          ))}
+      </div>
     </div>
   );
 };
