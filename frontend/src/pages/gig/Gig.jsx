@@ -8,7 +8,7 @@ const Gig = () => {
   const [gigs, setGigs] = useState([]);
   const [searchQuery, setSearchQuery] = useState(""); // 🔍 New: search state
   const [currentPage, setCurrentPage] = useState(1);
-  const gigsPerPage = 40;
+  const gigsPerPage = 16;
 
   const navigate = useNavigate();
   const currentUser = JSON.parse(localStorage.getItem("user"));

@@ -89,7 +89,7 @@ const Blog = () => {
               <div style={{ marginLeft: "20px" }}>
                 <p style={{ textAlign: "justify" }}>
                   {blog.content.length > 300
-                    ? blog.content.substring(0, 300) + "..."
+                    ? blog.content.substring(0, 620) + "..."
                     : blog.content}
                 </p>
                 <Link to={`/blog/${blog.id}`}>
