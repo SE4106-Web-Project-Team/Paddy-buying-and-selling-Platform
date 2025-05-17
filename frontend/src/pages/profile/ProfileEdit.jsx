@@ -2,7 +2,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import '../../styles/auth/signup.css'; // You can later create a separate editprofile.css
+import '../../styles/auth/signup.css';
+import '../../styles/profile/profileedit.css';
 
 const ProfileEdit = () => {
   const navigate = useNavigate();

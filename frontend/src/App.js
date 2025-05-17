@@ -3,6 +3,9 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Blog from "./pages/Blog";
 import Blogview from "./pages/BlogView";
+
+import PaddyPrice from "./pages/PaddyPrice";
+
 import Login from "./pages/auth/Login";
 import Signup from "./pages/auth/Signup";
 
@@ -33,6 +36,7 @@ import AdminEditBlog from "./pages/admin/AdminEditBlog";
 import AdminUsers from "./pages/admin/AdminUsers";
 import AdminGigs from "./pages/admin/AdminGigs";
 import AdminShop from "./pages/admin/AdminShop";
+import AdminPrice from "./pages/admin/AdminPrice";
 import "./App.css";
 
 function App() {
@@ -44,6 +48,7 @@ function App() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:id" element={<Blogview />} />
 
+        <Route path="/paddyprice" element={<PaddyPrice />} />
 
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
@@ -101,6 +106,15 @@ function App() {
           element={
             <AdminPrivateRoute>
               <AdminBlogList />
+            </AdminPrivateRoute>
+          }
+        />
+
+        <Route
+          path="/admin/price"
+          element={
+            <AdminPrivateRoute>
+              <AdminPrice />
             </AdminPrivateRoute>
           }
         />

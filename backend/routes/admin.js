@@ -151,7 +151,9 @@ router.get("/users", async (req, res) => {
     const limit = 50;
     const offset = (page - 1) * limit;
 
-    const [countResult] = await dbPromise.query(`SELECT COUNT(*) AS total FROM users`);
+    const [countResult] = await dbPromise.query(
+      `SELECT COUNT(*) AS total FROM users`
+    );
     const total = countResult[0].total;
     const totalPages = Math.ceil(total / limit);
 
@@ -170,7 +172,6 @@ router.get("/users", async (req, res) => {
     res.status(500).json({ message: "Error fetching users" });
   }
 });
-
 
 // Delete user
 router.delete("/users/:id", async (req, res) => {
@@ -272,6 +273,59 @@ router.delete("/shop/:id", async (req, res) => {
       return res.status(500).json({ error: "Failed to delete shop item" });
     res.json({ message: "Shop item deleted successfully" });
   });
+});
+
+//paddy price
+// Get all paddy prices
+router.get("/prices", async (req, res) => {
+  try {
+    const [rows] = await dbPromise.query(
+      "SELECT * FROM paddy_prices ORDER BY created_at DESC"
+    );
+    res.json(rows);
+  } catch (err) {
+    res.status(500).json({ error: "Failed to fetch prices" });
+  }
+});
+
+// Create new price
+router.post("/prices", async (req, res) => {
+  const { paddy_type, price } = req.body;
+  try {
+    await dbPromise.query(
+      "INSERT INTO paddy_prices (paddy_type, price) VALUES (?, ?)",
+      [paddy_type, price]
+    );
+    res.status(201).json({ message: "Price added" });
+  } catch (err) {
+    res.status(500).json({ error: "Failed to add price" });
+  }
+});
+
+// Update price
+router.put("/prices/:id", async (req, res) => {
+  const { id } = req.params;
+  const { paddy_type, price } = req.body;
+  try {
+    await dbPromise.query(
+      "UPDATE paddy_prices SET paddy_type = ?, price = ? WHERE id = ?",
+      [paddy_type, price, id]
+    );
+    res.json({ message: "Price updated" });
+  } catch (err) {
+    res.status(500).json({ error: "Failed to update price" });
+  }
+});
+
+// Delete price
+router.delete("/prices/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    await dbPromise.query("DELETE FROM paddy_prices WHERE id = ?", [id]);
+    res.json({ message: "Price deleted" });
+  } catch (err) {
+    res.status(500).json({ error: "Failed to delete price" });
+  }
 });
 
 module.exports = router;

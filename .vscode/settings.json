@@ -5,11 +5,15 @@
         "admindashboard",
         "admineditblog",
         "adminlogin",
+        "adminprice",
         "adminshop",
         "Blogview",
         "gigcreate",
         "gigedit",
         "gigview",
+        "paddyprice",
+        "profileedit",
+        "shopcreate",
         "shopedit",
         "shopview"
     ]

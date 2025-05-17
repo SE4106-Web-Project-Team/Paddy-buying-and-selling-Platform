@@ -6,6 +6,7 @@ import "./../../styles/gig/gig.css";
 
 const Gig = () => {
   const [gigs, setGigs] = useState([]);
+  const [searchQuery, setSearchQuery] = useState(""); // 🔍 New: search state
   const [currentPage, setCurrentPage] = useState(1);
   const gigsPerPage = 40;
 
@@ -32,12 +33,19 @@ const Gig = () => {
     fetchGigs();
   }, []);
 
+  // 🔍 Filter based on paddy_type or seller_name
+  const filteredGigs = gigs.filter((gig) =>
+    `${gig.paddy_type} ${gig.seller_name}`
+      .toLowerCase()
+      .includes(searchQuery.toLowerCase())
+  );
+
   // Pagination logic
   const indexOfLastGig = currentPage * gigsPerPage;
   const indexOfFirstGig = indexOfLastGig - gigsPerPage;
-  const currentGigs = gigs.slice(indexOfFirstGig, indexOfLastGig);
+  const currentGigs = filteredGigs.slice(indexOfFirstGig, indexOfLastGig);
 
-  const totalPages = Math.ceil(gigs.length / gigsPerPage);
+  const totalPages = Math.ceil(filteredGigs.length / gigsPerPage);
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {
@@ -55,20 +63,34 @@ const Gig = () => {
     <div className="gig-page-wrapper">
       <div className="gig-background-blur"></div>
       <div className="gig-list-container">
-      <NavigationBar />
+        <NavigationBar />
         <p>
           <a href="/">Back</a>
         </p>
         <h2>All Available Gigs</h2>
 
+        {/* 🔍 Search Input */}
+        <div style={{ textAlign: "center", marginBottom: "20px" }}>
+          <input
+            type="text"
+            placeholder="Search by paddy type or seller..."
+            value={searchQuery}
+            onChange={(e) => {
+              setSearchQuery(e.target.value);
+              setCurrentPage(1); // reset to first page on search
+            }}
+            style={{ padding: "5px", width: "300px" }}
+          />
+        </div>
+
         <div className="gig-list">
           {currentGigs.length === 0 ? (
-            <p>No gigs available.</p>
+            <p>No matching gigs found.</p>
           ) : (
             currentGigs.map((gig) => (
               <div className="gig-card" key={gig.id}>
                 <img
-                  src={`http://localhost:5000/uploads/${gig.image}`}
+                  src={`http://localhost:5000/uploads/gigs/${gig.image}`}
                   alt={gig.paddy_type}
                   style={{ width: "100%", maxWidth: 250 }}
                 />
