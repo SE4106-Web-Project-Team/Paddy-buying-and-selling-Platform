@@ -52,7 +52,7 @@ const ShopView = () => {
       </p>
       <h2>{item.title}</h2>
       <img
-        src={`http://localhost:5000/uploads/${item.image}`}
+        src={`http://localhost:5000/uploads/shop/${item.image}`}
         alt={item.title}
         style={{ width: "100%", maxWidth: 400 }}
       />

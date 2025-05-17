@@ -93,7 +93,7 @@ const Shop = () => {
             <div key={item.id} className="shop-card">
               {item.image && (
                 <img
-                  src={`http://localhost:5000/uploads/${item.image}`}
+                  src={`http://localhost:5000/uploads/shop/${item.image}`}
                   alt={item.title}
                 />
               )}

@@ -75,7 +75,7 @@ const GigEdit = () => {
           <strong>Current Image:</strong>
         </p>
         <img
-          src={`http://localhost:5000/uploads/${gig.image}`}
+          src={`http://localhost:5000/uploads/gigs/${gig.image}`}
           alt="Gig"
           style={{ width: 150 }}
         />

@@ -90,7 +90,7 @@ const Gig = () => {
             currentGigs.map((gig) => (
               <div className="gig-card" key={gig.id}>
                 <img
-                  src={`http://localhost:5000/uploads/${gig.image}`}
+                  src={`http://localhost:5000/uploads/gigs/${gig.image}`}
                   alt={gig.paddy_type}
                   style={{ width: "100%", maxWidth: 250 }}
                 />

@@ -25,7 +25,7 @@ const ShopEdit = () => {
         const { title, description, price, image } = res.data;
         setFormData({ title, description, price, image: null });
         if (image) {
-          setPreview(`http://localhost:5000/uploads/${image}`);
+          setPreview(`http://localhost:5000/uploads/shop/${image}`);
         }
 
       } catch (err) {

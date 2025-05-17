@@ -54,7 +54,7 @@ const GigView = () => {
       </p>
       <h2>{gig.paddy_type}</h2>
       <img
-        src={`http://localhost:5000/uploads/${gig.image}`}
+        src={`http://localhost:5000/uploads/gigs/${gig.image}`}
         alt={gig.paddy_type}
         style={{ width: "100%", maxWidth: 400 }}
       />

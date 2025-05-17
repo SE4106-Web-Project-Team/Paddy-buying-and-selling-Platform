@@ -132,7 +132,7 @@ const Profile = () => {
         <h2>My Profile</h2>
         {user.profilePicture && (
           <img
-            src={`http://localhost:5000/uploads/${user.profilePicture}`}
+            src={`http://localhost:5000/uploads/profile/${user.profilePicture}`}
             alt="Profile"
             style={{ width: 150, borderRadius: "50%" }}
           />
@@ -188,7 +188,7 @@ const Profile = () => {
               {paginatedGigs.map((gig) => (
                 <li key={gig.id} style={{ marginBottom: "20px" }}>
                   <img
-                    src={`http://localhost:5000/uploads/${gig.image}`}
+                    src={`http://localhost:5000/uploads/gigs/${gig.image}`}
                     alt="Gig"
                     width={100}
                   />
@@ -257,7 +257,7 @@ const Profile = () => {
               {paginatedShopItems.map((item) => (
                 <li key={item.id} style={{ marginBottom: "20px" }}>
                   <img
-                    src={`http://localhost:5000/uploads/${item.image}`}
+                    src={`http://localhost:5000/uploads/shop/${item.image}`}
                     alt="Shop Item"
                     width={100}
                   />
