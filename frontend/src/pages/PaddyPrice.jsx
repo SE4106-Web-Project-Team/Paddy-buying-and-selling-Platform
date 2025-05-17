@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import "../styles/price/paddyprice.css";
 
 const ITEMS_PER_PAGE = 25;
 
