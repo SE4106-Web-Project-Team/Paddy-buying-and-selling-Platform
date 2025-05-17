@@ -15,6 +15,9 @@ const Profile = () => {
   const [gigs, setGigs] = useState([]);
   const [shopItems, setShopItems] = useState([]);
 
+  const [gigSearchTerm, setGigSearchTerm] = useState("");
+  const [shopSearchTerm, setShopSearchTerm] = useState("");
+
   // Add pagination states
   const [gigPage, setGigPage] = useState(1);
   const [shopPage, setShopPage] = useState(1);
@@ -72,12 +75,21 @@ const Profile = () => {
     fetchShopItems();
   }, []);
 
-  // Pagination slicing
-  const paginatedGigs = gigs.slice(
+  const filteredGigs = gigs.filter((gig) =>
+    gig.paddy_type.toLowerCase().includes(gigSearchTerm.toLowerCase())
+  );
+
+  const filteredShopItems = shopItems.filter((item) =>
+    item.title.toLowerCase().includes(shopSearchTerm.toLowerCase())
+  );
+
+  // Then apply pagination
+  const paginatedGigs = filteredGigs.slice(
     (gigPage - 1) * ITEMS_PER_PAGE,
     gigPage * ITEMS_PER_PAGE
   );
-  const paginatedShopItems = shopItems.slice(
+
+  const paginatedShopItems = filteredShopItems.slice(
     (shopPage - 1) * ITEMS_PER_PAGE,
     shopPage * ITEMS_PER_PAGE
   );
@@ -162,6 +174,16 @@ const Profile = () => {
           <p>No gigs found.</p>
         ) : (
           <>
+            <input
+              type="text"
+              placeholder="Search gigs by paddy type..."
+              value={gigSearchTerm}
+              onChange={(e) => {
+                setGigSearchTerm(e.target.value);
+                setGigPage(1); // Reset to first page on new search
+              }}
+              style={{ marginBottom: "10px", padding: "5px", width: "60%" }}
+            />
             <ul>
               {paginatedGigs.map((gig) => (
                 <li key={gig.id} style={{ marginBottom: "20px" }}>
@@ -206,7 +228,7 @@ const Profile = () => {
                     p * ITEMS_PER_PAGE < gigs.length ? p + 1 : p
                   )
                 }
-                disabled={gigPage * ITEMS_PER_PAGE >= gigs.length}
+                disabled={gigPage * ITEMS_PER_PAGE >= filteredGigs.length}
               >
                 Next
               </button>
@@ -220,6 +242,17 @@ const Profile = () => {
           <p>No shop items found.</p>
         ) : (
           <>
+            <input
+              type="text"
+              placeholder="Search shop items by title..."
+              value={shopSearchTerm}
+              onChange={(e) => {
+                setShopSearchTerm(e.target.value);
+                setShopPage(1); // Reset to first page on new search
+              }}
+              style={{ marginBottom: "10px", padding: "5px", width: "60%" }}
+            />
+
             <ul>
               {paginatedShopItems.map((item) => (
                 <li key={item.id} style={{ marginBottom: "20px" }}>
@@ -261,7 +294,7 @@ const Profile = () => {
                     p * ITEMS_PER_PAGE < shopItems.length ? p + 1 : p
                   )
                 }
-                disabled={shopPage * ITEMS_PER_PAGE >= shopItems.length}
+                disabled={shopPage * ITEMS_PER_PAGE >= filteredShopItems.length}
               >
                 Next
               </button>
