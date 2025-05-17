@@ -17,6 +17,7 @@ const AdminDashboard = () => {
       <button onClick={() => navigate('/admin/users')}>Manage Users</button>
       <button onClick={() => navigate('/admin/gigs')}>Manage Gigs</button>
       <button onClick={() => navigate('/admin/shop')}>Manage Shop Items</button>
+      <button onClick={() => navigate('/admin/price')}>Manage Price</button>
       <br /><br />
       <button onClick={handleLogout} style={{ background: 'red', color: 'white' }}>
         Logout
