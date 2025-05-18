@@ -19,3 +19,16 @@
   cursor: pointer;
   margin-top: 5px;
 }
+
+.pagination-controls {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.pagination-controls button {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+

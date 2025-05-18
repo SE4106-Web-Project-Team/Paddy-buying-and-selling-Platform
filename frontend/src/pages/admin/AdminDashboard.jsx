@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import "../../styles/admin/admin.css";
+import "../../styles/admin/admindashboard.css";
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
@@ -13,10 +13,11 @@ const AdminDashboard = () => {
   return (
     <div className="admin-dashboard">
       <h2>Admin Dashboard</h2>
-      <button onClick={() => navigate('/admin/blogs')}>Manage Blog Post</button>
-      <button onClick={() => navigate('/admin/users')}>Manage Users</button>
-      <button onClick={() => navigate('/admin/gigs')}>Manage Gigs</button>
-      <button onClick={() => navigate('/admin/shop')}>Manage Shop Items</button>
+      <button onClick={() => navigate('/admin/users')}>Manage Users</button><br />
+      <button onClick={() => navigate('/admin/gigs')}>Manage Gigs</button><br />
+      <button onClick={() => navigate('/admin/shop')}>Manage Shop Items</button><br />
+      <button onClick={() => navigate('/admin/blogs')}>Manage Blog Post</button><br />
+      <button onClick={() => navigate('/admin/price')}>Manage Price</button>
       <br /><br />
       <button onClick={handleLogout} style={{ background: 'red', color: 'white' }}>
         Logout

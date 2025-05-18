@@ -2,7 +2,20 @@
     "cSpell.words": [
         "adminbloglist",
         "admincreateblog",
+        "admindashboard",
         "admineditblog",
-        "Blogview"
+        "adminlogin",
+        "adminprice",
+        "adminshop",
+        "adminusers",
+        "Blogview",
+        "gigcreate",
+        "gigedit",
+        "gigview",
+        "paddyprice",
+        "profileedit",
+        "shopcreate",
+        "shopedit",
+        "shopview"
     ]
 }

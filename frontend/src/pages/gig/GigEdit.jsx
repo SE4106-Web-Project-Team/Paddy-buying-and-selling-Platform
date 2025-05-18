@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import "../../styles/gig/gigedit.css";
 
 const GigEdit = () => {
   const { id } = useParams(); // gig ID from URL
@@ -74,7 +75,7 @@ const GigEdit = () => {
           <strong>Current Image:</strong>
         </p>
         <img
-          src={`http://localhost:5000/uploads/${gig.image}`}
+          src={`http://localhost:5000/uploads/gigs/${gig.image}`}
           alt="Gig"
           style={{ width: 150 }}
         />

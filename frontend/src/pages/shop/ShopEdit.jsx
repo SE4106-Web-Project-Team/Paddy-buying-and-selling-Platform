@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import "../../styles/shop/shopedit.css";
 
 const ShopEdit = () => {
   const { id } = useParams(); // shop item ID from URL
@@ -24,7 +25,7 @@ const ShopEdit = () => {
         const { title, description, price, image } = res.data;
         setFormData({ title, description, price, image: null });
         if (image) {
-          setPreview(`http://localhost:5000/uploads/${image}`);
+          setPreview(`http://localhost:5000/uploads/shop/${image}`);
         }
 
       } catch (err) {

@@ -1,21 +1,22 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom"; // Add this
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import NavigationBar from "../../components/nav/NavigationBar";
 import "./../../styles/gig/gig.css";
 
 const Gig = () => {
   const [gigs, setGigs] = useState([]);
-  const navigate = useNavigate();
+  const [searchQuery, setSearchQuery] = useState(""); // 🔍 New: search state
+  const [currentPage, setCurrentPage] = useState(1);
+  const gigsPerPage = 16;
 
+  const navigate = useNavigate();
   const currentUser = JSON.parse(localStorage.getItem("user"));
   const currentUserId = currentUser?.id;
 
   const handleContactSeller = (sellerId, sellerName) => {
     navigate("/features/chat", {
-      state: {
-        sellerId,
-        sellerName,
-      },
+      state: { sellerId, sellerName },
     });
   };
 
@@ -32,52 +33,122 @@ const Gig = () => {
     fetchGigs();
   }, []);
 
+  // 🔍 Filter based on paddy_type or seller_name
+  const filteredGigs = gigs.filter((gig) =>
+    `${gig.paddy_type} ${gig.seller_name}`
+      .toLowerCase()
+      .includes(searchQuery.toLowerCase())
+  );
+
+  // Pagination logic
+  const indexOfLastGig = currentPage * gigsPerPage;
+  const indexOfFirstGig = indexOfLastGig - gigsPerPage;
+  const currentGigs = filteredGigs.slice(indexOfFirstGig, indexOfLastGig);
+
+  const totalPages = Math.ceil(filteredGigs.length / gigsPerPage);
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage((prev) => prev + 1);
+    }
+  };
+
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage((prev) => prev - 1);
+    }
+  };
+
   return (
     <div className="gig-page-wrapper">
-       <div className="gig-background-blur"></div>
+      <div className="gig-background-blur"></div>
       <div className="gig-list-container">
-      <h2>All Available Gigs</h2>
-      <div className="gig-list">
-        {gigs.length === 0 ? (
-          <p>No gigs available.</p>
-        ) : (
-          gigs.map((gig) => (
-            <div className="gig-card" key={gig.id}>
-              <img
-                src={`http://localhost:5000/uploads/${gig.image}`}
-                alt={gig.paddy_type}
-                style={{ width: "100%", maxWidth: 250 }}
-              />
-              <h3>{gig.paddy_type}</h3>
-              <p>
-                <strong>Price:</strong> Rs.{gig.price}
-              </p>
-              <p>
-                <strong>Quantity:</strong> {gig.quantity}kg
-              </p>
-              <p>
-                <strong>Seller:</strong> {gig.seller_name}
-              </p>
-              <p>
-                <strong>Province:</strong> {gig.province || "N/A"}
-              </p>
-              <p>
-                <strong>Phone:</strong> {gig.phoneNo || "N/A"}
-              </p>
-              <p>{gig.description}</p>
-              {currentUserId !== gig.user_id && (
-              <button
-                onClick={() =>
-                  handleContactSeller(gig.user_id, gig.seller_name)
-                }
-              >
-                Contact Seller
-              </button>
-              )}
-            </div>
-          ))
-        )}
-       </div>
+        <NavigationBar />
+        <p>
+          <a href="/">Back</a>
+        </p>
+        <h2>All Available Gigs</h2>
+
+        {/* 🔍 Search Input */}
+        <div style={{ textAlign: "center", marginBottom: "20px" }}>
+          <input
+            type="text"
+            placeholder="Search by paddy type or seller..."
+            value={searchQuery}
+            onChange={(e) => {
+              setSearchQuery(e.target.value);
+              setCurrentPage(1); // reset to first page on search
+            }}
+            style={{ padding: "5px", width: "300px" }}
+          />
+        </div>
+
+        <div className="gig-list">
+          {currentGigs.length === 0 ? (
+            <p>No matching gigs found.</p>
+          ) : (
+            currentGigs.map((gig) => (
+              <div className="gig-card" key={gig.id}>
+                <img
+                  src={`http://localhost:5000/uploads/gigs/${gig.image}`}
+                  alt={gig.paddy_type}
+                  style={{ width: "100%", maxWidth: 250 }}
+                />
+                <h3>{gig.paddy_type}</h3>
+                <p>
+                  <strong>Price:</strong> Rs.{gig.price}
+                </p>
+                <p>
+                  <strong>Quantity:</strong> {gig.quantity}kg
+                </p>
+                <p>
+                  <strong>Seller:</strong> {gig.seller_name}
+                </p>
+
+                {currentUserId !== gig.user_id && (
+                  <button
+                    onClick={() =>
+                      handleContactSeller(gig.user_id, gig.seller_name)
+                    }
+                  >
+                    Contact Seller
+                  </button>
+                )}
+
+                <button
+                  onClick={() => navigate(`/gig/${gig.id}`)}
+                  style={{ margin: "10px" }}
+                >
+                  Read More
+                </button>
+              </div>
+            ))
+          )}
+        </div>
+
+        {/* Pagination Controls */}
+        <div
+          className="pagination-controls"
+          style={{ marginTop: "20px", textAlign: "center" }}
+        >
+          <button
+            onClick={handlePrevPage}
+            disabled={currentPage === 1}
+            style={{ marginRight: "10px" }}
+          >
+            Previous
+          </button>
+          <span>
+            Page {currentPage} of {totalPages}
+          </span>
+          <button
+            onClick={handleNextPage}
+            disabled={currentPage === totalPages}
+            style={{ marginLeft: "10px" }}
+          >
+            Next
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -38,8 +38,8 @@ function NavigationBar() {
         <li><Link to="/gigs">Gigs</Link></li>
         <li><Link to="/shop">Shop</Link></li>
         <li><Link to="/blog">Blog</Link></li>
+        <li><Link to="/paddyprice">Paddy Prices</Link></li>
 
-        {/* Change Login to Profile if logged in */}
         <li>
           {isLoggedIn ? (
             <Link to="/profile">Profile</Link>
