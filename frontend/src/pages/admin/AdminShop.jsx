@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import AdminDashboard from "./AdminDashboard";
 import "../../styles/admin/adminshop.css";
 
 const AdminShop = () => {
@@ -46,10 +47,10 @@ const AdminShop = () => {
 
   return (
     <div className="admin-container">
-      <p>
-        <a href="/admin/dashboard">Back</a>
-      </p>
-      <h2>Manage Shop Items</h2>
+      <div style={{display: "flex"}}>
+        <AdminDashboard />
+        <div>
+                <h2>Manage Shop Items</h2>
       <input
         type="text"
         placeholder="Search by seller name..."
@@ -86,6 +87,9 @@ const AdminShop = () => {
         >
           Next
         </button>
+      </div>
+
+        </div>
       </div>
     </div>
   );

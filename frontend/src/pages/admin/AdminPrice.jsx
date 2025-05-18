@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import AdminDashboard from "./AdminDashboard";
 import "../../styles/admin/adminprice.css";
 
 const ITEMS_PER_PAGE = 25;
@@ -84,80 +85,82 @@ const AdminPrice = () => {
 
   return (
     <div className="admin-price-container" style={{ padding: "20px" }}>
-      <p>
-        <a href="/admin/dashboard">Back</a>
-      </p>
-      <h2>Manage Paddy Prices</h2>
+      <div style={{ display: "flex" }}>
+        <AdminDashboard />
+        <div>
+          <h2>Manage Paddy Prices</h2>
 
-      <form onSubmit={handleSubmit} style={{ marginBottom: "20px" }}>
-        <input
-          type="text"
-          placeholder="Paddy Type"
-          value={paddyType}
-          onChange={(e) => setPaddyType(e.target.value)}
-          required
-        />
-        <input
-          type="number"
-          placeholder="Price (Rs.)"
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
-          required
-        />
-        <button type="submit">{editingId ? "Update" : "Add"}</button>
-      </form>
+          <form onSubmit={handleSubmit} style={{ marginBottom: "20px" }}>
+            <input
+              type="text"
+              placeholder="Paddy Type"
+              value={paddyType}
+              onChange={(e) => setPaddyType(e.target.value)}
+              required
+            />
+            <input
+              type="number"
+              placeholder="Price (Rs.)"
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
+              required
+            />
+            <button type="submit">{editingId ? "Update" : "Add"}</button>
+          </form>
 
-      {/* 🔍 Search bar */}
-      <input
-        type="text"
-        placeholder="Search by paddy type..."
-        value={searchQuery}
-        onChange={(e) => {
-          setSearchQuery(e.target.value);
-          setCurrentPage(1); // Reset to page 1 on search
-        }}
-        style={{ marginBottom: "15px", padding: "5px", width: "250px" }}
-      />
+          {/* 🔍 Search bar */}
+          <input
+            type="text"
+            placeholder="Search by paddy type..."
+            value={searchQuery}
+            onChange={(e) => {
+              setSearchQuery(e.target.value);
+              setCurrentPage(1); // Reset to page 1 on search
+            }}
+            style={{ marginBottom: "15px", padding: "5px", width: "250px" }}
+          />
 
-      <ul>
-        {currentPrices.length === 0 ? (
-          <p>No matching paddy types found.</p>
-        ) : (
-          currentPrices.map((entry) => (
-            <li key={entry.id} style={{ marginBottom: "20px" }}>
-              <p>
-                <strong>{entry.paddy_type}</strong>: Rs. {entry.price}
-              </p>
-              <button onClick={() => handleEdit(entry)}>Edit</button>
+          <ul>
+            {currentPrices.length === 0 ? (
+              <p>No matching paddy types found.</p>
+            ) : (
+              currentPrices.map((entry) => (
+                <li key={entry.id} style={{ marginBottom: "20px" }}>
+                  <p>
+                    <strong>{entry.paddy_type}</strong>: Rs. {entry.price}
+                  </p>
+                  <button onClick={() => handleEdit(entry)}>Edit</button>
+                  <button
+                    onClick={() => handleDelete(entry.id)}
+                    style={{ marginLeft: "10px" }}
+                  >
+                    Delete
+                  </button>
+                </li>
+              ))
+            )}
+          </ul>
+
+          {/* Pagination Controls */}
+          {totalPages > 1 && (
+            <div style={{ marginTop: "20px" }}>
               <button
-                onClick={() => handleDelete(entry.id)}
-                style={{ marginLeft: "10px" }}
+                onClick={() => goToPage(currentPage - 1)}
+                disabled={currentPage === 1}
               >
-                Delete
+                Prev
+              </button>{" "}
+              Page {currentPage} of {totalPages}{" "}
+              <button
+                onClick={() => goToPage(currentPage + 1)}
+                disabled={currentPage === totalPages}
+              >
+                Next
               </button>
-            </li>
-          ))
-        )}
-      </ul>
-
-      {/* Pagination Controls */}
-      {totalPages > 1 && (
-        <div style={{ marginTop: "20px" }}>
-          <button
-            onClick={() => goToPage(currentPage - 1)}
-            disabled={currentPage === 1}
-          >
-            Prev
-          </button>{" "}
-          Page {currentPage} of {totalPages}{" "}
-          <button
-            onClick={() => goToPage(currentPage + 1)}
-            disabled={currentPage === totalPages}
-          >
-            Next
-          </button>
+            </div>
+          )}
         </div>
-      )}
+      </div>
     </div>
   );
 };
