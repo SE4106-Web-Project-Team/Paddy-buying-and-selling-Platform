@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import AdminDashboard from "./AdminDashboard";
 import "../../styles/admin/adminusers.css";
 
 const AdminUsers = () => {
@@ -44,44 +45,46 @@ const AdminUsers = () => {
 
   return (
     <div>
-      <p>
-        <a href="/admin/dashboard">Back</a>
-      </p>
-      <h2>All Users</h2>
-      <input
-        type="text"
-        placeholder="Search by name"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
-      <ul>
-        {filteredUsers.map((user) => (
-          <li key={user.id}>
-            {user.name}
-            <br /> ({user.email})
-            <button
-              onClick={() => handleDelete(user.id)}
-              style={{ marginLeft: "10px" }}
-            >
-              Delete
-            </button>
-          </li>
-        ))}
-      </ul>
+      <div style={{ display: "flex" }}>
+        <AdminDashboard />
+        <div>
+          <h2>All Users</h2>
+          <input
+            type="text"
+            placeholder="Search by name"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          <ul>
+            {filteredUsers.map((user) => (
+              <li key={user.id}>
+                {user.name}
+                <br /> ({user.email})
+                <button
+                  onClick={() => handleDelete(user.id)}
+                  style={{ marginLeft: "10px" }}
+                >
+                  Delete
+                </button>
+              </li>
+            ))}
+          </ul>
 
-      <div className="pagination">
-        <button onClick={() => goToPage(page - 1)} disabled={page === 1}>
-          Prev
-        </button>
-        <span>
-          Page {page} of {totalPages}
-        </span>
-        <button
-          onClick={() => goToPage(page + 1)}
-          disabled={page === totalPages}
-        >
-          Next
-        </button>
+          <div className="pagination">
+            <button onClick={() => goToPage(page - 1)} disabled={page === 1}>
+              Prev
+            </button>
+            <span>
+              Page {page} of {totalPages}
+            </span>
+            <button
+              onClick={() => goToPage(page + 1)}
+              disabled={page === totalPages}
+            >
+              Next
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
