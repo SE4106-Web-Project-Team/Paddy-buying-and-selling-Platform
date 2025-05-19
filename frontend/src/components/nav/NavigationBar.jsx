@@ -1,6 +1,6 @@
-// src/components/NavigationBar.jsx
+// NavigationBar.jsx
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "../../styles/home/navBar.css";
 
 function NavigationBar() {
@@ -8,43 +8,111 @@ function NavigationBar() {
   const [selected, setSelected] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  // Check login status on mount
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    setIsLoggedIn(!!token); // true if token exists
+    setIsLoggedIn(!!localStorage.getItem("token"));
   }, []);
 
   const handleChange = (e) => {
     const url = e.target.value;
-    if (url) {
-      navigate(url);
-    }
+    if (url) navigate(url);
   };
 
   return (
     <nav>
-      <h1>PADDY PLATFORM</h1>
+      <h1 onClick={() => navigate("/")}>PADDY PLATFORM</h1>
       <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/about">About</Link></li>
         <li>
-          <select value={selected} onChange={handleChange}>
+          <NavLink
+            to="/"
+            end
+            className={({ isActive }) =>
+              isActive ? "nav-link active" : "nav-link"
+            }
+          >
+            Home
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/about"
+            className={({ isActive }) =>
+              isActive ? "nav-link active" : "nav-link"
+            }
+          >
+            About
+          </NavLink>
+        </li>
+        <li>
+          <select
+            value={selected}
+            onChange={handleChange}
+            className="nav-select"
+          >
             <option value="">Features</option>
             <option value="/features/weather">Weather</option>
             <option value="/features/chat">Chat</option>
             <option value="/features/chatbot">Chatbot</option>
           </select>
         </li>
-        <li><Link to="/gigs">Gigs</Link></li>
-        <li><Link to="/shop">Shop</Link></li>
-        <li><Link to="/blog">Blog</Link></li>
-        <li><Link to="/paddyprice">Paddy Prices</Link></li>
-
         <li>
+          <NavLink
+            to="/gigs"
+            className={({ isActive }) =>
+              isActive ? "nav-link active" : "nav-link"
+            }
+          >
+            Gigs
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/shop"
+            className={({ isActive }) =>
+              isActive ? "nav-link active" : "nav-link"
+            }
+          >
+            Shop
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/blog"
+            className={({ isActive }) =>
+              isActive ? "nav-link active" : "nav-link"
+            }
+          >
+            Blog
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/paddyprice"
+            className={({ isActive }) =>
+              isActive ? "nav-link active" : "nav-link"
+            }
+          >
+            Paddy Prices
+          </NavLink>
+        </li>
+        <li className="nav-login">
           {isLoggedIn ? (
-            <Link to="/profile">Profile</Link>
+            <NavLink
+              to="/profile"
+              className={({ isActive }) =>
+                isActive ? "nav-link active" : "nav-link"
+              }
+            >
+              Profile
+            </NavLink>
           ) : (
-            <Link to="/login">Login</Link>
+            <NavLink
+              to="/login"
+              className={({ isActive }) =>
+                isActive ? "nav-link active" : "nav-link"
+              }
+            >
+              Login
+            </NavLink>
           )}
         </li>
       </ul>
