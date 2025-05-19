@@ -148,7 +148,7 @@ router.put("/blogs/:id", upload.single("image"), async (req, res) => {
 router.get("/users", async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1;
-    const limit = 50;
+    const limit = 5;
     const offset = (page - 1) * limit;
 
     const [countResult] = await dbPromise.query(
@@ -188,7 +188,7 @@ router.delete("/users/:id", async (req, res) => {
 // Get all gigs
 router.get("/gigs", (req, res) => {
   const page = parseInt(req.query.page) || 1;
-  const limit = 50;
+  const limit = 10;
   const offset = (page - 1) * limit;
 
   const countQuery = `
@@ -233,7 +233,7 @@ router.delete("/gigs/:id", async (req, res) => {
 // Get all shop items
 router.get("/shop", (req, res) => {
   const page = parseInt(req.query.page) || 1;
-  const limit = 50;
+  const limit = 10;
   const offset = (page - 1) * limit;
 
   const countQuery = `SELECT COUNT(*) AS total FROM shops`;
