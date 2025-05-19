@@ -1,0 +1,157 @@
+/* blog.css */
+
+.blog-container {
+  position: relative;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+}
+
+.blog-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-image: url('../../resources/images/ProfileEdit/background2.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: blur(8px);
+  z-index: -1;
+}
+
+.blog-cont{
+    background-color: rgba(255, 255, 255, 0.292);
+    padding: 30px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08);
+    margin: 30px;
+
+}
+.blog-cont:hover{
+    background-color: rgba(255, 255, 255, 0.44);
+}
+.blog-container h2 {
+  text-align: center;
+  font-size: 36px;
+  color: #2e2e2e;
+  margin-bottom: 2rem;
+  font-weight: bold;
+}
+
+.back-link {
+  padding: 5px;
+  background-color: rgb(20, 20, 188);
+  margin: 1rem 2rem;
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.search-bar {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.search-bar input {
+  padding: 10px 15px;
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.search-bar input:focus {
+  outline: none;
+  border-color: #28a745;
+}
+
+.blog-card {
+  background-color: rgba(255, 255, 255, 0.95);
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+  margin: 0 auto 20px;
+  width: 80%;
+  transition: transform 0.3s ease;
+}
+
+.blog-card:hover {
+  transform: translateY(-4px);
+  border-color: #28a745;
+}
+
+.blog-card h3 {
+  font-size: 24px;
+  color: #2f2f2f;
+  margin-bottom: 10px;
+}
+
+.blog-card-content {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.blog-card img {
+  width: 200px;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.blog-card p {
+  text-align: justify;
+  font-size: 16px;
+  color: #555;
+}
+
+.blog-card button {
+  margin-top: 10px;
+  background-color: #28a745;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border: none;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.blog-card button:hover {
+  background-color: #218838;
+}
+
+.pagination-controls {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.pagination-controls button {
+  padding: 8px 16px;
+  margin: 0 10px;
+  border-radius: 6px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.pagination-controls button:disabled {
+  background-color: #b0c4de;
+  cursor: not-allowed;
+}
+
+.pagination-controls span {
+  margin: 0 10px;
+  font-weight: bold;
+  font-size: 16px;
+}
