@@ -62,26 +62,20 @@ const Shop = () => {
     <div className="shop-container">
       <NavigationBar />
       <p>
-        <a href="/">Back</a>
+        <a href="/" className="Back-link">Back</a>
       </p>
       <div className="shop-cont">
         <h2>Shop Items</h2>
 
       {/* Search Input */}
-      <div style={{ textAlign: "center", marginBottom: "20px" }}>
-        <input
+      <div className="search-wrapper">
+        <input className="search-input"
           type="text"
           placeholder="Search by title..."
           value={searchTerm}
           onChange={(e) => {
             setSearchTerm(e.target.value);
             setCurrentPage(1); // Reset to first page on new search
-          }}
-          style={{
-            padding: "8px",
-            width: "250px",
-            borderRadius: "5px",
-            border: "1px solid #ccc",
           }}
         />
       </div>
