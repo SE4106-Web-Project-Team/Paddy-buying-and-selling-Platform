@@ -11,7 +11,7 @@ function About() {
       <p>
         <a href="/">Back</a>
       </p>
-      <h2>About Page</h2>
+      <h2 className="hh">About Page</h2>
       <p>This is the About page for Paddy Platform.</p>
     </div>
   );
