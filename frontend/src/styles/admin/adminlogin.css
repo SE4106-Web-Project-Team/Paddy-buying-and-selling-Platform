@@ -1,0 +1,103 @@
+/* adminlogin.css */
+
+/* Full‐screen gray background & center the card */
+.admin-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #edf1f3; /* very light gray-blue */
+  padding: 1rem;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* The white login card */
+.admin-login .login-card {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  padding: 2.5rem 2rem;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.admin-login .login-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+}
+
+/* Title */
+.admin-login h2 {
+  margin-bottom: 1.75rem;
+  font-size: 1.875rem;
+  color: #2c3e50;
+  letter-spacing: 0.5px;
+}
+
+/* Error text */
+.admin-login p.error {
+  color: #e74c3c;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  text-align: left;
+}
+
+/* Form layout */
+.admin-login form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Shared input styles */
+.admin-login input[type="email"],
+.admin-login input[type="password"] {
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.25rem;
+  border: 1px solid #cbd2d6;
+  border-radius: 6px;
+  background-color: #f7f9fa;
+  transition: border-color 0.2s, background-color 0.2s;
+  width: 90%;
+}
+
+.admin-login input[type="email"]::placeholder,
+.admin-login input[type="password"]::placeholder {
+  color: #7a8a99;
+}
+
+/* Focus state */
+.admin-login input:focus {
+  outline: none;
+  border-color: #2980b9;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(41, 128, 185, 0.2);
+}
+
+/* Submit button */
+.admin-login button[type="submit"] {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ecf0f1; /* light text */
+  background-color: #2c3e50; /* dark nav color */
+  border: none;
+  border-radius: 6px;
+  padding: 0.75rem;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.admin-login button[type="submit"]:hover {
+  background-color: #1a242f;
+  transform: translateY(-1px);
+}
+
+/* Responsive tweak */
+@media (max-width: 440px) {
+  .admin-login .login-card {
+    padding: 2rem 1.5rem;
+  }
+}
