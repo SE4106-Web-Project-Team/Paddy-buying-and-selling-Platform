@@ -8,7 +8,7 @@ const Blog = () => {
   const [blogs, setBlogs] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState(""); // 🔍 New: search state
-  const blogsPerPage = 10;
+  const blogsPerPage = 5;
 
   useEffect(() => {
     const fetchBlogs = async () => {
