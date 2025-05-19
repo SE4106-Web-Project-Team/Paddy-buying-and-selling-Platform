@@ -64,7 +64,8 @@ const Shop = () => {
       <p>
         <a href="/">Back</a>
       </p>
-      <h2>Shop Items</h2>
+      <div className="shop-cont">
+        <h2>Shop Items</h2>
 
       {/* Search Input */}
       <div style={{ textAlign: "center", marginBottom: "20px" }}>
@@ -144,6 +145,8 @@ const Shop = () => {
           Next
         </button>
       </div>
+      </div>
+      
     </div>
   );
 };
