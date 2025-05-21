@@ -28,13 +28,7 @@
   font-weight: bold;
 }
 
-.gig-list-container a {
-  padding: 5px 10px;
-  color: white;
-  background-color: rgb(5, 106, 32);
-  border-radius: 4px;
-  text-decoration: none;
-}
+
 
 .gig-search-box {
   text-align: center;
