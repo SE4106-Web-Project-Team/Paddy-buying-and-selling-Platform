@@ -65,12 +65,12 @@ const Gig = () => {
       <div className="gig-list-container">
         <NavigationBar />
         <p>
-          <a href="/">Back</a>
+          <a href="/" className="Back-link">Back</a>
         </p>
         <h2>All Available Gigs</h2>
 
-        {/* 🔍 Search Input */}
-        <div style={{ textAlign: "center", marginBottom: "20px" }}>
+        {/*  Search Input */}
+        <div className="gig-search-box">
           <input
             type="text"
             placeholder="Search by paddy type or seller..."
@@ -79,7 +79,7 @@ const Gig = () => {
               setSearchQuery(e.target.value);
               setCurrentPage(1); // reset to first page on search
             }}
-            style={{ padding: "5px", width: "300px" }}
+            
           />
         </div>
 
@@ -92,7 +92,7 @@ const Gig = () => {
                 <img
                   src={`http://localhost:5000/uploads/gigs/${gig.image}`}
                   alt={gig.paddy_type}
-                  style={{ width: "100%", maxWidth: 250 }}
+                  className="gig-image"
                 />
                 <h3>{gig.paddy_type}</h3>
                 <p>
@@ -127,24 +127,21 @@ const Gig = () => {
         </div>
 
         {/* Pagination Controls */}
-        <div
-          className="pagination-controls"
-          style={{ marginTop: "20px", textAlign: "center" }}
-        >
+        <div className="pagination-controls" >
           <button
             onClick={handlePrevPage}
             disabled={currentPage === 1}
-            style={{ marginRight: "10px" }}
+            className="pagination-btn"
           >
             Previous
           </button>
-          <span>
+          <span className="page-info">
             Page {currentPage} of {totalPages}
           </span>
           <button
             onClick={handleNextPage}
             disabled={currentPage === totalPages}
-            style={{ marginLeft: "10px" }}
+            className="pagination-btn"
           >
             Next
           </button>

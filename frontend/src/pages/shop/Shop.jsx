@@ -69,7 +69,7 @@ const Shop = () => {
 
       {/* Search Input */}
       <div className="search-wrapper">
-        <input className="search-input"
+        <input
           type="text"
           placeholder="Search by title..."
           value={searchTerm}

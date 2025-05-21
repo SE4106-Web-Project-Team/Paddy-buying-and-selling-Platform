@@ -41,7 +41,7 @@
 .Back-link {
   padding: 5px 10px;
   color: white;
-  background-color: rgb(20, 20, 188);
+  background-color: rgb(5, 106, 32);
   border-radius: 4px;
   text-decoration: none;
 }
@@ -51,10 +51,10 @@
   margin-bottom: 2rem;
 }
 
-.search-input {
+input {
   padding: 8px;
   width: 250px;
-  border-radius: 5px;
+  border-radius: 10px;
   border: 1px solid #ccc;
 }
 
