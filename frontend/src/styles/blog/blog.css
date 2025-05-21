@@ -41,7 +41,7 @@
 
 .back-link {
   padding: 5px;
-  background-color: rgb(20, 20, 188);
+  background-color: rgb(5, 106, 32);
   margin: 1rem 2rem;
   display: inline-block;
   color: white;
@@ -138,7 +138,7 @@
   padding: 8px 16px;
   margin: 0 10px;
   border-radius: 6px;
-  background-color: #007bff;
+  background-color: #055e3d;;
   color: white;
   border: none;
   font-weight: 500;
