@@ -1,0 +1,127 @@
+/* ========================================================================
+   navBar.css
+   ======================================================================== */
+
+/* 1) Base reset on <nav> and direct child for centering & layout */
+nav {
+  display: flex;
+  justify-content: space-between; /* push h1 & ul apart */
+  align-items: center;
+  padding: 0.5rem 1rem;
+  position: sticky;
+  top: 0;
+  background: #f5f7f2;
+  border-bottom: 2px solid #ccd9b9;
+  z-index: 999;
+  display: flex;
+}
+
+nav > div,
+nav > section {
+  /* you might wrap your <h1> & <ul> in a div or section for better semantics */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: visible; /* allow dropdown to bleed out */
+}
+
+/* 2) Logo / Brand on left */
+nav h1 {
+  margin: 0;
+  padding-top: 1rem;
+  font-size: 1.75rem;
+  color: #2c5f2d;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+}
+nav h1:hover {
+  color: #3e7a4b;
+}
+
+/* 3) Main menu UL */
+nav ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  list-style: none;
+  justify-content: right;
+  overflow: visible; /* ensure dropdown isn’t clipped */
+}
+
+/* 4) Menu items */
+nav ul li {
+  margin-left: 1.5rem;
+  position: relative;
+}
+
+/* 5) Common link + select styling */
+nav ul li > a,
+nav ul li > select {
+  font-family: inherit;
+  font-size: 1rem;
+  color: #2c5f2d;
+  text-decoration: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  background: transparent;
+  transition: background 0.2s, color 0.2s;
+  cursor: pointer;
+}
+
+/* Hover state for links */
+nav ul li > a:hover {
+  background: #d1e7c0;
+  color: #1b3b1a;
+}
+
+/* Current active link */
+nav ul li > a.active {
+  background: #2c5f2d; /* Dark green background */
+  color: #ffffff; /* White text */
+  font-weight: bold;
+}
+
+/* 6) Feature dropdown styling */
+nav ul li > select {
+  appearance: none; /* remove native arrow */
+  background: #ffffff /* white background */
+    url("data:image/svg+xml,%3Csvg width='10' height='6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%232c5f2d'/%3E%3C/svg%3E")
+    no-repeat right 0.75rem center;
+  background-size: 10px 6px;
+  border: 1px solid #ccd9b9;
+  padding: 0.5rem 2rem 0.5rem 0.75rem; /* space for arrow */
+  z-index: 2000; /* sit on top */
+}
+
+/* Focus & hover on select */
+nav ul li > select:focus,
+nav ul li > select:hover {
+  outline: none;
+  border-color: #8aab7a;
+  box-shadow: 0 0 0 3px rgba(138, 171, 122, 0.2);
+}
+
+/* 7) Push login/profile far right */
+nav ul li.nav-login {
+  margin-left: 2rem;
+  order: 99;
+}
+
+/* 8) Responsive: collapse into two rows on small screens */
+@media (max-width: 768px) {
+  nav > div {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  nav ul {
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+  }
+  nav ul li {
+    margin: 0.5rem 0.75rem 0.25rem 0;
+  }
+}

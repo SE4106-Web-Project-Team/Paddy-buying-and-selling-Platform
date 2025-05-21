@@ -182,7 +182,7 @@ const Profile = () => {
                 setGigSearchTerm(e.target.value);
                 setGigPage(1); // Reset to first page on new search
               }}
-              style={{ marginBottom: "10px", padding: "5px", width: "60%" }}
+              
             />
             <ul>
               {paginatedGigs.map((gig) => (
@@ -250,7 +250,7 @@ const Profile = () => {
                 setShopSearchTerm(e.target.value);
                 setShopPage(1); // Reset to first page on new search
               }}
-              style={{ marginBottom: "10px", padding: "5px", width: "60%" }}
+              
             />
 
             <ul>

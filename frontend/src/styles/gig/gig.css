@@ -1,38 +1,45 @@
 /* gig.css */
 .gig-page-wrapper {
   position: relative;
-  overflow: hidden;
   min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
 }
 
 .gig-background-blur {
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: url('../../resources/images/Gig/profile-bg2.jpeg');
+  height: 100%;
+  width: 100%;
+  background-image: url('../../resources/images/ProfileEdit/background2.jpg');
   background-size: cover;
   background-position: center;
   filter: blur(8px);
-  z-index: 0;
+  z-index: -1;
 }
-
-.gig-list-container {
-  position: relative;
-  z-index: 1;
-  padding: 2rem;
-  min-height: 100vh;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
 
 .gig-list-container h2 {
   text-align: center;
   margin-bottom: 2rem;
-  color: #333333fb;
-  font-weight: bolder;
-  font-size: 35px;
+  color: #2f2f2f;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+
+
+.gig-search-box {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.gig-search-box input {
+  padding: 8px;
+  width: 250px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
 }
 
 .gig-list {
@@ -43,23 +50,14 @@
 }
 
 .gig-card {
-  background: #ffffff6c;
+  background-color: rgba(255, 255, 255, 0.778);
   border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-  width: 300px;
-  padding: 0.8rem;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  width: 280px;
+  padding: 1.5rem;
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
-.gig-card:hover {
-  border: #28a745 3px solid;
-  background-color: rgba(255, 255, 255, 0.763);
-  transform: translateY(-5px);
-  box-shadow: 0 12px 24px rgba(0,0,0,0.15);
-}
-
-
 
 .gig-card img {
   width: 100%;
@@ -71,15 +69,14 @@
 
 .gig-card h3 {
   font-size: 20px;
-  margin-bottom: 0.5rem;
   color: #2c3e50;
+  margin-bottom: 0.5rem;
 }
 
 .gig-card p {
-  margin: 0.3rem 0;
-  font-size: 0.95rem;
+  font-size: 16px;
   color: #555;
-  font-size: 18px;
+  margin: 0.3rem 0;
 }
 
 .gig-card button {
@@ -92,8 +89,44 @@
   cursor: pointer;
   font-weight: 500;
   transition: background-color 0.3s ease;
+  margin-right: 5px;
 }
 
 .gig-card button:hover {
   background-color: #218838;
+}
+
+.pagination-controls {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.pagination-btn {
+  padding: 8px 16px;
+  margin: 0 5px;
+  border-radius: 6px;
+  background-color: #055e3d;
+  color: white;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.pagination-btn:disabled {
+  background-color: #b0c4de;
+  cursor: not-allowed;
+}
+
+.page-info {
+  font-size: 16px;
+  color: #444;
+  margin: 0 10px;
+}
+
+.Back-link {
+  padding: 5px 10px;
+  color: white;
+  background-color: rgb(5, 106, 32);
+  border-radius: 4px;
+  text-decoration: none;
 }
