@@ -76,6 +76,8 @@ const ShopEdit = () => {
   };
 
   return (
+  <>
+    <div className="shop-edit-background"></div>
     <div className="shop-edit-container">
       <h2>Edit Shop Item</h2>
       <form onSubmit={handleSubmit}>
@@ -110,15 +112,17 @@ const ShopEdit = () => {
         {preview && (
           <div>
             <p>Image Preview:</p>
-            <img src={preview} alt="preview" width="200" />
+            <img src={preview} alt="preview" className="preview-img" />
           </div>
         )}
-        <button type="submit">Update</button>
+        <button classname="shop-edit-button" type="submit">Update</button>
         <p>
-          <a href="/profile">Cancel</a>
+          <a href="/profile" classname="cancel-link">Cancel</a>
         </p>
       </form>
     </div>
+  </>
+
   );
 };
 

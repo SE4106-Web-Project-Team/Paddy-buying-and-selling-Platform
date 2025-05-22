@@ -69,6 +69,7 @@ const GigEdit = () => {
 
   return (
     <div className="gig-edit-container">
+      <div className="gig-edit-background"></div>
       <h2>Edit Gig</h2>
       <form onSubmit={handleUpdate} encType="multipart/form-data">
         <p>
@@ -77,7 +78,7 @@ const GigEdit = () => {
         <img
           src={`http://localhost:5000/uploads/gigs/${gig.image}`}
           alt="Gig"
-          style={{ width: 150 }}
+          className="gig-image"
         />
         <input type="file" onChange={(e) => setImage(e.target.files[0])} />
         <input
@@ -107,9 +108,9 @@ const GigEdit = () => {
           placeholder="Description"
           rows={3}
         ></textarea>
-        <button type="submit">Update Gig</button>
+        <button className="gig-edit-button" type="submit">Update Gig</button>
         <p>
-          <a href="/profile">Cancel</a>
+          <a href="/profile" className="cancel-link">Cancel</a>
         </p>
       </form>
     </div>
