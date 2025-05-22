@@ -1,7 +1,7 @@
 // src/pages/Profile.jsx
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "../../styles/Profile/Profile.css";
+import "../../styles/profile/Profile.css";
 
 const ITEMS_PER_PAGE = 6;
 
