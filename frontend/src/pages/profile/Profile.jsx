@@ -129,47 +129,67 @@ const Profile = () => {
   return (
     <div className="full-container">
       <div className="profile-container">
+        <p>
+          <a
+            className="back-link"
+            style={{ color: "#fff", fontSize: "14px" }}
+            href="/"
+          >
+            Back
+          </a>
+        </p>
         <h2>My Profile</h2>
-        {user.profilePicture && (
-          <img
-            src={`http://localhost:5000/uploads/profile/${user.profilePicture}`}
-            alt="Profile"
-            style={{ width: 150, borderRadius: "50%" }}
-          />
-        )}
+        <div className="profile-box" style={{ display: "flex" }}>
+          <div className="profile-box-left" alt="left">
+            {user.profilePicture && (
+              <img
+                src={`http://localhost:5000/uploads/profile/${user.profilePicture}`}
+                alt="Profile"
+              />
+            )}
+          </div>
 
-        <p>
-          <strong>Name:</strong> {user.name}
-        </p>
-        <p>
-          <strong>Profile Type:</strong> {user.profileType}
-        </p>
-        <p>
-          <strong>Phone Number:</strong> {user.phoneNo || "N/A"}
-        </p>
-        <p>
-          <strong>Province:</strong> {user.province || "N/A"}
-        </p>
-        <p>
-          <strong>Description:</strong> {user.description || "N/A"}
-        </p>
+          <div className="profile-box-right" alt="right">
+            <p>
+              <strong>Name:</strong> {user.name}
+            </p>
+            <p>
+              <strong>Profile Type:</strong> {user.profileType}
+            </p>
+            <p>
+              <strong>Phone Number:</strong> {user.phoneNo || "N/A"}
+            </p>
+            <p>
+              <strong>Province:</strong> {user.province || "N/A"}
+            </p>
+            <p>
+              <strong>Description:</strong> {user.description || "N/A"}
+            </p>
 
-        <a href="/profile/edit">Edit Profile</a>
-        <br />
-        <br />
-        <a href="/gig/create">Create Gig</a>
-        <br />
-        <br />
-        <a href="/shop/create">Create Shop Item</a>
-        <br />
-        <br />
-        <button onClick={handleLogout}>Logout</button>
-        <p>
-          <a href="/">Back</a>
-        </p>
+            <a
+              className="profile-create-btn"
+              href="/profile/edit"
+              style={{ color: "#fff", fontSize: "14px", float: "left" }}
+            >
+              Edit Profile
+            </a>
+            <br />
+            <br />
+            <div alt="buttons" style={{ float: "right" }}>
+              <button onClick={handleLogout}>Logout</button>
+            </div>
+          </div>
+        </div>
 
         <hr />
         <h3>My Gigs</h3>
+        <a
+          className="profile-create-btn"
+          href="/gig/create"
+          style={{ color: "#fff", fontSize: "14px" }}
+        >
+          Create Gig
+        </a>
         {gigs.length === 0 ? (
           <p>No gigs found.</p>
         ) : (
@@ -182,8 +202,8 @@ const Profile = () => {
                 setGigSearchTerm(e.target.value);
                 setGigPage(1); // Reset to first page on new search
               }}
-              
             />
+
             <ul>
               {paginatedGigs.map((gig) => (
                 <li key={gig.id} style={{ marginBottom: "20px" }}>
@@ -201,15 +221,16 @@ const Profile = () => {
                   <p>
                     <strong>Quantity:</strong> {gig.quantity} kg
                   </p>
-                  <a href={`/gig/edit/${gig.id}`}>
-                    <button>Edit</button>
-                  </a>
+
                   <button
                     onClick={() => handleDelete(gig.id)}
                     style={{ marginLeft: "10px" }}
                   >
                     Delete
                   </button>
+                  <a href={`/gig/edit/${gig.id}`}>
+                    <button>Edit</button>
+                  </a>
                 </li>
               ))}
             </ul>
@@ -238,6 +259,13 @@ const Profile = () => {
 
         <hr />
         <h3>My Shop Items</h3>
+        <a
+          className="profile-create-btn"
+          href="/shop/create"
+          style={{ color: "#fff", fontSize: "14px" }}
+        >
+          Create Shop Item
+        </a>
         {shopItems.length === 0 ? (
           <p>No shop items found.</p>
         ) : (
@@ -250,7 +278,6 @@ const Profile = () => {
                 setShopSearchTerm(e.target.value);
                 setShopPage(1); // Reset to first page on new search
               }}
-              
             />
 
             <ul>
@@ -267,15 +294,16 @@ const Profile = () => {
                   <p>
                     <strong>Price:</strong> Rs. {item.price}
                   </p>
-                  <a href={`/shop/edit/${item.id}`}>
-                    <button>Edit</button>
-                  </a>
+
                   <button
                     onClick={() => handleDeleteShopItem(item.id)}
                     style={{ marginLeft: "10px" }}
                   >
                     Delete
                   </button>
+                  <a href={`/shop/edit/${item.id}`}>
+                    <button>Edit</button>
+                  </a>
                 </li>
               ))}
             </ul>
