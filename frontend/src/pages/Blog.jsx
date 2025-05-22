@@ -46,15 +46,15 @@ const Blog = () => {
   return (
     <div className="blog-container">
       <NavigationBar />
-      <p>
+      <div className="blog-cont">
+        <p>
         <a href="/" className="back-link">Back</a>
       </p>
-      <div className="blog-cont">
         <h2>Blog Posts</h2>
 
       {/* 🔍 Search input */}
       <div className="search-bar" >
-        <input
+        <input className="search-bar-input"
           type="text"
           placeholder="Search blog by title..."
           value={searchQuery}
