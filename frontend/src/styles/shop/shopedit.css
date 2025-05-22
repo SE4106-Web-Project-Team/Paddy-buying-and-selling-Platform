@@ -1,79 +1,79 @@
-/* src/styles/ShopEdit/ShopEdit.css */
+/* shopedit.css */
 
-.shop-page {
+.shop-edit-background {
   background-image: url('../../resources/images/ProfileEdit/background2.jpg');
   background-size: cover;
   background-position: center;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  }
-  
-  .shop-form {
-    background: rgba(255, 255, 255, 0.8);
-    padding: 2rem;
-    border-radius: 1rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    width: 350px;
-    text-align: center;
-  }
-  
-  .shop-title {
-    margin-bottom: 20px;
-    color: #2c3e50;
-    font-size: 22px;
-  }
-  
-  .shop-image-section {
-    margin-bottom: 20px;
-  }
-  
-  .shop-img {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 2px solid #16a085;
-  }
-  
-  .shop-upload {
-    cursor: pointer;
-    display: inline-block;
-    position: relative;
-  }
-  
-  .edit-icon {
-    position: absolute;
-    bottom: 0;
-    right: -5px;
-    background: #16a085;
-    color: white;
-    border-radius: 50%;
-    padding: 5px;
-    font-size: 12px;
-  }
-  
-  form input,
-  form textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 12px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  button {
-    background-color: #16a085;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: bold;
-  }
-  
-  button:hover {
-    background-color: #138d75;
-  }
-  
+  filter: blur(8px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: -1;
+}
+
+.shop-edit-container form {
+  position: relative;
+  z-index: 1;
+  max-width: 500px;
+  margin: 50px auto;
+  background-color: rgba(255, 255, 255, 0.285);
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.shop-edit-container form:hover {
+  background-color: rgba(255, 255, 255, 0.56);
+}
+
+.shop-edit-container h2 {
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.shop-edit-container input,
+.shop-edit-container textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.shop-edit-container button {
+  width: 100%;
+  background-color: #28a745;
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.shop-edit-container button:hover {
+  background-color: #218838;
+}
+
+.shop-edit-container a {
+  display: inline-block;
+  margin-top: 10px;
+  text-align: center;
+  color: white;
+  text-decoration: none;
+}
+
+.shop-edit-container a:hover {
+  text-decoration: underline;
+}
+
+.preview-img {
+  display: block;
+  margin: 15px auto;
+  width: 200px;
+  border-radius: 8px;
+}
