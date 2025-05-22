@@ -48,37 +48,39 @@ const GigView = () => {
   if (!gig) return <p>Loading...</p>;
 
   return (
+    <>
+      <a href="/gigs" className="gig-back-link">Back to Gigs</a>
     <div className="gig-view">
-      <p>
-        <a href="/gigs">Back to Gigs</a>
-      </p>
-      <h2>{gig.paddy_type}</h2>
-      <img
-        src={`http://localhost:5000/uploads/gigs/${gig.image}`}
-        alt={gig.paddy_type}
-        style={{ width: "100%", maxWidth: 400 }}
-      />
-      <p>
-        <strong>Price:</strong> Rs.{gig.price}
-      </p>
-      <p>
-        <strong>Quantity:</strong> {gig.quantity}kg
-      </p>
-      <p>
-        <strong>Seller:</strong> {gig.seller_name}
-      </p>
-      <p>
-        <strong>Province:</strong> {gig.province}
-      </p>
-      <p>
-        <strong>Description:</strong> {gig.description}
-      </p>
+        <div className="back-blur">
 
-      {/* Show Contact Seller only if current user is not the seller */}
-      {currentUserId !== gig.user_id && (
-        <button onClick={handleContactSeller}>Contact Seller</button>
-      )}
-    </div>
+          <h2 className="gig-title">{gig.paddy_type}</h2>
+          <img
+            src={`http://localhost:5000/uploads/gigs/${gig.image}`}
+            alt={gig.paddy_type}
+            className="gig-image" />
+          <p className="gig-info">
+            <strong>Price:</strong> Rs.{gig.price}
+          </p>
+          <p className="gig-info">
+            <strong>Quantity:</strong> {gig.quantity}kg
+          </p>
+          <p className="gig-info">
+            <strong>Seller:</strong> {gig.seller_name}
+          </p>
+          <p className="gig-info">
+            <strong>Province:</strong> {gig.province}
+          </p>
+          <p className="gig-info">
+            <strong>Description:</strong> {gig.description}
+          </p>
+
+          {/* Show Contact Seller only if current user is not the seller */}
+          {currentUserId !== gig.user_id && (
+            <button className="gig-contact-button" onClick={handleContactSeller}>Contact Seller</button>
+          )}
+        </div>
+
+      </div></>
   );
 };
 

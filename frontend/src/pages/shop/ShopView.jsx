@@ -46,36 +46,39 @@ const ShopView = () => {
   if (!item) return <p>Loading...</p>;
 
   return (
+    <>
+    <a href="/shop" className="shop-back-link">Back to Shop</a>
     <div className="shop-view">
-      <p>
-        <a href="/shop">Back to Shop</a>
-      </p>
-      <h2>{item.title}</h2>
+      <div className="back-blur">
+        <h2 className="shop-title">{item.title}</h2>
       <img
         src={`http://localhost:5000/uploads/shop/${item.image}`}
         alt={item.title}
-        style={{ width: "100%", maxWidth: 400 }}
+        className="shop-image"
       />
-      <p>
+      <p className="shop-info">
         <strong>Price:</strong> Rs.{item.price}
       </p>
-      <p>
+      <p className="shop-info">
         <strong>Description:</strong> {item.description}
       </p>
-      <p>
+      <p className="shop-info">
         <strong>Seller:</strong> {item.name}
       </p>
-      <p>
+      <p className="shop-info">
         <strong>Phone:</strong> {item.phoneNo}
       </p>
-      <p>
+      <p className="shop-info">
         <strong>Province:</strong> {item.province}
       </p>
 
       {currentUserId !== item.user_id && (
-        <button onClick={handleContactSeller}>Contact Seller</button>
+        <button className="shop-contact-button" onClick={handleContactSeller}>Contact Seller</button>
       )}
+      </div>
+      
     </div>
+    </>
   );
 };
 
