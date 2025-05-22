@@ -86,7 +86,6 @@ router.get("/my-items", verifyToken, (req, res) => {
   });
 });
 
-
 // 4. Update a shop item
 router.put("/update/:id", verifyToken, upload.single("image"), (req, res) => {
   const shopId = req.params.id;
@@ -125,10 +124,16 @@ router.delete("/delete/:id", verifyToken, (req, res) => {
   });
 });
 
-// 6. Get a single shop item by ID
+// 6. Get a single shop item by ID with seller details
 router.get("/item/:id", (req, res) => {
   const shopId = req.params.id;
-  const sql = "SELECT * FROM shops WHERE id = ?";
+  const sql = `
+    SELECT shops.*, users.name AS seller_name, user_profiles.phoneNo, user_profiles.province
+    FROM shops
+    JOIN users ON shops.user_id = users.id
+    LEFT JOIN user_profiles ON users.id = user_profiles.user_id
+    WHERE shops.id = ?
+  `;
   db.query(sql, [shopId], (err, results) => {
     if (err)
       return res.status(500).json({ error: "Database error", details: err });

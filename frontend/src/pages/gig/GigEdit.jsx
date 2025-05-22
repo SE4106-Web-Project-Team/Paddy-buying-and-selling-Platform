@@ -70,7 +70,7 @@ const GigEdit = () => {
   return (
     <div className="gig-edit-container">
       <div className="gig-edit-background"></div>
-      <h2>Edit Gig</h2>
+      <h2 style={{color: "#fff", textShadow: "1px 1px 1px #000"}}>Edit Gig</h2>
       <form onSubmit={handleUpdate} encType="multipart/form-data">
         <p>
           <strong>Current Image:</strong>

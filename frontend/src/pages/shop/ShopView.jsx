@@ -63,10 +63,7 @@ const ShopView = () => {
         <strong>Description:</strong> {item.description}
       </p>
       <p className="shop-info">
-        <strong>Seller:</strong> {item.name}
-      </p>
-      <p className="shop-info">
-        <strong>Phone:</strong> {item.phoneNo}
+        <strong>Seller:</strong> {item.seller_name}
       </p>
       <p className="shop-info">
         <strong>Province:</strong> {item.province}

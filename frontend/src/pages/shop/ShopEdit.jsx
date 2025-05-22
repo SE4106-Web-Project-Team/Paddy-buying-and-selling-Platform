@@ -79,7 +79,7 @@ const ShopEdit = () => {
   <>
     <div className="shop-edit-background"></div>
     <div className="shop-edit-container">
-      <h2>Edit Shop Item</h2>
+      <h2 style={{color: "#fff", textShadow: "1px 1px 1px #000"}}>Edit Shop Item</h2>
       <form onSubmit={handleSubmit}>
         <input
           type="text"

@@ -101,10 +101,6 @@ const Shop = () => {
                 <strong>Seller:</strong> {item.name}
               </p>
 
-              <button onClick={() => navigate(`/shop/${item.id}`)}>
-                Read More
-              </button>
-
               {currentUserId !== item.user_id && (
                 <button
                   onClick={() => handleContactSeller(item.user_id, item.name)}
@@ -112,6 +108,10 @@ const Shop = () => {
                   Contact Seller
                 </button>
               )}
+              
+              <button onClick={() => navigate(`/shop/${item.id}`)}>
+                Read More
+              </button>
             </div>
           ))
         )}
