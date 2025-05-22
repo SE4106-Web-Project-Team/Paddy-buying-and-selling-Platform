@@ -1,0 +1,94 @@
+/* shopcreate.css */
+.shop-create {
+  position: relative;
+  min-height: 100vh;
+  padding: 40px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-image: url('../../resources/images/ProfileEdit/background2.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.shop-create::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  backdrop-filter: blur(8px);
+  z-index: 0;
+}
+
+.shop-create form {
+  position: relative;
+  z-index: 1;
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.shop-create h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #2f2f2f;
+  font-size: 36px;
+  font-weight: bold;
+  z-index: 1;
+}
+
+.shop-create input[type="text"],
+.shop-create input[type="number"],
+.shop-create input[type="file"],
+.shop-create textarea {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  resize: vertical;
+}
+
+.shop-create textarea {
+  min-height: 100px;
+}
+
+.shop-create button {
+  background-color: #28a745;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.shop-create button:hover {
+  background-color: #218838;
+}
+
+.shop-create p {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.shop-create a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.shop-create a:hover {
+  text-decoration: underline;
+}

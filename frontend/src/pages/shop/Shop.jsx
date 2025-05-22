@@ -61,15 +61,16 @@ const Shop = () => {
   return (
     <div className="shop-container">
       <NavigationBar />
-      <p>
+  
+      <div className="shop-cont">
+        <p>
         <a href="/" className="Back-link">Back</a>
       </p>
-      <div className="shop-cont">
         <h2>Shop Items</h2>
 
       {/* Search Input */}
       <div className="search-wrapper">
-        <input
+        <input className="search-wrapper-input"
           type="text"
           placeholder="Search by title..."
           value={searchTerm}
@@ -100,10 +101,6 @@ const Shop = () => {
                 <strong>Seller:</strong> {item.name}
               </p>
 
-              <button onClick={() => navigate(`/shop/${item.id}`)}>
-                Read More
-              </button>
-
               {currentUserId !== item.user_id && (
                 <button
                   onClick={() => handleContactSeller(item.user_id, item.name)}
@@ -111,6 +108,10 @@ const Shop = () => {
                   Contact Seller
                 </button>
               )}
+              
+              <button onClick={() => navigate(`/shop/${item.id}`)}>
+                Read More
+              </button>
             </div>
           ))
         )}

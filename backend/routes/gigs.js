@@ -74,7 +74,14 @@ router.delete("/:id", verifyToken, (req, res) => {
 router.get("/:id", verifyToken, (req, res) => {
   const gigId = req.params.id;
 
-  const sql = "SELECT * FROM gigs WHERE id = ?";
+  const sql = `
+    SELECT gigs.*, users.name AS seller_name, user_profiles.province As province
+    FROM gigs
+    JOIN users ON gigs.user_id = users.id
+    LEFT JOIN user_profiles ON users.id = user_profiles.user_id
+    WHERE gigs.id = ?
+  `;
+
   db.query(sql, [gigId], (err, results) => {
     if (err) {
       console.error("Database error:", err);
@@ -115,15 +122,20 @@ router.put("/:id", verifyToken, upload.single("image"), (req, res) => {
 
 // GET /api/gigs - fetch all gigs
 router.get("/", (req, res) => {
+  const page = parseInt(req.query.page) || 1;
+  const limit = 10;
+  const offset = (page - 1) * limit;
+
   const sql = `
     SELECT gigs.*, users.name AS seller_name, user_profiles.province, user_profiles.phoneNo 
     FROM gigs 
     JOIN users ON gigs.user_id = users.id 
     LEFT JOIN user_profiles ON users.id = user_profiles.user_id
     ORDER BY gigs.created_at DESC
+    LIMIT ? OFFSET ?
   `;
 
-  db.query(sql, (err, results) => {
+  db.query(sql, [limit, offset], (err, results) => {
     if (err) {
       console.error("Error fetching gigs:", err.message);
       return res.status(500).json({ message: "Failed to fetch gigs" });
