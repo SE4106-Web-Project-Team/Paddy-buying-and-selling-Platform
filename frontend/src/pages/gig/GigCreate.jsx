@@ -49,6 +49,7 @@ const GigCreate = () => {
 
   return (
     <div className="gig-create-container">
+    <div className="gigcreate-background-blur"></div>
       <h2>Create a Gig</h2>
       <form onSubmit={handleSubmit} encType="multipart/form-data">
         <input type="file" name="image" onChange={handleChange} required />

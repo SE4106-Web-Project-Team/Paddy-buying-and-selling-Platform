@@ -64,20 +64,22 @@ const Gig = () => {
       <div className="gig-background-blur"></div>
       <div className="gig-list-container">
         <NavigationBar />
-        <p>
+        <div className="gig-cont">
+          <p>
           <a href="/" className="Back-link">Back</a>
         </p>
         <h2>All Available Gigs</h2>
 
         {/*  Search Input */}
         <div className="gig-search-box">
-          <input
+          <input className="gig-search-input"
             type="text"
             placeholder="Search by paddy type or seller..."
             value={searchQuery}
             onChange={(e) => {
               setSearchQuery(e.target.value);
               setCurrentPage(1); // reset to first page on search
+            
             }}
             
           />
@@ -145,6 +147,8 @@ const Gig = () => {
           >
             Next
           </button>
+        </div>
+        
         </div>
       </div>
     </div>

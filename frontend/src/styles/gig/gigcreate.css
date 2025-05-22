@@ -1,0 +1,94 @@
+/* gigcreate.css */
+.gig-create-container {
+  position: relative;
+  min-height: 100vh;
+  padding: 40px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+}
+
+.gigcreate-background-blur {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-image: url('../../resources/images/ProfileEdit/background2.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: blur(8px);
+  z-index: -1;
+}
+
+.gig-create-container h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #2f2f2f;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+form {
+  background-color: rgba(255, 255, 255, 0.314);
+  max-width: 500px;
+  margin: auto;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+form:hover {
+  background-color: rgba(255, 255, 255, 0.44);
+}
+
+input[type="text"],
+input[type="number"],
+textarea,
+input[type="file"] {
+  display: block;
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-family: inherit;
+  background-color: white;
+  box-sizing: border-box;
+}
+
+textarea {
+  height: 120px;
+  resize: vertical;
+}
+
+button[type="submit"] {
+  background-color: #28a745;
+  color: white;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #218838;
+}
+
+form p {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+form a {
+  text-decoration: none;
+  color: white;
+  background-color: #218838;
+  padding: 6px 12px;
+  border-radius: 4px;
+}

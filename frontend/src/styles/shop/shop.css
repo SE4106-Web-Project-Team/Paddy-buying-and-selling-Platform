@@ -22,10 +22,10 @@
 
 
 .shop-cont {
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.062);
   margin: 30px;
   padding: 30px;
-  background-color: rgba(255, 255, 255, 0.314);
+  background-color: rgba(255, 255, 255, 0.293);
 }
 .shop-cont:hover{
     background-color: rgba(255, 255, 255, 0.44);
@@ -51,11 +51,11 @@
   margin-bottom: 2rem;
 }
 
-input {
+.search-wrapper-input {
   padding: 8px;
-  width: 250px;
+  width: 60px;
   border-radius: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #cccccc8f;
 }
 
 .shop-grid {
