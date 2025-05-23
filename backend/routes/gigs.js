@@ -74,7 +74,14 @@ router.delete("/:id", verifyToken, (req, res) => {
 router.get("/:id", verifyToken, (req, res) => {
   const gigId = req.params.id;
 
-  const sql = "SELECT * FROM gigs WHERE id = ?";
+  const sql = `
+    SELECT gigs.*, users.name AS seller_name, user_profiles.province As province
+    FROM gigs
+    JOIN users ON gigs.user_id = users.id
+    LEFT JOIN user_profiles ON users.id = user_profiles.user_id
+    WHERE gigs.id = ?
+  `;
+
   db.query(sql, [gigId], (err, results) => {
     if (err) {
       console.error("Database error:", err);

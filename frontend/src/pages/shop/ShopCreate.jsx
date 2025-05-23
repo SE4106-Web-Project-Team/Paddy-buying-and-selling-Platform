@@ -47,7 +47,7 @@ const ShopCreate = () => {
 
   return (
     <div className="shop-create">
-      <h2>Create Shop Item</h2>
+      <h2 style={{color: "#fff", textShadow: "1px 1px 1px #000"}}>Create Shop Item</h2>
       <form onSubmit={handleSubmit} encType="multipart/form-data">
         <input
           type="text"

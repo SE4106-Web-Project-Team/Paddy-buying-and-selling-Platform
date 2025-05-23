@@ -49,7 +49,8 @@ const GigCreate = () => {
 
   return (
     <div className="gig-create-container">
-      <h2>Create a Gig</h2>
+    <div className="gigcreate-background-blur"></div>
+      <h2 style={{color: "#fff", textShadow: "1px 1px 1px #000"}}>Create a Gig</h2>
       <form onSubmit={handleSubmit} encType="multipart/form-data">
         <input type="file" name="image" onChange={handleChange} required />
         <input type="text" name="paddyType" placeholder="Paddy Type" onChange={handleChange} required />

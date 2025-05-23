@@ -46,15 +46,15 @@ const Blog = () => {
   return (
     <div className="blog-container">
       <NavigationBar />
-      <p>
-        <a href="/" className="back-link">Back</a>
-      </p>
       <div className="blog-cont">
+        <p>
+        <a href="/" className="block-back-link">Back</a>
+      </p>
         <h2>Blog Posts</h2>
 
       {/* 🔍 Search input */}
       <div className="search-bar" >
-        <input
+        <input className="search-bar-input"
           type="text"
           placeholder="Search blog by title..."
           value={searchQuery}
@@ -66,7 +66,7 @@ const Blog = () => {
       </div>
 
       {currentBlogs.length === 0 ? (
-        <p style={{ textAlign: "center" }}>No matching blog posts found.</p>
+        <p >No matching blog posts found.</p>
       ) : (
         currentBlogs.map((blog) => (
           <div className="blog-card"

@@ -1,11 +1,6 @@
-/* ========================================================================
-   navBar.css
-   ======================================================================== */
-
-/* 1) Base reset on <nav> and direct child for centering & layout */
 nav {
   display: flex;
-  justify-content: space-between; /* push h1 & ul apart */
+  justify-content: space-between;
   align-items: center;
   padding: 0.5rem 1rem;
   position: sticky;
@@ -14,21 +9,20 @@ nav {
   border-bottom: 2px solid #ccd9b9;
   z-index: 999;
   display: flex;
+  height: 8vh;
 }
 
 nav > div,
 nav > section {
-  /* you might wrap your <h1> & <ul> in a div or section for better semantics */
   max-width: 1200px;
   margin: 0 auto;
   padding: 0.5rem 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  overflow: visible; /* allow dropdown to bleed out */
+  overflow: visible;
 }
 
-/* 2) Logo / Brand on left */
 nav h1 {
   margin: 0;
   padding-top: 1rem;

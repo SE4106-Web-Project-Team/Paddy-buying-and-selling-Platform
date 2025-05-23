@@ -22,7 +22,7 @@
 }
 
 .blog-cont{
-    background-color: rgba(255, 255, 255, 0.292);
+    background-color: rgba(255, 255, 255, 0.27);
     padding: 30px;
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08);
     margin: 30px;
@@ -39,17 +39,15 @@
   font-weight: bold;
 }
 
-.back-link {
-  padding: 5px;
-  background-color: rgb(5, 106, 32);
-  margin: 1rem 2rem;
-  display: inline-block;
+.block-back-link { 
+  padding: 5px 10px;
   color: white;
+  background-color: rgb(5, 106, 32);
+  border-radius: 4px;
   text-decoration: none;
-  font-weight: 500;
 }
 
-.back-link:hover {
+.block-back-link:hover {
   text-decoration: underline;
 }
 
@@ -58,9 +56,9 @@
   margin-bottom: 30px;
 }
 
-.search-bar input {
+.search-bar-input {
   padding: 10px 15px;
-  width: 300px;
+  width: 00px;
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 16px;
