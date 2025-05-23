@@ -13,7 +13,7 @@
   height: 100vh;
   background: url('../../resources/images/ProfileEdit/background2.jpg');
   background-size: cover;
-  filter: blur(6px);
+  filter: blur(20px);
   z-index: -1;
 }
 
@@ -21,7 +21,7 @@
   max-width: 900px;
   margin:30px  auto;
   padding: 30px;
-  background-color: rgba(255, 255, 255, 0.39);
+  background-color: rgba(255, 255, 255, 0.678);
   border-radius: 16px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
@@ -45,7 +45,7 @@
 .blog-content {
   text-align: justify;
   font-size: 1.1rem;
-  color: #333;
+  color: #353535;
   line-height: 1.8;
   margin-top: 20px;
 }
