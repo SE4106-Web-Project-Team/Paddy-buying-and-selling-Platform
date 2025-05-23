@@ -1,17 +1,41 @@
 .about-container {
     padding: 2rem;
-  background-color: #ece6e6;
+  background-color: #cac5c564;
   border-radius: 8px;
   font-family: 'Arial', sans-serif;
 }
 
 .about-container h1 {
-  color: #120fdf;
+  color: #010103;
   margin-bottom: 1rem;
 }
 .about-container p {
-  color: #1c1616;
+  color: #000000;
   line-height: 1.6;
+}
+
+.about-image {
+  position: relative;
+  height: 60vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  text-align: center;
+}
+
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content p {
+  font-size: 1.5rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .back-link {
