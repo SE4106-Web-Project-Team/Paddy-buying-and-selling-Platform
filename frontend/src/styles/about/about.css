@@ -1,3 +1,45 @@
-.hh {
-    background-color: #904949;
+.about-container {
+    padding: 2rem;
+  background-color: #ece6e6;
+  border-radius: 8px;
+  font-family: 'Arial', sans-serif;
 }
+
+.about-container h1 {
+  color: #120fdf;
+  margin-bottom: 1rem;
+}
+.about-container p {
+  color: #1c1616;
+  line-height: 1.6;
+}
+
+.back-link {
+  display: inline-block;
+  margin: 1rem 0;
+  padding: 0.5rem 1rem;
+  color: white;
+  background-color: #007bff;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.back-button {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  color: white;
+  background-color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+  font-family: 'Arial', sans-serif;
+  border-radius: 1.2rem / 1rem; /* squircle-ish effect */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.back-button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
