@@ -117,7 +117,7 @@ npm start
 ## 🗄️ MySQL Database Setup
 
 1. Create a database named `paddy_platform`.
-2. Import the required SQL schema and seed data from `backend/schema.sql` (if available).
+2. Import the required SQL schema and seed data from `backend/schema.sql`.
 3. Tables include: `users`, `user_profiles`, `gigs`, `shops`, `messages`, `blog_posts`, `prices`, etc.
 
 ---
@@ -186,4 +186,4 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## 💬 Contact
 
-For questions or contributions, contact the developer via [your-email@example.com].
+For questions or contributions, contact the developer via [isurushehara@gmail.com], [darsikadarsi80@gmail.com] & [bhagyapiyumali2001@gmail.com].
