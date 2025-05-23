@@ -8,7 +8,7 @@ const Blog = () => {
   const [blogs, setBlogs] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState(""); // 🔍 New: search state
-  const blogsPerPage = 10;
+  const blogsPerPage = 5;
 
   useEffect(() => {
     const fetchBlogs = async () => {
@@ -44,15 +44,16 @@ const Blog = () => {
   };
 
   return (
-    <div>
+    <div className="blog-container">
       <NavigationBar />
       <p>
-        <a href="/">Back</a>
+        <a href="/" className="back-link">Back</a>
       </p>
-      <h2>Blog Posts</h2>
+      <div className="blog-cont">
+        <h2>Blog Posts</h2>
 
       {/* 🔍 Search input */}
-      <div style={{ textAlign: "center", marginBottom: "20px" }}>
+      <div className="search-bar" >
         <input
           type="text"
           placeholder="Search blog by title..."
@@ -61,7 +62,6 @@ const Blog = () => {
             setSearchQuery(e.target.value);
             setCurrentPage(1); // reset to page 1 when searching
           }}
-          style={{ padding: "5px", width: "300px" }}
         />
       </div>
 
@@ -69,25 +69,16 @@ const Blog = () => {
         <p style={{ textAlign: "center" }}>No matching blog posts found.</p>
       ) : (
         currentBlogs.map((blog) => (
-          <div
-            key={blog.id}
-            style={{
-              border: "1px solid #ccc",
-              padding: "10px",
-              marginBottom: "10px",
-              width: "80%",
-              margin: "auto",
-            }}
-          >
+          <div className="blog-card"
+            key={blog.id}>
             <h3>{blog.title}</h3>
-            <div style={{ display: "flex" }}>
+            <div className="blog-card-content">
               <img
                 src={`http://localhost:5000/uploads/blogs/${blog.image}`}
                 alt={blog.title}
-                style={{ maxWidth: "20%", height: "auto" }}
               />
-              <div style={{ marginLeft: "20px" }}>
-                <p style={{ textAlign: "justify" }}>
+              <div>
+                <p>
                   {blog.content.length > 300
                     ? blog.content.substring(0, 620) + "..."
                     : blog.content}
@@ -102,17 +93,19 @@ const Blog = () => {
       )}
 
       {/* Pagination Controls */}
-      <div style={{ textAlign: "center", marginTop: "20px" }}>
+      <div className="pagination-controls">
         <button onClick={handlePrevious} disabled={currentPage === 1}>
           Previous
         </button>
-        <span style={{ margin: "0 10px" }}>
+        <span>
           Page {currentPage} of {totalPages}
         </span>
         <button onClick={handleNext} disabled={currentPage === totalPages}>
           Next
         </button>
       </div>
+      </div>
+      
     </div>
   );
 };

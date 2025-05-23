@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import NavigationBar from "../components/nav/NavigationBar";
 import "../styles/price/paddyprice.css";
 
 const ITEMS_PER_PAGE = 25;
@@ -37,6 +39,7 @@ const PaddyPrice = () => {
 
   return (
     <div style={{ padding: "20px" }}>
+      <NavigationBar />
       <p>
         <a href="/">Back</a>
       </p>
