@@ -1,0 +1,75 @@
+.blog-view-wrapper {
+  position: relative;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding-top: 60px;
+}
+
+.blog-view-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url('../../resources/images/ProfileEdit/background2.jpg');
+  background-size: cover;
+  filter: blur(6px);
+  z-index: -1;
+}
+
+.blog-view-container {
+  max-width: 900px;
+  margin:30px  auto;
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.39);
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.blog-title {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+.blog-image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 20px auto;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.blog-content {
+  text-align: justify;
+  font-size: 1.1rem;
+  color: #333;
+  line-height: 1.8;
+  margin-top: 20px;
+}
+
+.blog-content p {
+  margin-bottom: 1.5em;
+}
+
+.blogview-back-link {
+  padding: 5px 10px;
+  color: white;
+  background-color: rgb(5, 106, 32);
+  border-radius: 4px;
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+.blogview-back-link:hover {
+  text-decoration: underline;
+}
+
+.loading-text {
+  text-align: center;
+  padding: 100px;
+  font-size: 1.5rem;
+  color: #555;
+}
