@@ -28,33 +28,31 @@ const BlogView = () => {
   if (!blog) return <p>Loading...</p>;
 
   return (
-    <div>
+    <div className="blog-view-wrapper">
+      <div className="blog-view-background"></div>
       <NavigationBar />
-      <p>
-        <a href="/blog">Back</a>
-      </p>
-      <h2 style={{ width: "80%", margin: "auto", display: "block" }}>
+      <div className="blog-view-container">
+        <a href="/blog" className="blogview-back-link">Back</a>
+      
+      <h2 className="blog-title">
         {blog.title}
       </h2>
       <img
         src={`http://localhost:5000/uploads/blogs/${blog.image}`}
         alt={blog.title}
-        style={{
-          maxWidth: "50%",
-          height: "auto",
-          margin: "auto",
-          display: "block",
-        }}
+        className="blog-image"
       />
-      <div style={{ width: "80%", margin: "20px auto", textAlign: "justify" }}>
+      <div className="blog-content">
         {blog.content
           .split(/\r?\n\r?\n/) // handles \n\n or \r\n\r\n
           .map((para, i) => (
-            <p key={i} style={{ marginBottom: "1em" }}>
+            <p key={i}>
               {para}
             </p>
           ))}
       </div>
+      </div>
+      
     </div>
   );
 };

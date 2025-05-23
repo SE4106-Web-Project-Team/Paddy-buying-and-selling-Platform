@@ -1,0 +1,105 @@
+.paddy-price-wrapper {
+  position: relative;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding-top: 60px;
+}
+
+.paddy-price-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url('../../resources/images/ProfileEdit/background2.jpg');
+  background-size: cover;
+  filter: blur(6px);
+  z-index: -1;
+}
+
+.paddy-price-container {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.468);
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+.paddy-price-container h2{
+  text-align: center;
+}
+
+.paddy-title {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 20px;
+  color: black;
+}
+
+.paddy-back-link {
+  padding: 5px 10px;
+  color: white;
+  background-color: rgb(5, 106, 32);
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.paddy-back-link:hover {
+  text-decoration: underline;
+}
+
+.paddy-search-input {
+  width: 100%;
+  max-width: 300px;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.paddy-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.paddy-item {
+  background: #f9f9f9;
+  padding: 12px 18px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.paddy-no-results {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #777;
+}
+
+.paddy-pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.paddy-pagination button {
+  padding: 8px 16px;
+  font-size: 1rem;
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.paddy-pagination button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.paddy-pagination button:hover:not(:disabled) {
+  background-color: #005fa3;
+}

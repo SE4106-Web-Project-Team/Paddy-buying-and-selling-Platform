@@ -38,12 +38,13 @@ const PaddyPrice = () => {
   };
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div className="paddy-price-wrapper">
+      <div className="paddy-price-background"></div>
       <NavigationBar />
-      <p>
-        <a href="/">Back</a>
-      </p>
-      <h2>Current Paddy Prices</h2>
+      <div className="paddy-price-container">
+        <a href="/" className="paddy-back-link">Back</a>
+      
+      <h2 >Current Paddy Prices</h2>
 
       {/* 🔍 Search Input */}
       <input
@@ -54,21 +55,16 @@ const PaddyPrice = () => {
           setSearchQuery(e.target.value);
           setCurrentPage(1); // Reset to page 1 on search
         }}
-        style={{
-          marginBottom: "15px",
-          padding: "5px",
-          width: "250px",
-          fontSize: "14px",
-        }}
+         className="paddy-search-input"
       />
 
       {/* Price List */}
-      <ul>
+      <ul className="paddy-list">
         {currentPrices.length === 0 ? (
-          <p>No results found.</p>
+          <p className="paddy-no-results">No results found.</p>
         ) : (
           currentPrices.map((item) => (
-            <li key={item.id}>
+            <li key={item.id} className="paddy-item">
               <strong>{item.paddy_type}</strong>: Rs. {item.price}
             </li>
           ))
@@ -77,7 +73,7 @@ const PaddyPrice = () => {
 
       {/* Pagination Controls */}
       {totalPages > 1 && (
-        <div style={{ marginTop: "20px" }}>
+        <div className="paddy-pagination">
           <button
             onClick={() => goToPage(currentPage - 1)}
             disabled={currentPage === 1}
@@ -93,6 +89,8 @@ const PaddyPrice = () => {
           </button>
         </div>
       )}
+      </div>
+        
     </div>
   );
 };
