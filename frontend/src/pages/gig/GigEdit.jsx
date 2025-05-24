@@ -5,7 +5,7 @@ import axios from "axios";
 import "../../styles/gig/gigedit.css";
 
 const GigEdit = () => {
-  const { id } = useParams(); // gig ID from URL
+  const { id } = useParams();
   const navigate = useNavigate();
 
   const [gig, setGig] = useState(null);

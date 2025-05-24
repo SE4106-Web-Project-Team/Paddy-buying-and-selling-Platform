@@ -11,12 +11,10 @@ const AdminDashboard = ({ children }) => {
     navigate("/admin/login");
   };
 
-  // Check if we are on the root dashboard path
   const isRootDashboard = location.pathname === "/admin/dashboard";
 
   return (
     <div className="admin-dashboard">
-      {/* Sidebar */}
       <aside className="sidebar">
         <h2><a href="/admin/dashboard">Admin Dashboard</a></h2>
         <button onClick={() => navigate("/admin/users")}>Manage Users</button>
@@ -33,7 +31,6 @@ const AdminDashboard = ({ children }) => {
         </button>
       </aside>
 
-      {/* Main Content */}
       <main className="content">
         {isRootDashboard && !children ? (
           <div className="welcome-panel">

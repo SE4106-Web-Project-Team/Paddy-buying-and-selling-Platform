@@ -25,7 +25,7 @@ const AdminShop = () => {
   const handleDelete = async (id) => {
     try {
       await axios.delete(`http://localhost:5000/api/admin/shop/${id}`);
-      fetchShopItems(page); // Refresh after delete
+      fetchShopItems(page);
     } catch (err) {
       console.error("Failed to delete item:", err);
     }

@@ -5,7 +5,7 @@ import axios from "axios";
 import "../../styles/shop/shopedit.css";
 
 const ShopEdit = () => {
-  const { id } = useParams(); // shop item ID from URL
+  const { id } = useParams();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     title: "",

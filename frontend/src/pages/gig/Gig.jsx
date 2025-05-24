@@ -6,7 +6,7 @@ import "./../../styles/gig/gig.css";
 
 const Gig = () => {
   const [gigs, setGigs] = useState([]);
-  const [searchQuery, setSearchQuery] = useState(""); // 🔍 New: search state
+  const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const gigsPerPage = 16;
 
@@ -33,7 +33,7 @@ const Gig = () => {
     fetchGigs();
   }, []);
 
-  // 🔍 Filter based on paddy_type or seller_name
+  // Filter based on paddy_type or seller_name
   const filteredGigs = gigs.filter((gig) =>
     `${gig.paddy_type} ${gig.seller_name}`
       .toLowerCase()
@@ -70,7 +70,6 @@ const Gig = () => {
         </p>
         <h2>All Available Gigs</h2>
 
-        {/*  Search Input */}
         <div className="gig-search-box">
           <input className="gig-search-input"
             type="text"
@@ -78,7 +77,7 @@ const Gig = () => {
             value={searchQuery}
             onChange={(e) => {
               setSearchQuery(e.target.value);
-              setCurrentPage(1); // reset to first page on search
+              setCurrentPage(1); 
             
             }}
             

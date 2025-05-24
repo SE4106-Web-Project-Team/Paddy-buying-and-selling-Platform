@@ -7,8 +7,7 @@ import "../styles/blog/blog.css";
 const Blog = () => {
   const [blogs, setBlogs] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [searchQuery, setSearchQuery] = useState(""); // 🔍 New: search state
-  const blogsPerPage = 5;
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     const fetchBlogs = async () => {
@@ -24,7 +23,7 @@ const Blog = () => {
     fetchBlogs();
   }, []);
 
-  // 🔍 Filtered blogs based on title
+  // Filtered blogs based on title
   const filteredBlogs = blogs.filter((blog) =>
     blog.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -52,7 +51,6 @@ const Blog = () => {
       </p>
         <h2>Blog Posts</h2>
 
-      {/* 🔍 Search input */}
       <div className="search-bar" >
         <input className="search-bar-input"
           type="text"
@@ -60,7 +58,7 @@ const Blog = () => {
           value={searchQuery}
           onChange={(e) => {
             setSearchQuery(e.target.value);
-            setCurrentPage(1); // reset to page 1 when searching
+            setCurrentPage(1);
           }}
         />
       </div>

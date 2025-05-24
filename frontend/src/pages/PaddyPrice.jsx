@@ -18,12 +18,12 @@ const PaddyPrice = () => {
       .catch((err) => console.error("Failed to load prices:", err));
   }, []);
 
-  // 🔍 Filtered prices based on search query
+  // Filtered prices based on search query
   const filteredPrices = prices.filter((item) =>
     item.paddy_type.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  // 📄 Pagination logic
+  // Pagination logic
   const totalPages = Math.ceil(filteredPrices.length / ITEMS_PER_PAGE);
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const currentPrices = filteredPrices.slice(
@@ -46,19 +46,17 @@ const PaddyPrice = () => {
       
       <h2 >Current Paddy Prices</h2>
 
-      {/* 🔍 Search Input */}
       <input
         type="text"
         placeholder="Search paddy type..."
         value={searchQuery}
         onChange={(e) => {
           setSearchQuery(e.target.value);
-          setCurrentPage(1); // Reset to page 1 on search
+          setCurrentPage(1);
         }}
          className="paddy-search-input"
       />
-
-      {/* Price List */}
+      
       <ul className="paddy-list">
         {currentPrices.length === 0 ? (
           <p className="paddy-no-results">No results found.</p>

@@ -106,8 +106,6 @@ router.get("/profile", verifyToken, (req, res) => {
 
 //for chat
 // GET /api/users/:id - Get single user by ID
-
-
 router.get('/get-by-id/:id', async (req, res) => {
   const userId = req.params.id;
   try {
