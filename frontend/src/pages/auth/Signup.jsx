@@ -33,7 +33,7 @@ const Signup = () => {
       });
 
       alert("Signup Successful!");
-      navigate("/login"); // Redirect to login page
+      navigate("/login"); 
     } catch (error) {
       console.error("Signup error:", error.response.data.message);
       alert("Signup Failed: " + error.response.data.message);

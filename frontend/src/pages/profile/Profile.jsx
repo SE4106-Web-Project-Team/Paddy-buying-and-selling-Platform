@@ -200,7 +200,7 @@ const Profile = () => {
               value={gigSearchTerm}
               onChange={(e) => {
                 setGigSearchTerm(e.target.value);
-                setGigPage(1); // Reset to first page on new search
+                setGigPage(1);
               }}
             />
 
@@ -276,7 +276,7 @@ const Profile = () => {
               value={shopSearchTerm}
               onChange={(e) => {
                 setShopSearchTerm(e.target.value);
-                setShopPage(1); // Reset to first page on new search
+                setShopPage(1);
               }}
             />
 

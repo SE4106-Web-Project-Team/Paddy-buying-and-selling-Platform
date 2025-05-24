@@ -17,7 +17,6 @@ export default function Chatbot() {
   const [input, setInput] = useState("");
   const navigate = useNavigate();
 
-  // ✅ Redirect to login if not authenticated
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {

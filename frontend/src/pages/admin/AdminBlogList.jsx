@@ -8,7 +8,7 @@ const AdminBlogList = () => {
   const [blogs, setBlogs] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const blogsPerPage = 10;
-  const [searchQuery, setSearchQuery] = useState(""); // 🔍 New: search state
+  const [searchQuery, setSearchQuery] = useState(""); 
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -36,7 +36,7 @@ const AdminBlogList = () => {
     }
   };
 
-  // 🔍 Filter blogs by search query (by title)
+  // Filter blogs by search query (by title)
   const filteredBlogs = blogs.filter((blog) =>
     blog.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -65,7 +65,7 @@ const AdminBlogList = () => {
           </button>
           <h2>All Blog Posts</h2>
 
-          {/* 🔍 Search input */}
+          {/* Search input */}
           <input
             type="text"
             placeholder="Search by blog title..."

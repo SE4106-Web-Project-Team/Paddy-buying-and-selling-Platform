@@ -2,8 +2,8 @@
 
 .admin-dashboard {
   display: flex;
-  height: 100vh; /* full viewport height */
-  width: 100%; /* full width */
+  height: 100vh;
+  width: 100%;
   font-family: Arial, sans-serif;
   overflow: hidden;
 }
@@ -20,13 +20,13 @@
   flex-direction: column;
 }
 
-.admin-dashboard .sidebar h2 a{
-    font-size: 24px;       /* Sets the size of the text */
-  color: #ffffff;        /* Text color */
-  font-weight: bold;     /* Makes text bold */
-  margin-bottom: 10px;   /* Space below the heading */
-  font-family: Arial, sans-serif; /* Font style */
-  text-decoration: none; /* Removes underline from link */
+.admin-dashboard .sidebar h2 a {
+  font-size: 24px;
+  color: #ffffff;
+  font-weight: bold; 
+  margin-bottom: 10px; 
+  font-family: Arial, sans-serif; 
+  text-decoration: none; 
 }
 
 .admin-dashboard .sidebar button {
@@ -69,23 +69,20 @@
   overflow-y: auto;
 }
 
-/* --------------------------------------- */
-/* Welcome Panel on /admin/dashboard only */
 .welcome-panel {
   background: #ffffff;
   border-radius: 10px;
   padding: 3rem 2rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   max-width: 85%;
-  /* you likely don’t need both width and height 85% together; just adjust as desired */
   width: 85%;
   height: 85%;
 
   /* CENTERING */
   display: flex;
-  flex-direction: column; /* stack children vertically */
-  align-items: center; /* center horizontally */
-  justify-content: center; /* center vertically */
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center;
 
   /* TEXT */
   text-align: center;

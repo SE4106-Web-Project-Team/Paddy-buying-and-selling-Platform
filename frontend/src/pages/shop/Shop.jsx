@@ -68,7 +68,6 @@ const Shop = () => {
       </p>
         <h2>Shop Items</h2>
 
-      {/* Search Input */}
       <div className="search-wrapper">
         <input className="search-wrapper-input"
           type="text"
@@ -76,7 +75,7 @@ const Shop = () => {
           value={searchTerm}
           onChange={(e) => {
             setSearchTerm(e.target.value);
-            setCurrentPage(1); // Reset to first page on new search
+            setCurrentPage(1); 
           }}
         />
       </div>
