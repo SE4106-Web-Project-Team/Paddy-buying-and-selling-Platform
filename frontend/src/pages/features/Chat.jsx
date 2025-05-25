@@ -61,7 +61,7 @@ const Chat = () => {
   return (
     <div className="chat-container">
       <p>
-        <a href="/">Back</a>
+        <a href="/" className="chat-back-link">Back</a>
       </p>
       {user && (
         <>
