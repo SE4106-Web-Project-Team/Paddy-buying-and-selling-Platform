@@ -53,7 +53,7 @@
 
 .admin-users-page ul li div strong {
   font-size: 1.1rem;
-  color: #2c3e50;
+  color: black;
 }
 
 .admin-users-page ul li div span {
@@ -63,7 +63,7 @@
 
 /* Delete button */
 .admin-users-page ul li button {
-  background: #e74c3c;
+  background: red;
   color: #fff;
   border: none;
   padding: 0.5rem 0.8rem;
@@ -73,7 +73,7 @@
 }
 
 .admin-users-page ul li button:hover {
-  background: #c0392b;
+  background: darkred;
 }
 
 /* Pagination controls */
@@ -85,7 +85,7 @@
 }
 
 .admin-users-page .pagination button {
-  background: #2c3e50;
+  background: green;
   color: #ecf0f1;
   border: none;
   padding: 0.5rem 1rem;
@@ -101,10 +101,10 @@
 }
 
 .admin-users-page .pagination button:hover:not(:disabled) {
-  background: #1a242f;
+  background: darkgreen;
 }
 
 .admin-users-page .pagination span {
   font-size: 1rem;
-  color: #34495e;
+  color: black;
 }

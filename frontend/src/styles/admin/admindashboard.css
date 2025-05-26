@@ -12,7 +12,7 @@
 .admin-dashboard .sidebar {
   flex: 0 0 25%;
   max-width: 25%;
-  background-color: #2c3e50;
+  background-color: rgb(15, 148, 15);
   color: #ecf0f1;
   padding: 2rem 1.5rem;
   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
@@ -21,7 +21,7 @@
 }
 
 .admin-dashboard .sidebar h2 a{
-    font-size: 24px;       /* Sets the size of the text */
+  font-size: 32px;       /* Sets the size of the text */
   color: #ffffff;        /* Text color */
   font-weight: bold;     /* Makes text bold */
   margin-bottom: 10px;   /* Space below the heading */
@@ -32,32 +32,33 @@
 .admin-dashboard .sidebar button {
   background-color: transparent;
   color: inherit;
-  border: 1px solid #ecf0f1;
-  border-radius: 4px;
+  border: 2px solid #ecf0f1;
+  border-radius: 5px;
   padding: 0.75rem 1rem;
   margin-bottom: 0.75rem;
   text-align: left;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 16px;
   transition: background-color 0.2s, transform 0.1s;
 }
 
 .admin-dashboard .sidebar button:hover {
-  background-color: rgba(236, 240, 241, 0.2);
+  background-color: darkgreen;
   transform: translateX(4px);
+  font-weight: bold;
 }
 
 /* Push logout to bottom */
 .admin-dashboard .sidebar .logout-btn {
   margin-top: auto;
   border: none;
-  background-color: #e74c3c;
+  background-color: red;
   color: #fff;
   text-align: center;
 }
 
 .admin-dashboard .sidebar .logout-btn:hover {
-  background-color: #c0392b;
+  background-color: darkred;
 }
 
 /* Main content (75%) */
@@ -69,7 +70,7 @@
   overflow-y: auto;
 }
 
-/* --------------------------------------- */
+
 /* Welcome Panel on /admin/dashboard only */
 .welcome-panel {
   background: #ffffff;
@@ -89,7 +90,7 @@
 
   /* TEXT */
   text-align: center;
-  color: #2c3e50;
+  color: black;
 
   /* ANIMATION */
   animation: fadeIn 0.4s ease-out;
