@@ -1,0 +1,155 @@
+/* adminbloglist.css */
+
+/* Page wrapper under AdminDashboard */
+.admin-bloglist-page {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+/* Content panel (75%) */
+.admin-bloglist-page .content-panel {
+  flex: 0 0 75%;
+  max-width: 85%;
+  padding: 2rem;
+  background: #f5f7fa;
+  overflow-y: auto;
+}
+
+/* Page header */
+.admin-dashboard .sidebar h2 {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+}
+
+/* Header area (create button + title + search) */
+.admin-bloglist-page .header-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  gap: 1rem;
+}
+
+.admin-bloglist-page .header-bar button.create-btn {
+  background: #2c3e50;
+  color: #ecf0f1;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.admin-bloglist-page .header-bar button.create-btn:hover {
+  background: #1a242f;
+}
+
+.admin-bloglist-page .header-bar h2 {
+  flex: 1;
+  font-size: 1.75rem;
+  color: #34495e;
+  margin: 0;
+}
+
+/* Search input */
+.admin-bloglist-page .header-bar .search-input {
+  flex: 1;
+  max-width: 300px;
+  padding: 0.6rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+/* Blog cards */
+.admin-bloglist-page .blog-card {
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+}
+
+.admin-bloglist-page .blog-card h3 {
+  margin-top: 0;
+  color: #2c3e50;
+}
+
+.admin-bloglist-page .blog-card img {
+  max-width: 200px;
+  display: block;
+  margin: 0.5rem 0 1rem;
+  border-radius: 4px;
+}
+
+.admin-bloglist-page .blog-card p {
+  color: #555;
+  line-height: 1.4;
+  margin: 4rem 1rem;
+  align-items: center;
+  text-align: justify;
+}
+
+.admin-bloglist-page .blog-card .actions {
+  margin-top: 1rem;
+  text-align: end;
+}
+
+.admin-bloglist-page .blog-card .actions button {
+  background: #2c3e50;
+  color: #ecf0f1;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+  
+}
+
+.admin-bloglist-page .blog-card .actions button:hover {
+  background: #1a242f;
+}
+
+.admin-bloglist-page .blog-card .actions button.delete-btn {
+  margin-left: 0.5rem;
+  background: #e74c3c;
+}
+
+.admin-bloglist-page .blog-card .actions button.delete-btn:hover {
+  background: #c0392b;
+}
+
+/* Pagination */
+.admin-bloglist-page .pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.admin-bloglist-page .pagination button {
+  background: #2c3e50;
+  color: #ecf0f1;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.admin-bloglist-page .pagination button:disabled {
+  background: #95a5a6;
+  cursor: not-allowed;
+}
+
+.admin-bloglist-page .pagination button:hover:not(:disabled) {
+  background: #1a242f;
+}
+
+.admin-bloglist-page .pagination span {
+  font-size: 1rem;
+  color: #34495e;
+}
