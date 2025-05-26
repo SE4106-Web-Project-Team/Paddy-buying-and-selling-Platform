@@ -169,6 +169,10 @@ h3 {
   margin-left: 10px;
   padding: 5px 10px;
   cursor: pointer;
+  background-color: green;
+}
+.pagination button:hover {
+  background-color: darkgreen;
 }
 .pagination span {
   font-weight: bold;
