@@ -27,12 +27,12 @@ nav h1 {
   margin: 0;
   padding-top: 1rem;
   font-size: 1.75rem;
-  color: #2c5f2d;
+  color: green;
   cursor: pointer;
   transition: color 0.2s ease-in-out;
 }
 nav h1:hover {
-  color: #3e7a4b;
+  color: darkgreen;
 }
 
 /* 3) Main menu UL */
@@ -57,7 +57,7 @@ nav ul li > a,
 nav ul li > select {
   font-family: inherit;
   font-size: 1rem;
-  color: #2c5f2d;
+  color: black;
   text-decoration: none;
   padding: 0.5rem 0.75rem;
   border-radius: 4px;

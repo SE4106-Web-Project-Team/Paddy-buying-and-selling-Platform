@@ -41,7 +41,7 @@ export default function Chatbot() {
   return (
     <div className="chatbot-container">
       <p>
-        <a href="/">Back</a>
+        <a href="/" className="chatbot-back-link">Back</a>
       </p>
       <h1 className="chatbot-title">Agri Chatbot</h1>
 
@@ -66,13 +66,13 @@ export default function Chatbot() {
       </div>
 
       <div className="chat-input">
-        <input
+        <input 
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && handleSend()}
           placeholder="Type your question..."
         />
-        <button onClick={() => handleSend()}>Send</button>
+        <button className="chat-send-button" onClick={() => handleSend()}>Send</button>
       </div>
     </div>
   );
