@@ -2,7 +2,6 @@
 // src/pages/About.jsx
 import React from "react";
 import "../styles/about/about.css";
-import { Link, useNavigate } from "react-router-dom";
 import NavigationBar from "../components/nav/NavigationBar";
 import aboutImage from "../resources/images/about/image-about.jpg";
 
