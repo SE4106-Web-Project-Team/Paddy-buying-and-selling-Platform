@@ -1,20 +1,110 @@
-.pagination {
+/* adminusers.css */
+
+/* Top‑level wrapper under Dashboard */
+.admin-users-page {
   display: flex;
-  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+/* Content slot of Dashboard */
+.admin-users-page .content-panel {
+  width: 85%;
+  padding: 2rem;
+  background: #f5f7fa;
+  overflow-y: auto;
+}
+
+/* Page header */
+.admin-users-page h2 {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+  color: #34495e;
+}
+
+/* Search box */
+.admin-users-page input[type="text"] {
+  width: 100%;
+  max-width: 350px;
+  padding: 0.6rem 1rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+/* User list styling */
+.admin-users-page ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.admin-users-page ul li {
+  background: #fff;
+  padding: 1rem 1.25rem;
+  margin-bottom: 0.75rem;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 10px;
-  margin-top: 20px;
 }
 
-.pagination button {
-  padding: 6px 12px;
+.admin-users-page ul li div strong {
+  font-size: 1.1rem;
+  color: #2c3e50;
+}
+
+.admin-users-page ul li div span {
+  color: #7f8c8d;
+  font-size: 0.95rem;
+}
+
+/* Delete button */
+.admin-users-page ul li button {
+  background: #e74c3c;
+  color: #fff;
   border: none;
-  background-color: #007bff;
-  color: white;
+  padding: 0.5rem 0.8rem;
+  border-radius: 4px;
   cursor: pointer;
+  transition: background 0.2s;
 }
 
-.pagination button:disabled {
-  background-color: #ccc;
+.admin-users-page ul li button:hover {
+  background: #c0392b;
+}
+
+/* Pagination controls */
+.admin-users-page .pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.admin-users-page .pagination button {
+  background: #2c3e50;
+  color: #ecf0f1;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin: 0 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.admin-users-page .pagination button:disabled {
+  background: #95a5a6;
   cursor: not-allowed;
+}
+
+.admin-users-page .pagination button:hover:not(:disabled) {
+  background: #1a242f;
+}
+
+.admin-users-page .pagination span {
+  font-size: 1rem;
+  color: #34495e;
 }
