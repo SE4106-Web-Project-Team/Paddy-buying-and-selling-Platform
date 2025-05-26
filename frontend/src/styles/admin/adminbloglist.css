@@ -33,7 +33,7 @@
 }
 
 .admin-bloglist-page .header-bar button.create-btn {
-  background: #2c3e50;
+  background: green;
   color: #ecf0f1;
   border: none;
   padding: 0.6rem 1.2rem;
@@ -43,13 +43,13 @@
 }
 
 .admin-bloglist-page .header-bar button.create-btn:hover {
-  background: #1a242f;
+  background: darkgreen;
 }
 
 .admin-bloglist-page .header-bar h2 {
   flex: 1;
   font-size: 1.75rem;
-  color: #34495e;
+  color: black;
   margin: 0;
 }
 
@@ -74,7 +74,7 @@
 
 .admin-bloglist-page .blog-card h3 {
   margin-top: 0;
-  color: #2c3e50;
+  color: black;
 }
 
 .admin-bloglist-page .blog-card img {
@@ -85,7 +85,7 @@
 }
 
 .admin-bloglist-page .blog-card p {
-  color: #555;
+  color: black;
   line-height: 1.4;
   margin: 4rem 1rem;
   align-items: center;
@@ -98,7 +98,7 @@
 }
 
 .admin-bloglist-page .blog-card .actions button {
-  background: #2c3e50;
+  background: green;
   color: #ecf0f1;
   border: none;
   padding: 0.5rem 1rem;
@@ -109,7 +109,7 @@
 }
 
 .admin-bloglist-page .blog-card .actions button:hover {
-  background: #1a242f;
+  background: green;
 }
 
 .admin-bloglist-page .blog-card .actions button.delete-btn {
@@ -131,7 +131,7 @@
 }
 
 .admin-bloglist-page .pagination button {
-  background: #2c3e50;
+  background: green;
   color: #ecf0f1;
   border: none;
   padding: 0.5rem 1rem;
@@ -146,10 +146,10 @@
 }
 
 .admin-bloglist-page .pagination button:hover:not(:disabled) {
-  background: #1a242f;
+  background: green;
 }
 
 .admin-bloglist-page .pagination span {
   font-size: 1rem;
-  color: #34495e;
+  color: green;
 }
