@@ -3,7 +3,7 @@ import axios from "axios";
 import AdminDashboard from "./AdminDashboard";
 import "../../styles/admin/adminprice.css";
 
-const ITEMS_PER_PAGE = 25;
+const ITEMS_PER_PAGE = 10;
 
 const AdminPrice = () => {
   const [paddyType, setPaddyType] = useState("");
@@ -66,12 +66,12 @@ const AdminPrice = () => {
     }
   };
 
-  // Filter prices by paddy type
+  // 🔍 Filter prices by paddy type
   const filteredPrices = prices.filter((entry) =>
     entry.paddy_type.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  // Pagination
+  // 📄 Pagination
   const totalPages = Math.ceil(filteredPrices.length / ITEMS_PER_PAGE);
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const currentPrices = filteredPrices.slice(
@@ -84,13 +84,12 @@ const AdminPrice = () => {
   };
 
   return (
-    <div className="admin-price-container" style={{ padding: "20px" }}>
-      <div style={{ display: "flex" }}>
-        <AdminDashboard />
-        <div>
+    <div className="admin-price-page">
+      <AdminDashboard>
+        <div className="content-panel">
           <h2>Manage Paddy Prices</h2>
 
-          <form onSubmit={handleSubmit} style={{ marginBottom: "20px" }}>
+          <form onSubmit={handleSubmit}>
             <input
               type="text"
               placeholder="Paddy Type"
@@ -108,8 +107,8 @@ const AdminPrice = () => {
             <button type="submit">{editingId ? "Update" : "Add"}</button>
           </form>
 
-          {/* Search bar */}
           <input
+            className="search-input"
             type="text"
             placeholder="Search by paddy type..."
             value={searchQuery}
@@ -117,7 +116,6 @@ const AdminPrice = () => {
               setSearchQuery(e.target.value);
               setCurrentPage(1);
             }}
-            style={{ marginBottom: "15px", padding: "5px", width: "250px" }}
           />
 
           <ul>
@@ -125,32 +123,32 @@ const AdminPrice = () => {
               <p>No matching paddy types found.</p>
             ) : (
               currentPrices.map((entry) => (
-                <li key={entry.id} style={{ marginBottom: "20px" }}>
+                <li key={entry.id}>
                   <p>
                     <strong>{entry.paddy_type}</strong>: Rs. {entry.price}
                   </p>
-                  <button onClick={() => handleEdit(entry)}>Edit</button>
-                  <button
-                    onClick={() => handleDelete(entry.id)}
-                    style={{ marginLeft: "10px" }}
-                  >
-                    Delete
-                  </button>
+                  <div>
+                    <button onClick={() => handleEdit(entry)}>Edit</button>
+                    <button onClick={() => handleDelete(entry.id)}>
+                      Delete
+                    </button>
+                  </div>
                 </li>
               ))
             )}
           </ul>
 
-          {/* Pagination Controls */}
           {totalPages > 1 && (
-            <div style={{ marginTop: "20px" }}>
+            <div className="pagination">
               <button
                 onClick={() => goToPage(currentPage - 1)}
                 disabled={currentPage === 1}
               >
                 Prev
-              </button>{" "}
-              Page {currentPage} of {totalPages}{" "}
+              </button>
+              <span>
+                Page {currentPage} of {totalPages}
+              </span>
               <button
                 onClick={() => goToPage(currentPage + 1)}
                 disabled={currentPage === totalPages}
@@ -160,7 +158,7 @@ const AdminPrice = () => {
             </div>
           )}
         </div>
-      </div>
+      </AdminDashboard>
     </div>
   );
 };

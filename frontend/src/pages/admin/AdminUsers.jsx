@@ -44,10 +44,9 @@ const AdminUsers = () => {
   };
 
   return (
-    <div>
-      <div style={{ display: "flex" }}>
-        <AdminDashboard />
-        <div>
+    <div className="admin-users-page">
+      <AdminDashboard>
+        <div className="content-panel">
           <h2>All Users</h2>
           <input
             type="text"
@@ -55,17 +54,16 @@ const AdminUsers = () => {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
+
           <ul>
             {filteredUsers.map((user) => (
               <li key={user.id}>
-                {user.name}
-                <br /> ({user.email})
-                <button
-                  onClick={() => handleDelete(user.id)}
-                  style={{ marginLeft: "10px" }}
-                >
-                  Delete
-                </button>
+                <div>
+                  <strong>{user.name}</strong>
+                  <br />
+                  <span>({user.email})</span>
+                </div>
+                <button onClick={() => handleDelete(user.id)}>Delete</button>
               </li>
             ))}
           </ul>
@@ -85,7 +83,7 @@ const AdminUsers = () => {
             </button>
           </div>
         </div>
-      </div>
+      </AdminDashboard>
     </div>
   );
 };

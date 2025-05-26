@@ -35,10 +35,9 @@ const AdminCreateBlog = () => {
   };
 
   return (
-    <div>
-      <div style={{ display: "flex" }}>
-        <AdminDashboard />
-        <div>
+    <div className="admin-createblog-page">
+      <AdminDashboard>
+        <div className="content-panel">
           <h2>Create Blog Post</h2>
           <form onSubmit={handleSubmit} encType="multipart/form-data">
             <input
@@ -48,8 +47,7 @@ const AdminCreateBlog = () => {
               onChange={(e) => setTitle(e.target.value)}
               required
             />
-            <br />
-            <br />
+
             <textarea
               placeholder="Blog Content"
               value={content}
@@ -57,23 +55,22 @@ const AdminCreateBlog = () => {
               rows="6"
               required
             />
-            <br />
-            <br />
+
             <input
               type="file"
               accept="image/*"
               onChange={(e) => setImage(e.target.files[0])}
               required
             />
-            <br />
-            <br />
+
             <button type="submit">Submit</button>
+
             <p>
               <a href="/admin/blogs">Cancel</a>
             </p>
           </form>
         </div>
-      </div>
+      </AdminDashboard>
     </div>
   );
 };

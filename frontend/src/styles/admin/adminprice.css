@@ -1,0 +1,139 @@
+/* adminprice.css */
+
+/* Page wrapper under AdminDashboard */
+.admin-price-page {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+/* Content panel (75%) */
+.admin-price-page .content-panel {
+  flex: 0 0 75%;
+  max-width: 75%;
+  padding: 2rem;
+  background: #f5f7fa;
+  overflow-y: auto;
+}
+
+/* Heading */
+.admin-price-page h2 {
+  font-size: 1.75rem;
+  margin-bottom: 1.5rem;
+  color: #34495e;
+}
+
+/* Form layout */
+.admin-price-page form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.admin-price-page form input[type="text"],
+.admin-price-page form input[type="number"] {
+  flex: 1 1 200px;
+  padding: 0.6rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.admin-price-page form button {
+  padding: 0.6rem 1.5rem;
+  background: #2c3e50;
+  color: #ecf0f1;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.admin-price-page form button:hover {
+  background: #1a242f;
+}
+
+/* Search input */
+.admin-price-page .search-input {
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  padding: 0.6rem 1rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+/* Price list */
+.admin-price-page ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.admin-price-page ul li {
+  background: #fff;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.admin-price-page ul li p {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #2c3e50;
+}
+
+.admin-price-page ul li button {
+  background: #e74c3c;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin: 0 0.5rem;
+}
+
+.admin-price-page ul li button:hover {
+  background: #c0392b;
+}
+
+/* Pagination */
+.admin-price-page .pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.admin-price-page .pagination button {
+  background: #2c3e50;
+  color: #ecf0f1;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.admin-price-page .pagination button:disabled {
+  background: #95a5a6;
+  cursor: not-allowed;
+}
+
+.admin-price-page .pagination button:hover:not(:disabled) {
+  background: #1a242f;
+}
+
+.admin-price-page .pagination span {
+  font-size: 1rem;
+  color: #34495e;
+}

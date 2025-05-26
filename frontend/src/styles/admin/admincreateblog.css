@@ -1,0 +1,86 @@
+/* admincreateblog.css */
+
+/* Parent page wrapper */
+.admin-createblog-page {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+/* Content panel */
+.admin-createblog-page .content-panel {
+  flex: 1;
+  max-width: 85%;
+  padding: 2rem;
+  background-color: #f5f7fa;
+  overflow-y: auto;
+}
+
+/* Heading */
+.admin-createblog-page h2 {
+  font-size: 1.75rem;
+  margin-bottom: 1.5rem;
+  color: #34495e;
+}
+
+/* Form */
+.admin-createblog-page form {
+  max-width: 100%;
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Text inputs & file input */
+.admin-createblog-page form input[type="text"],
+.admin-createblog-page form input[type="file"],
+.admin-createblog-page form textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: inherit;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+/* Textarea */
+.admin-createblog-page form textarea {
+  min-height: 150px;
+}
+
+/* Submit button */
+.admin-createblog-page form button[type="submit"] {
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  border: none;
+  border-radius: 4px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+/* Submit hover */
+.admin-createblog-page form button[type="submit"]:hover {
+  background-color: #1a242f;
+}
+
+/* Cancel link */
+.admin-createblog-page form p {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.admin-createblog-page form p a {
+  color: #e74c3c;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.admin-createblog-page form p a:hover {
+  color: #c0392b;
+}

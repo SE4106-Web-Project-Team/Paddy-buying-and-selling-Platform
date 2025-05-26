@@ -46,11 +46,11 @@ const AdminGigs = () => {
   };
 
   return (
-    <div className="admin-container">
-      <div style={{ display: "flex" }}>
-        <AdminDashboard />
-        <div>
+    <div className="admin-gigs-page">
+      <AdminDashboard>
+        <div className="content-panel">
           <h2>Manage Gigs</h2>
+
           <input
             type="text"
             placeholder="Search by seller name..."
@@ -58,11 +58,11 @@ const AdminGigs = () => {
             onChange={(e) => setSearchQuery(e.target.value)}
             className="search-input"
           />
+
           <ul>
             {filteredGigs.map((gig) => (
               <li key={gig.id}>
-                <strong>{gig.title}</strong> - {gig.description} ({gig.price}{" "}
-                Rs) <br />
+                <strong>{gig.paddy_type}</strong> - {gig.description} (Rs. {gig.price}{" "})
                 <i>Seller: {gig.seller_name}</i>
                 <button
                   onClick={() => handleDelete(gig.id)}
@@ -89,7 +89,7 @@ const AdminGigs = () => {
             </button>
           </div>
         </div>
-      </div>
+      </AdminDashboard>
     </div>
   );
 };
