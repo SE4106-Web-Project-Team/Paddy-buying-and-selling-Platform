@@ -12,8 +12,9 @@ const AdminEditBlog = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    // Fetch single blog or all then filter
     axios.get("http://localhost:5000/api/admin/blogs").then((res) => {
-      const blog = res.data.find((b) => b.id === parseInt(id));
+      const blog = res.data.find((b) => b.id === parseInt(id, 10));
       if (blog) {
         setTitle(blog.title);
         setContent(blog.content);
@@ -28,47 +29,46 @@ const AdminEditBlog = () => {
     formData.append("content", content);
     if (image) formData.append("image", image);
 
-    axios.put(`http://localhost:5000/api/admin/blogs/${id}`, formData);
+    await axios.put(`http://localhost:5000/api/admin/blogs/${id}`, formData);
     navigate("/admin/blogs");
   };
 
   return (
-    <div>
-      <div style={{ display: "flex" }}>
-        <AdminDashboard />
-        <div>
+    <div className="admin-editblog-page">
+      <AdminDashboard>
+        <div className="content-panel">
           <h2>Edit Blog</h2>
           <form onSubmit={handleSubmit} encType="multipart/form-data">
             <input
               type="text"
+              placeholder="Blog Title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               required
             />
-            <br />
-            <br />
+
             <textarea
+              placeholder="Blog Content"
               value={content}
               onChange={(e) => setContent(e.target.value)}
               rows="6"
               required
             />
-            <br />
-            <br />
+
             <input
               type="file"
               accept="image/*"
               onChange={(e) => setImage(e.target.files[0])}
             />
-            <br />
-            <br />
+
             <button type="submit">Update</button>
+
             <p>
               <a href="/admin/blogs">Cancel</a>
             </p>
           </form>
         </div>
-      </div>
+      </AdminDashboard>
     </div>
   );
 };
