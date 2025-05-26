@@ -1,110 +1,128 @@
 .chat-container {
   display: flex;
   height: 90vh;
-  border: 1px solid #ccc;
+  border: 1px solid #ddd;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .chat-sidebar {
-  width: 20%;
+  width: 25%;
   border-right: 1px solid #ddd;
+  background-color: #f7f9fc;
   padding: 10px;
   overflow-y: auto;
 }
 
+.chat-sidebar input[type="text"] {
+  margin: 10px 0;
+  padding: 8px 12px;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
 .chat-user {
-  padding: 10px;
+  padding: 12px 15px;
   cursor: pointer;
-  border-bottom: 1px solid #eee;
+  border-radius: 6px;
+  margin-bottom: 6px;
+  transition: background-color 0.2s ease;
 }
 
 .chat-user:hover {
-  background-color: #f0f0f0;
+  background-color: #e4ecf7;
+}
+
+.chat-user.selected {
+  background-color: #d0e1ff;
+  font-weight: 600;
 }
 
 .chat-window {
   flex: 1;
   display: flex;
   flex-direction: column;
+  background-color: #fff;
 }
 
 .chat-header {
-  padding: 10px;
+  padding: 12px 20px;
+  background-color: #f1f1f1;
   border-bottom: 1px solid #ddd;
-  background-color: #f9f9f9;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+.chat-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.delete-chat-btn {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.delete-chat-btn:hover {
+  background-color: #c82333;
+}
+
 .chat-messages {
   flex: 1;
-  padding: 10px;
+  padding: 16px;
   overflow-y: auto;
-  background-color: #fafafa;
+  background-color: #f8f8f8;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
 .chat-bubble {
-  max-width: 60%;
-  padding: 10px;
+  max-width: 65%;
+  padding: 10px 14px;
   border-radius: 10px;
-  word-wrap: break-word;
-  white-space: pre-wrap;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px; 
-}
-
-.message-text {
-  flex: 1;
   font-size: 14px;
   line-height: 1.4;
-  overflow-wrap: break-word;
-  display: inline-block;
   word-break: break-word;
+  display: inline-block;
+  position: relative;
 }
 
-
-
 .chat-bubble.sent {
-  background-color: #dcf8c6;
+  background-color: #d1ffd6;
   align-self: flex-end;
 }
 
 .chat-bubble.received {
-  background-color: #fff;
-  border: 1px solid #eee;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
   align-self: flex-start;
 }
 
-.message-text {
-  flex: 1;
-  font-size: 14px;
-  line-height: 1.4;
-  overflow-wrap: break-word;
+.chat-bubble .message-text {
+  margin-right: 25px;
 }
 
 .delete-msg-btn {
+  position: absolute;
+  right: 6px;
+  top: 6px;
   background: none;
   border: none;
-  color: red;
-  font-size: 0.75rem;
+  color: #ff3b3b;
+  font-size: 0.8rem;
   cursor: pointer;
-  flex-shrink: 0;
-}
-
-
-/* Hide delete button by default */
-.chat-bubble .delete-msg-btn {
   visibility: hidden;
   opacity: 0;
   transition: opacity 0.2s ease;
 }
 
-/* Show delete button on hover */
 .chat-bubble:hover .delete-msg-btn {
   visibility: visible;
   opacity: 1;
@@ -112,38 +130,59 @@
 
 .chat-input {
   display: flex;
-  padding: 10px;
+  padding: 12px;
   border-top: 1px solid #ddd;
+  background-color: #fafafa;
 }
 
 .chat-input input {
   flex: 1;
-  padding: 10px;
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
 }
 
 .chat-input button {
   margin-left: 10px;
-  padding: 10px 20px;
-}
-
-.delete-chat-btn {
-  background-color: crimson;
+  padding: 10px 18px;
+  background-color: #4caf50;
   color: white;
   border: none;
-  padding: 6px 10px;
-  border-radius: 4px;
+  border-radius: 8px;
+  font-size: 1rem;
   cursor: pointer;
 }
-.chat-back-link{
+
+.chat-input button:hover {
+  background-color: #45a049;
+}
+
+.chat-placeholder,
+.chat-window-placeholder {
+  padding: 20px;
+  text-align: center;
+  font-size: 1.1rem;
+  color: #888;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chat-back-link {
   display: inline-block;
-  margin-top: 10px;
+  margin: 10px;
   color: white;
   text-decoration: none;
-  background-color: green;
-  padding: 4px 8px;
-  border-radius: 4px;
+  background-color: #28a745;
+  padding: 6px 12px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
 }
+
 .chat-back-link:hover {
-  background-color: darkgreen;
+  background-color: #218838;
   text-decoration: underline;
 }
