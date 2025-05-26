@@ -1,8 +1,7 @@
-require('dotenv').config({ path: __dirname + '/../.env' }); // 👈 force load correct .env
-
-console.log('DB_USER:', process.env.DB_USER); // should now print: root
-console.log('DB_PASSWORD:', process.env.DB_PASSWORD); // should now print: root
-console.log('DB_NAME:', process.env.DB_NAME); // should now print: paddy_platform
+require('dotenv').config({ path: __dirname + '/../.env' });
+console.log('DB_USER:', process.env.DB_USER); 
+console.log('DB_PASSWORD:', process.env.DB_PASSWORD); 
+console.log('DB_NAME:', process.env.DB_NAME);
 
 const bcrypt = require('bcrypt');
 const db = require('../config/db');

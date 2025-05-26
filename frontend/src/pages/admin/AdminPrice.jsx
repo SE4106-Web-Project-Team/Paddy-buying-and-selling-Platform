@@ -66,12 +66,12 @@ const AdminPrice = () => {
     }
   };
 
-  // 🔍 Filter prices by paddy type
+  // Filter prices by paddy type
   const filteredPrices = prices.filter((entry) =>
     entry.paddy_type.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  // 📄 Pagination
+  // Pagination
   const totalPages = Math.ceil(filteredPrices.length / ITEMS_PER_PAGE);
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const currentPrices = filteredPrices.slice(
@@ -108,14 +108,14 @@ const AdminPrice = () => {
             <button type="submit">{editingId ? "Update" : "Add"}</button>
           </form>
 
-          {/* 🔍 Search bar */}
+          {/* Search bar */}
           <input
             type="text"
             placeholder="Search by paddy type..."
             value={searchQuery}
             onChange={(e) => {
               setSearchQuery(e.target.value);
-              setCurrentPage(1); // Reset to page 1 on search
+              setCurrentPage(1);
             }}
             style={{ marginBottom: "15px", padding: "5px", width: "250px" }}
           />

@@ -11,7 +11,7 @@ const Chat = () => {
   const [user, setUser] = useState(null);
   const [chatUsers, setChatUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
-  const [searchTerm, setSearchTerm] = useState(""); // 🔍 New state
+  const [searchTerm, setSearchTerm] = useState(""); 
 
   useEffect(() => {
     const storedUserString = localStorage.getItem("user");
@@ -53,7 +53,7 @@ const Chat = () => {
     setSelectedUser(user);
   };
 
-  // 🔍 Filter users based on search term
+  // Filter users based on search term
   const filteredUsers = chatUsers.filter((u) =>
     u.name?.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -66,7 +66,6 @@ const Chat = () => {
       {user && (
         <>
           <div className="chat-sidebar">
-            {/* 🔍 Search Box */}
             <input
               type="text"
               placeholder="Search chats..."

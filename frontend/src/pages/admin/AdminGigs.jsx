@@ -25,7 +25,7 @@ const AdminGigs = () => {
   const handleDelete = async (id) => {
     try {
       await axios.delete(`http://localhost:5000/api/admin/gigs/${id}`);
-      fetchGigs(page); // Refresh after delete
+      fetchGigs(page);
     } catch (err) {
       console.error("Failed to delete gig:", err);
     }

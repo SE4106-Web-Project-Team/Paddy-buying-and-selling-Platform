@@ -74,7 +74,6 @@ const GigView = () => {
             <strong>Description:</strong> {gig.description}
           </p>
 
-          {/* Show Contact Seller only if current user is not the seller */}
           {currentUserId !== gig.user_id && (
             <button className="gig-contact-button" onClick={handleContactSeller}>Contact Seller</button>
           )}
