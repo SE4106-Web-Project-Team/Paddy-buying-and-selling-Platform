@@ -26,7 +26,7 @@
   border-radius: 0.5rem;
   cursor: pointer;
   box-shadow: 1px 1px 4px rgba(6, 35, 0, 0.244);
-  color: #022700;
+  color: black;
 }
 
 .suggested-button:hover {
@@ -73,15 +73,30 @@
   border: 1px solid #ccc;
 }
 
-.chat-input button {
-  background-color: #007bff;
+.chat-send-button {
+  background-color: green;
   color: white;
   border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 0.4rem;
+  padding: 5px 10px;
+  border-radius: 4px;
   cursor: pointer;
 }
 
-.chat-input button:hover {
-  background-color: #005fc1;
+.chat-send-button:hover {
+  background-color: darkgreen;
+  text-decoration: underline;
+}
+.chatbot-back-link{
+  font-size: medium;
+  display: inline-block;
+  margin-top: 1rem;
+  color: white;
+  text-decoration: none;
+  background-color: green;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+.chatbot-back-link:hover {
+  background-color: darkgreen;
+  text-decoration: underline;
 }

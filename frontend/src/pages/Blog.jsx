@@ -29,7 +29,7 @@ const Blog = () => {
   );
 
   // Pagination logic (apply after filtering)
-  const blogsPerPage = 10;
+  const blogsPerPage = 5;
   const indexOfLastBlog = currentPage * blogsPerPage;
   const indexOfFirstBlog = indexOfLastBlog - blogsPerPage;
   const currentBlogs = filteredBlogs.slice(indexOfFirstBlog, indexOfLastBlog);

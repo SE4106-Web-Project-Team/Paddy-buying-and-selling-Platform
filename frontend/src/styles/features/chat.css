@@ -134,3 +134,16 @@
   border-radius: 4px;
   cursor: pointer;
 }
+.chat-back-link{
+  display: inline-block;
+  margin-top: 10px;
+  color: white;
+  text-decoration: none;
+  background-color: green;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+.chat-back-link:hover {
+  background-color: darkgreen;
+  text-decoration: underline;
+}
