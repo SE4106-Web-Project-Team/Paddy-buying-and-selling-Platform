@@ -1,20 +1,112 @@
-.pagination {
+/* adminshop.css */
+
+/* Top‑level wrapper under Dashboard */
+.admin-shop-page {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  margin-top: 20px;
+  height: 100%;
+  width: 100%;
 }
 
-.pagination button {
-  padding: 6px 12px;
+/* Content slot styling */
+.admin-shop-page .content-panel {
+  width: 85%;
+  padding: 2rem;
+  background: #f5f7fa;
+  overflow-y: auto;
+}
+
+/* Page heading */
+.admin-shop-page h2 {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+  color: #34495e;
+}
+
+/* Search input */
+.admin-shop-page .search-input {
+  width: 100%;
+  max-width: 350px;
+  padding: 0.6rem 1rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+/* Shop items list */
+.admin-shop-page ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.admin-shop-page ul li {
+  background: #fff;
+  padding: 1rem 1.25rem;
+  margin-bottom: 0.75rem;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-shop-page ul li strong {
+  font-size: 1.1rem;
+  color: #2c3e50;
+}
+
+.admin-shop-page ul li i {
+  color: #7f8c8d;
+  font-style: italic;
+  margin-top: 0.5rem;
+}
+
+/* Delete button */
+.admin-shop-page .delete-btn {
+  align-self: flex-end;
+  margin-top: 0.75rem;
+  background: #e74c3c;
+  color: #fff;
   border: none;
-  background-color: #007bff;
-  color: white;
+  padding: 0.5rem 0.8rem;
+  border-radius: 4px;
   cursor: pointer;
+  transition: background 0.2s;
 }
 
-.pagination button:disabled {
-  background-color: #ccc;
+.admin-shop-page .delete-btn:hover {
+  background: #c0392b;
+}
+
+/* Pagination controls */
+.admin-shop-page .pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.admin-shop-page .pagination button {
+  background: #2c3e50;
+  color: #ecf0f1;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin: 0 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.admin-shop-page .pagination button:disabled {
+  background: #95a5a6;
   cursor: not-allowed;
+}
+
+.admin-shop-page .pagination button:hover:not(:disabled) {
+  background: #1a242f;
+}
+
+.admin-shop-page .pagination span {
+  font-size: 1rem;
+  color: #34495e;
 }
