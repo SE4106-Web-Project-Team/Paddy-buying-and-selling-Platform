@@ -19,7 +19,7 @@ function NavigationBar() {
 
   return (
     <nav>
-      <h1 onClick={() => navigate("/")}>PADDY PLATFORM</h1>
+      <h1 onClick={() => navigate("/")}>PADDY SMART</h1>
       <ul>
         <li>
           <NavLink
