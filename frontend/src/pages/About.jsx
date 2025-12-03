@@ -45,7 +45,14 @@ function About() {
           </div>
         </section>
 
-        
+      {/* Section 3: Interactive Cards */}
+        <section className="values-grid">
+          <div className="value-card fade-in-up delay-2">
+            <div className="icon">🌾</div>
+            <h3>Sustainable</h3>
+            <p>Promoting eco-friendly rice cultivation methods that protect our soil for future generations.</p>
+          </div>
+        </section>
       </div>
     </div>
   );
