@@ -21,7 +21,10 @@ function About() {
 
       {/* Section 2: Main Content */}
       <div className="about-content-wrapper">
-        
+        <div className="back-button-container">
+            {/* Switched to Link for faster internal routing, kept styling */}
+            <Link to="/" className="back-button">← Back Home</Link>
+        </div>
 
         
 
