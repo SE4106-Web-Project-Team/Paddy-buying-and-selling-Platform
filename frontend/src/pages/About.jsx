@@ -1,27 +1,70 @@
 // src/pages/About.jsx
 import React from "react";
 import "../styles/about/about.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom"; // Removed unused useNavigate
 import NavigationBar from "../components/nav/NavigationBar";
-import aboutImage from "../resources/images/about/image-about.jpg";
 
 function About() {
   return (
-    <div>
+    <div className="about-page">
       <NavigationBar />
-      <p>
-        <a href="/" className="back-button">Back</a>
-
-
-      </p>
-      <div className="about-image" style={{ backgroundImage: `url(${aboutImage})` }}>
-      <div className="about-container">
-        <h1>About Page</h1>
-      <p>This is the About page for Paddy Platform.</p>
-      <p>
-        Welcome to our paddy field platform, where tradition meets innovation. Rooted in Sri Lanka's rich agricultural heritage, we aim to empower farmers and connect them with modern tools and markets. Our mission is to enhance sustainable rice cultivation by providing resources, knowledge, and a digital marketplace that benefits every stakeholder in the paddy ecosystem. Join us in cultivating a prosperous future for our farming communities..
-      </p>
+      
+      {/* Section 1: Hero Header */}
+      <div className="about-hero">
+        <div className="hero-overlay">
+          <div className="fade-in-up">
+            <h1>Cultivating the Future</h1>
+            <p className="subtitle">Where Sri Lankan Tradition Meets Modern Innovation</p>
+          </div>
+        </div>
       </div>
+
+      {/* Section 2: Main Content */}
+      <div className="about-content-wrapper">
+        <div className="back-button-container">
+            {/* Switched to Link for faster internal routing, kept styling */}
+            <Link to="/" className="back-button">← Back Home</Link>
+        </div>
+
+        <section className="mission-section fade-in-up delay-1">
+          <div className="mission-text">
+            <h2>Our Story</h2>
+            <p>
+              Welcome to <strong>Paddy Smart</strong>. Rooted deeply in Sri Lanka's rich agricultural heritage, 
+              we recognized a gap between the hardworking farmers who feed our nation and the modern markets they deserve access to.
+            </p>
+            <p>
+              Our mission is to bridge this gap. We empower farmers by connecting them with 
+              modern tools, real-time market data, and a transparent digital marketplace. 
+              We believe that when a farmer thrives, the entire nation prospers.
+            </p>
+          </div>
+          <div className="mission-image-placeholder">
+            {/* You can place a secondary image here, or an icon */}
+            <div className="leaf-icon">🌿</div>
+          </div>
+        </section>
+
+      {/* Section 3: Interactive Cards */}
+        <section className="values-grid">
+          <div className="value-card fade-in-up delay-2">
+            <div className="icon">🌾</div>
+            <h3>Sustainable</h3>
+            <p>Promoting eco-friendly rice cultivation methods that protect our soil for future generations.</p>
+          </div>
+
+          <div className="value-card fade-in-up delay-3">
+            <div className="icon">🤝</div>
+            <h3>Transparent</h3>
+            <p>A fair marketplace where prices are clear, ensuring farmers get the value they deserve.</p>
+          </div>
+
+          <div className="value-card fade-in-up delay-4">
+            <div className="icon">🚀</div>
+            <h3>Innovative</h3>
+            <p>Bringing cutting-edge technology to the paddy fields to streamline buying and selling.</p>
+          </div>
+        </section>
       </div>
     </div>
   );

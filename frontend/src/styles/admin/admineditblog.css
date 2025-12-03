@@ -20,7 +20,7 @@
 .admin-editblog-page h2 {
   font-size: 1.75rem;
   margin-bottom: 1.5rem;
-  color: #34495e;
+  color: black;
 }
 
 /* Form container */
@@ -54,7 +54,7 @@
 
 /* Submit button */
 .admin-editblog-page form button[type="submit"] {
-  background-color: #2c3e50;
+  background-color: green;
   color: #ecf0f1;
   border: none;
   border-radius: 4px;
@@ -66,7 +66,7 @@
 
 /* Button hover */
 .admin-editblog-page form button[type="submit"]:hover {
-  background-color: #1a242f;
+  background-color: darkgreen;
 }
 
 /* Cancel link */
@@ -76,11 +76,11 @@
 }
 
 .admin-editblog-page form p a {
-  color: #e74c3c;
+  color:white;
   text-decoration: none;
   transition: color 0.2s;
 }
 
 .admin-editblog-page form p a:hover {
-  color: #c0392b;
+  background-color: darkgreen;
 }

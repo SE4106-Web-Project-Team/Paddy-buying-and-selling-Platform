@@ -73,7 +73,6 @@ router.delete("/delete-chat/:receiverId", verifyToken, (req, res) => {
 });
 
 // 5. Delete a specific message
-// 5. Delete a specific message
 router.delete("/messages/:messageId", verifyToken, (req, res) => {
   const messageId = req.params.messageId;
   const userId = req.user.id;

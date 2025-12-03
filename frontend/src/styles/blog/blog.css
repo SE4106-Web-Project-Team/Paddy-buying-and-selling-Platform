@@ -42,13 +42,14 @@
 .block-back-link { 
   padding: 5px 10px;
   color: white;
-  background-color: rgb(5, 106, 32);
+  background-color: green;
   border-radius: 4px;
   text-decoration: none;
 }
 
 .block-back-link:hover {
   text-decoration: underline;
+  background-color: darkgreen;
 }
 
 .search-bar {

@@ -24,7 +24,7 @@
 .gig-create-container h2 {
   text-align: center;
   margin-bottom: 2rem;
-  color: #2f2f2f;
+  color: black;
   font-size: 36px;
   font-weight: bold;
 }
@@ -64,7 +64,7 @@ textarea {
 }
 
 button[type="submit"] {
-  background-color: #28a745;
+  background-color: green;
   color: white;
   padding: 12px 24px;
   font-size: 16px;
@@ -77,7 +77,7 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-  background-color: #218838;
+  background-color: darkgreen;
 }
 
 form p {
@@ -88,7 +88,7 @@ form p {
 form a {
   text-decoration: none;
   color: white;
-  background-color: #218838;
+  background-color: green;
   padding: 6px 12px;
   border-radius: 4px;
 }

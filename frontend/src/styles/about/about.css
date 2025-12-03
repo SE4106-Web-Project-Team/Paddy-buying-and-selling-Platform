@@ -1,69 +1,191 @@
-.about-container {
-    padding: 2rem;
-  background-color: #cac5c564;
-  border-radius: 8px;
-  font-family: 'Arial', sans-serif;
+/* src/styles/about/about.css */
+
+/* 1. Base Setup */
+.about-page {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  background-color: #f9fdf9; /* Very light green tint */
+  overflow-x: hidden;
 }
 
-.about-container h1 {
-  color: #010103;
-  margin-bottom: 1rem;
-}
-.about-container p {
-  color: #000000;
-  line-height: 1.6;
-}
-
-.about-image {
+/* 2. Hero Section with Parallax */
+.about-hero {
   position: relative;
-  height: 60vh;
-  background-size: cover;
+  height: 60vh; /* Takes up 60% of screen height */
+  background: url('../../resources/images/ProfileEdit/background2.jpg');
+  background-attachment: fixed; /* Creates Parallax effect */
   background-position: center;
+  background-size: cover;
   display: flex;
-  justify-content: center;
   align-items: center;
-  color: #fff;
+  justify-content: center;
   text-align: center;
 }
 
-
-.hero-content h1 {
-  font-size: 3rem;
-  margin-bottom: 0.5rem;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.hero-content p {
-  font-size: 1.5rem;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.back-link {
-  display: inline-block;
-  margin: 1rem 0;
-  padding: 0.5rem 1rem;
+.hero-overlay {
+  background: rgba(0, 0, 0, 0.5); /* Dark overlay to make text pop */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   color: white;
-  background-color: #007bff;
-  text-decoration: none;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
+  padding: 20px;
+}
+
+.hero-overlay h1 {
+  font-size: 3.5rem;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero-overlay .subtitle {
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: #e0e0e0;
+}
+
+/* 3. Content Wrapper */
+.about-content-wrapper {
+  max-width: 1000px;
+  margin: -50px auto 0; /* Pulls content up over the hero image */
+  padding: 0 20px 50px;
+  position: relative;
+  z-index: 2;
+}
+
+/* 4. Back Button Styling */
+.back-button-container {
+  margin-bottom: 30px;
 }
 
 .back-button {
-  display: inline-block;
-  padding: 0.6rem 1.2rem;
+  background-color: #2e7d32; /* Material Design Green */
   color: white;
-  background-color: #007bff;
+  padding: 10px 20px;
+  border-radius: 30px;
   text-decoration: none;
-  font-weight: 500;
-  font-family: 'Arial', sans-serif;
-  border-radius: 1.2rem / 1rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-weight: 600;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  display: inline-block;
 }
 
 .back-button:hover {
-  background-color: #0056b3;
-  transform: translateY(-2px);
+  background-color: #1b5e20;
+  transform: translateX(-5px); /* Moves left slightly */
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
 }
 
+/* 5. Mission Section */
+.mission-section {
+  background: white;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.mission-text h2 {
+  color: #2e7d32;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  border-bottom: 3px solid #81c784;
+  display: inline-block;
+}
+
+.mission-text p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.mission-image-placeholder {
+  font-size: 5rem;
+  display: none; /* Hidden on mobile */
+}
+
+@media (min-width: 768px) {
+  .mission-image-placeholder {
+    display: block;
+    animation: float 6s ease-in-out infinite;
+  }
+}
+
+/* 6. Values Grid (Cards) */
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.value-card {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-top: 5px solid transparent;
+}
+
+.value-card:hover {
+  transform: translateY(-10px); /* Lifts up on hover */
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+  border-top: 5px solid #2e7d32;
+}
+
+.value-card .icon {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.value-card h3 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.value-card p {
+  color: #666;
+  line-height: 1.5;
+}
+
+/* 7. Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+  opacity: 0; /* Start hidden */
+}
+
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.4s; }
+.delay-3 { animation-delay: 0.6s; }
+.delay-4 { animation-delay: 0.8s; }
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .hero-overlay h1 { font-size: 2.5rem; }
+  .mission-section { flex-direction: column; }
+  .about-content-wrapper { margin-top: -30px; }
+}
