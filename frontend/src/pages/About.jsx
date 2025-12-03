@@ -52,6 +52,12 @@ function About() {
             <h3>Sustainable</h3>
             <p>Promoting eco-friendly rice cultivation methods that protect our soil for future generations.</p>
           </div>
+
+          <div className="value-card fade-in-up delay-3">
+            <div className="icon">🤝</div>
+            <h3>Transparent</h3>
+            <p>A fair marketplace where prices are clear, ensuring farmers get the value they deserve.</p>
+          </div>
         </section>
       </div>
     </div>
