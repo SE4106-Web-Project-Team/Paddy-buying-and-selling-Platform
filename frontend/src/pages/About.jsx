@@ -26,7 +26,24 @@ function About() {
             <Link to="/" className="back-button">← Back Home</Link>
         </div>
 
-        
+        <section className="mission-section fade-in-up delay-1">
+          <div className="mission-text">
+            <h2>Our Story</h2>
+            <p>
+              Welcome to <strong>Paddy Smart</strong>. Rooted deeply in Sri Lanka's rich agricultural heritage, 
+              we recognized a gap between the hardworking farmers who feed our nation and the modern markets they deserve access to.
+            </p>
+            <p>
+              Our mission is to bridge this gap. We empower farmers by connecting them with 
+              modern tools, real-time market data, and a transparent digital marketplace. 
+              We believe that when a farmer thrives, the entire nation prospers.
+            </p>
+          </div>
+          <div className="mission-image-placeholder">
+            {/* You can place a secondary image here, or an icon */}
+            <div className="leaf-icon">🌿</div>
+          </div>
+        </section>
 
         
       </div>
