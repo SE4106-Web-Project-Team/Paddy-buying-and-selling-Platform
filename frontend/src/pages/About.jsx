@@ -58,6 +58,12 @@ function About() {
             <h3>Transparent</h3>
             <p>A fair marketplace where prices are clear, ensuring farmers get the value they deserve.</p>
           </div>
+
+          <div className="value-card fade-in-up delay-4">
+            <div className="icon">🚀</div>
+            <h3>Innovative</h3>
+            <p>Bringing cutting-edge technology to the paddy fields to streamline buying and selling.</p>
+          </div>
         </section>
       </div>
     </div>
